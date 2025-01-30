@@ -158,7 +158,30 @@ function changeSideTo(side) {
     }
 }
 
+function addStylesheet(href) {
+    let newLink = document.createElement("link");
+    newLink.rel = "stylesheet";
+    newLink.href = href;
+    document.head.appendChild(newLink);
+}
+
 function ranking() {
+    addStylesheet("styleRanking.css");
+    document.getElementById("content").innerHTML =
+    `<div id="rankSystem">
+        <div id="rank2">
+            <div class="class">1BHITM</div>
+            <div class="box"></div>
+        </div>
+        <div id="rank1">
+            <div class="class">2BHITM</div>
+            <div class="box"></div>
+        </div>
+        <div id="rank3">
+            <div class="class">3BHITM</div>
+            <div class="box"></div>
+        </div>
+    </div>`;
 }
 function statistics() {
 }
@@ -181,21 +204,6 @@ function profile() {
 }
 
 function rankSystem() {
-    document.getElementById("content").innerHTML =
-    `<div id="rankSystem">
-        <div id="rank2">
-            <div class="class">1BHITM</div> <!--klasse auslesen-->
-            <div class="box"></div>
-        </div>
-        <div id="rank1">
-            <div class="class">2BHITM</div>
-            <div class="box"></div>
-        </div>
-        <div id="rank3">
-            <div class="class">3BHITM</div>
-            <div class="box">
-        </div>
-    </div>`;
 }
 function statisticSystem() {
 }
