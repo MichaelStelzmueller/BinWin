@@ -8,53 +8,6 @@
         "score": 0
     },
     {
-        "id": "679205a2239fd",
-        "name": "test",
-        "password": "kms",
-        "department": "m",
-        "class": "m"
-    },
-    {
-        "id": "679b3ce0e0dd5",
-        "name": "nino",
-        "password": "test",
-        "department": "medt",
-        "class": "3bhitm",
-        "score": 0
-    },
-    {
-        "id": "679b55d1de242",
-        "name": "nino",
-        "password": "123",
-        "department": "Medientechnik",
-        "class": "3bhitm",
-        "score": 0
-    },
-    {
-        "id": "679b5699a1ecc",
-        "name": "testing",
-        "password": "135",
-        "department": "Medientechnik",
-        "class": "3bhitm",
-        "score": 0
-    },
-    {
-        "id": "679b578cab958",
-        "name": "Test1",
-        "password": "kkk",
-        "department": "Medientechnik",
-        "class": "3bhitm",
-        "score": 0
-    },
-    {
-        "id": "679b58208ce8a",
-        "name": "123",
-        "password": "123",
-        "department": "Medientechnik",
-        "class": "123",
-        "score": 0
-    },
-    {
         "id": "679b60e48e789",
         "name": "michi",
         "password": "admin",
