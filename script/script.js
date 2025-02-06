@@ -195,9 +195,6 @@ function points() {
 function rewards() {
 }
 function profile() {
-    let formData = new FormData();
-    formData.append('user', uname);
-    formData.append('class', uclass);
 
     let fetch_url = './api/userapi.php';
     let fetch_config = {
