@@ -195,16 +195,53 @@ function points() {
 function rewards() {
 }
 function profile() {
-    document.getElementById("content").innerHTML = `
-    <div>
-        <div id="profilIcon">
-        <img src="./icons/profile.svg">
-        </div>
-        <div>
-            <div>${name}</div>
-            <div></div>
-        </div>
-    </div>`;
+    let formData = new FormData();
+    formData.append('user', uname);
+    formData.append('class', uclass);
+
+    let fetch_url = './api/userapi.php';
+    let fetch_config = {
+        method: "POST",
+        body: formData,
+        headers: {
+            "Accept": "aplication/json"
+        }
+    }
+
+    fetch(fetch_url, fetch_config)
+        .then((response) => response.json())
+        .then((data) => {
+
+            console.log(data);
+
+            if (data.code == 200) {
+                document.getElementById("content").innerHTML = `
+                <div>
+                    <div id="profilIcon">
+                    <img src="./icons/profile.svg">
+                    </div>
+                    <div>
+                        <div>${uname}</div>
+                        <div>${uclass}</div>
+                    </div>
+                </div>`
+            }
+
+            else {
+                if (counter > 0) {
+                    alert(data.msg);
+                }
+                counter++
+
+            }
+
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred please try again later!");
+        });
+
+    
 }
 
 function rankSystem() {
