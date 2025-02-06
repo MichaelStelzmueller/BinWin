@@ -2,7 +2,7 @@
     position:sticky;
     top: -10vh;
     border-style: solid;
-    border-color: black;
+    border-bottom-color: black;
     border-width: 1%;
     border-radius:5%;
     padding: 2%;
