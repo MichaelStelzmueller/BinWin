@@ -158,6 +158,15 @@ function changeSideTo(side) {
     }
 }
 
+function replaceStylesheet(newHref) {
+    // Alle Stylesheets entfernen
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => link.remove());
+
+    // Neues Stylesheet hinzufügen
+    addStylesheet(newHref);
+    addStylesheet('style/style.css');
+}
+
 function addStylesheet(href) {
     let newLink = document.createElement("link");
     newLink.rel = "stylesheet";
@@ -165,8 +174,9 @@ function addStylesheet(href) {
     document.head.appendChild(newLink);
 }
 
+
 function ranking() {
-    addStylesheet("styleRanking.css");
+    replaceStylesheet("style/styleRanking.css");
     document.getElementById("content").innerHTML =
     `<div id="rankSystem">
         <div id="rank2">
@@ -193,6 +203,40 @@ function points() {
 
 
 function rewards() {
+    document.getElementById("content").innerHTML = `
+  <h2 class="milestones-title">Milestones</h2>
+  <div class="milestones-container">
+    <div class="milestone">
+      <div class="milestone-badge">1</div>
+      <span>First R-Point</span>
+    </div>
+    <div class="milestone">
+      <div class="milestone-badge">5</div>
+      <span>x5 R-Points</span>
+    </div>
+    <div class="milestone">
+      <div class="milestone-badge">10</div>
+      <span>x10 R-Points</span>
+    </div>
+    <div class="milestone locked">
+      <div class="milestone-badge">50</div>
+      <span>x50 R-Points</span>
+    </div>
+    <!-- Weitere Milestones -->
+    <div class="milestone">
+      <div class="milestone-badge">100</div>
+      <span>x100 R-Points</span>
+    </div>
+    <div class="milestone locked">
+      <div class="milestone-badge">200</div>
+      <span>x200 R-Points</span>
+    </div>
+    <div class="milestone locked">
+      <div class="milestone-badge">500</div>
+      <span>x500 R-Points</span>
+    </div>
+  </div>
+`
 }
 function profile() {
 
