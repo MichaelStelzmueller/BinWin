@@ -200,6 +200,10 @@ function profile() {
         <div id="profilIcon">
         <img src="./icons/profile.svg">
         </div>
+        <div>
+            <div>${name}</div>
+            <div></div>
+        </div>
     </div>`;
 }
 
