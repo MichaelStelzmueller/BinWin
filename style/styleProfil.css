@@ -1,0 +1,30 @@
+#profilBox{
+    position:sticky;
+    top: -10vh;
+    border-style: solid;
+    border-color: black;
+    border-width: 1%;
+    border-radius:5%;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#profilIcon {
+    text-align: center;
+}
+
+#profilIcon img {
+    width: 20vw;
+}
+
+#profiltxt{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    text-align: center;
+}
+.profiltxtC{
+    padding: 2%;
+    text-align: center;
+}

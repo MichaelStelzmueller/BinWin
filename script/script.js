@@ -239,6 +239,7 @@ function rewards() {
 `
 }
 function profile() {
+    replaceStylesheet("style/styleProfil.css");
     fetch(`./api/allData.php`)
         .then((response) => response.json())
         .then((data) => {
@@ -247,13 +248,13 @@ function profile() {
 
             if (data.code == 200) {
                 document.getElementById("content").innerHTML = `
-                <div>
+                <div id="profilBox">
                     <div id="profilIcon">
                     <img src="./icons/profile.svg">
                     </div>
-                    <div>
-                        <div>${data.array[0].name}</div>
-                        <div>${data.array[0].class}</div>
+                    <div id="profiltxt">
+                        <div id="profil-txt-n" class="profiltxtC">${data.array[0].name}</div>
+                        <div id="profil-txt-c" class="profiltxtC">${data.array[0].class}</div>
                     </div>
                 </div>`
             }
