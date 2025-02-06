@@ -203,8 +203,9 @@ function points() {
 
 
 function rewards() {
+    replaceStylesheet("style/styleRewards.css");
     document.getElementById("content").innerHTML = `
-  <h2 class="milestones-title">Milestones</h2>
+   <h2 class="milestones-title">Milestones</h2>
   <div class="milestones-container">
     <div class="milestone">
       <div class="milestone-badge">1</div>
@@ -219,21 +220,28 @@ function rewards() {
       <span>x10 R-Points</span>
     </div>
     <div class="milestone locked">
+      <div class="milestone-badge">25</div>
+      <span>x25 R-Points</span>
+    </div>
+    <div class="milestone">
       <div class="milestone-badge">50</div>
       <span>x50 R-Points</span>
     </div>
-    <!-- Weitere Milestones -->
-    <div class="milestone">
+    <div class="milestone locked">
+      <div class="milestone-badge">75</div>
+      <span>x75 R-Points</span>
+    </div>
+    <div class="milestone locked">
       <div class="milestone-badge">100</div>
       <span>x100 R-Points</span>
     </div>
     <div class="milestone locked">
-      <div class="milestone-badge">200</div>
-      <span>x200 R-Points</span>
+      <div class="milestone-badge">110</div>
+      <span>x120 R-Points</span>
     </div>
     <div class="milestone locked">
-      <div class="milestone-badge">500</div>
-      <span>x500 R-Points</span>
+      <div class="milestone-badge">120</div>
+      <span>x120 R-Points</span>
     </div>
   </div>
 `
