@@ -204,3 +204,12 @@ function rewardSystem() {
 }
 function profileSystem() {
 }
+
+
+document.addEventListener('keyup', function (event) {
+    console.log(event.key)
+    if (event.key == "Enter") {
+        preLog()
+    }
+
+})
