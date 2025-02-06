@@ -195,20 +195,7 @@ function points() {
 function rewards() {
 }
 function profile() {
-    let formData = new FormData();
-    formData.append('user', uname);
-    formData.append('class', uclass);
-
-    let fetch_url = './api/userapi.php';
-    let fetch_config = {
-        method: "POST",
-        body: formData,
-        headers: {
-            "Accept": "aplication/json"
-        }
-    }
-
-    fetch(fetch_url, fetch_config)
+    fetch(`./api/allData.php`)
         .then((response) => response.json())
         .then((data) => {
 
@@ -221,17 +208,14 @@ function profile() {
                     <img src="./icons/profile.svg">
                     </div>
                     <div>
-                        <div>${uname}</div>
-                        <div>${uclass}</div>
+                        <div>${data.array[0].name}</div>
+                        <div>${data.array[0].class}</div>
                     </div>
                 </div>`
             }
 
             else {
-                if (counter > 0) {
-                    alert(data.msg);
-                }
-                counter++
+                console.log("Etwas ist schief gelaufen");
 
             }
 
