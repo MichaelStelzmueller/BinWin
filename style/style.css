@@ -82,14 +82,7 @@ footer {
     margin-top: 10vh;
     box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.2);
 }
-#pointIcon{
+#pointIcon {
     font-size: 15vh;
     transform: scale(1.5);
-}
-
-#profilIcon{
-    text-align: center;
-}
-#profilIcon img{
-    width: 20vw;
 }
