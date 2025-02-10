@@ -1,10 +1,8 @@
-#profilBox{
-    position:sticky;
-    top: -10vh;
-    border-style: solid;
-    border-bottom-color: black;
-    border-width: 1%;
-    border-radius:5%;
+#profilBox {
+    left: 0;
+    margin-top: 10vh;
+    border: solid 3.5px black;
+    border-radius: 1vh;
     padding: 2%;
     display: grid;
     grid-template-columns: 1fr 1fr;
