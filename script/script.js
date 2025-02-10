@@ -130,6 +130,8 @@ function validLogIn() {
         <img onclick="changeSideTo('rewards')" class="icons" src="./icons/trophy.svg">
         <img onclick="changeSideTo('profile')" class="icons" src="./icons/profile.svg">
     </footer>`
+
+    changeSideTo('points');
 }
 
 //Navigation
