@@ -259,8 +259,8 @@ function profile() {
                     <img src="./icons/profile.svg">
                     </div>
                     <div id="profiltxt">
-                        <div id="profil-txt-n" class="profiltxtC">${data.array[0].name}</div>
-                        <div id="profil-txt-c" class="profiltxtC">${data.array[0].class}</div>
+                        <div id="profil-txt-n" class="profiltxtC"><strong>Name: </strong>${data.array[0].name}</div>
+                        <div id="profil-txt-c" class="profiltxtC"><strong>Klasse: </strong>${data.array[0].class}</div>
                     </div>
                 </div>`
             }
