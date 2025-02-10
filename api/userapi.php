@@ -5,6 +5,10 @@ if (!isset($_SESSION['loggedin'])) {
     $_SESSION['loggedin'] = false;
 }
 
+if (!isset($_SESSION['user'])) {
+    $_SESSION['user'] = "";
+}
+
 header('Content-Type: application/json');
 
 
@@ -36,6 +40,7 @@ else if (isset($_POST['user']) && isset($_POST['password'])) {
                 $answer["msg"] = $users;
                 $answer["logged"] = true;
                 $_SESSION['loggedin'] = true;
+                $_SESSION['user'] = $user;
             } else {
                 $answer['msg'] = "Username or password is wrong!";
                 
