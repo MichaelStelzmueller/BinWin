@@ -75,8 +75,6 @@ function LogIn(uname, pass) {
         });
 }
 
-
-
 function addUser() {
     const name = document.getElementById("name").value;
     const password = document.getElementById("password").value;
@@ -112,7 +110,6 @@ function addUser() {
         alert("Please fill in all fields!");
     }
 }
-
 
 //variablen 
 gotThePoint = true;
@@ -168,9 +165,10 @@ function replaceStylesheet(newHref) {
 }
 
 function addStylesheet(href) {
+    let timestamp = new Date().getTime(); // Zeitstempel generieren
     let newLink = document.createElement("link");
     newLink.rel = "stylesheet";
-    newLink.href = href;
+    newLink.href = href + `?${timestamp}`; // Cache verhindern durch Query-Parameter
     document.head.appendChild(newLink);
 }
 
@@ -180,11 +178,11 @@ function ranking() {
     document.getElementById("content").innerHTML =
     `<div id="rankSystem">
         <div id="rank2">
-            <div class="class">1BHITM</div>
+            <div class="class">2BHITM</div>
             <div class="box"></div>
         </div>
         <div id="rank1">
-            <div class="class">2BHITM</div>
+            <div class="class">1BHITM</div>
             <div class="box"></div>
         </div>
         <div id="rank3">

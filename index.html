@@ -5,26 +5,38 @@
 <!-- Auer Joschua -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="website icon" type="png" href="./Logo_BinWin.png">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/styleLogin.css">
-    <link rel="stylesheet" href="style/styleRegister.css">
     <script>
         let timestamp = new Date().getTime();
         let script = document.createElement('script');
         let script2 = document.createElement('script');
         script.defer = true;
         // relative path to your files
-        script.src = './script/script.js'   + `?${timestamp}`;   
+        script.src = './script/script.js' + `?${timestamp}`;
         // script2.src = './script/points.js'   + `?${timestamp}`; 
         document.head.appendChild(script);
         // document.head.appendChild(script2);
+
+        let stylesheets = [
+            "style/style.css",
+            "style/styleLogin.css",
+            "style/styleRegister.css"
+        ];
+
+        stylesheets.forEach(sheet => {
+            let link = document.createElement('link');
+            link.rel = "stylesheet";
+            link.href = sheet + `?${timestamp}`;
+            document.head.appendChild(link);
+        });
     </script>
 </head>
+
 <body id="body">
     <div id="forLogin-body">
         <div id="forLogin-container">
@@ -45,6 +57,7 @@
                 <p>Create an account? <a href="#" onclick="register()">Click here</a></p>
             </footer>
         </div>
-    </div>    
+    </div>
 </body>
+
 </html>
