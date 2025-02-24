@@ -179,16 +179,14 @@ function ranking() {
     `<div id="rankSystem">
         <div id="rank2">
             <div class="class">2BHITM</div>
-            <div class="box"></div>
         </div>
         <div id="rank1">
             <div class="class">1BHITM</div>
-            <div class="box"></div>
         </div>
         <div id="rank3">
             <div class="class">3BHITM</div>
-            <div class="box"></div>
         </div>
+        
     </div>`;
 }
 function statistics() {
