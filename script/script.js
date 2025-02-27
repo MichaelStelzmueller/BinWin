@@ -269,7 +269,9 @@ function profile() {
             console.log(data);
 
             if (data.code == 200) {
+                document.getElementById("headerGeneral").innerHTML = `<h2>Profil</h2>`	
                 document.getElementById("content").innerHTML = `
+
                 <div id="profilBox">
                     <div id="profilIcon">
                     <img src="./icons/profile.svg">
@@ -278,14 +280,20 @@ function profile() {
                         <div id="profil-txt-n" class="profiltxtC"><strong>Name: </strong>${data.array[0].name}</div>
                         <div id="profil-txt-c" class="profiltxtC"><strong>Klasse: </strong>${data.array[0].class}</div>
                     </div>
-                    <hr>
-                    <div id="overview">
-                        <div><img onclick="changeSideTo('ranking')" class="icons" src="./icons/ranking.svg"></div>
-                        <div><p onclick="changeSideTo('points')" class="icons">♻️</p></div>
-                        <div><img onclick="changeSideTo('rewards')" class="icons" src="./icons/trophy.svg"></div>                        </div>
+                </div>
+                <hr>
+                <div id="overview">
+                        <div class="overviewBox"><img onclick="changeSideTo('ranking')" class="icons" src="./icons/ranking.svg">
+                            <div>(#1)</div>
+                        </div>
+                        <div class="overviewBox"><img onclick="changeSideTo('points')" class="icons">♻️</img>
+                            <div>(x10)</div>
+                        </div>
+                        <div class="overviewBox"><img onclick="changeSideTo('rewards')" class="icons" src="./icons/trophy.svg">
+                            <div>(x3)</div>
+                        </div>
                     </div>
-
-                </div>`
+                `
             }
 
             else {

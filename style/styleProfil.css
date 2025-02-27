@@ -34,6 +34,28 @@ hr{
     left: -0.5vw;
 }
 #overview{
+    width: 100vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    position: absolute;
+    top: 60vw;
+    left: 0.1vw;
+    text-align: center;
+    justify-items: center;
+}
+.icons {
+    flex: 1;
+    text-align: center;
+    max-width: 5vw;
+    max-height: 5vh;
+    object-fit: contain;
+    font-size: 3.5vh;
+}
+
+#pointIcon {
+    font-size: 15vh;
+    transform: scale(1.5);
+}
+.overviewBox{
+    width: 20vw;
 }
