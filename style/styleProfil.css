@@ -26,3 +26,14 @@
     padding: 2%;
     text-align: center;
 }
+hr{
+    width: 100%;
+    color: black;
+    position: absolute;
+    top: 50vw;
+    left: -0.5vw;
+}
+#overview{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

@@ -264,6 +264,13 @@ function profile() {
                         <div id="profil-txt-n" class="profiltxtC"><strong>Name: </strong>${data.array[0].name}</div>
                         <div id="profil-txt-c" class="profiltxtC"><strong>Klasse: </strong>${data.array[0].class}</div>
                     </div>
+                    <hr>
+                    <div id="overview">
+                        <div><img onclick="changeSideTo('ranking')" class="icons" src="./icons/ranking.svg"></div>
+                        <div><p onclick="changeSideTo('points')" class="icons">♻️</p></div>
+                        <div><img onclick="changeSideTo('rewards')" class="icons" src="./icons/trophy.svg"></div>                        </div>
+                    </div>
+
                 </div>`
             }
 
