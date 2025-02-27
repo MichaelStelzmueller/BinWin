@@ -209,7 +209,8 @@ function statistics() {
     document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`	
 }
 function points() {
-     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
+    replaceStylesheet("style/stylePoints.css")
+    document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
     <p id="pointIcon">♻️</p><p id="numberOfPoints">x10</p>
     <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>`
