@@ -131,7 +131,7 @@ function validLogIn() {
         <img onclick="changeSideTo('profile')" class="icons" src="./icons/profile.svg">
     </footer>`
 
-    changeSideTo('points');
+    changeSideTo('profile');
 }
 
 //Navigation
