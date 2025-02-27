@@ -1,4 +1,4 @@
-#rankSystem {
+#upperRanks {
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -28,3 +28,24 @@
 #rank1 { height: 25vh;}
 #rank2 { height: 20vh;}
 #rank3 { height: 15vh;}
+
+.lowerRanks {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    gap: 2vh;
+    height: 45vh;
+    width: 100%;
+    position: relative;
+    overflow-y: auto;
+    font-size: 1.4rem;
+    margin-top: 8%;
+}
+
+
+.rank{
+    background-color: #E0FFE0;
+    padding: 4%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

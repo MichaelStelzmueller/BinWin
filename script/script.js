@@ -50,22 +50,22 @@ function LogIn(uname, pass) {
         }
     }
 
-    fetch(fetch_url, fetch_config) 
+    fetch(fetch_url, fetch_config)
         .then((response) => response.json())
         .then((data) => {
 
             console.log(data);
 
             if (data.code == 200) {
-                    validLogIn();
-                } 
-                
+                validLogIn();
+            }
+
             else {
                 if (counter > 0) {
                     alert(data.msg);
                 }
                 counter++
-                
+
             }
 
         })
@@ -87,25 +87,25 @@ function addUser() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, password, department, class: classValue }),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Server response:", data);
-            if (data.code === 200) {
-                alert("User registered successfully!");
-                LogIn(name, password)
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(error => console.error("Fetch error:", error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Server response:", data);
+                if (data.code === 200) {
+                    alert("User registered successfully!");
+                    LogIn(name, password)
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error("Fetch error:", error));
 
-        
-        
+
+
     } else {
         alert("Please fill in all fields!");
     }
@@ -178,7 +178,7 @@ function addStylesheet(href) {
 function ranking() {
     replaceStylesheet("style/styleRanking.css");
     document.getElementById("content").innerHTML =
-    `<div id="rankSystem">
+    `<div id="upperRanks">
         <div id="rank2">
             <div class="class">2BHITM</div>
         </div>
@@ -188,8 +188,20 @@ function ranking() {
         <div id="rank3">
             <div class="class">3BHITM</div>
         </div>
-        
-    </div>`;
+    </div>
+    <div class="lowerRanks">
+        <div class="rank rank4">test</div>
+        <div class="rank rank5">test</div>
+        <div class="rank rank6">test</div>
+        <div class="rank rank7">test</div>
+        <div class="rank rank8">test</div>
+        <div class="rank rank9">test</div>
+        <div class="rank rank10">test</div>
+        <div class="rank rank11">test</div>
+        <div class="rank rank12">test</div>
+        <div class="rank rank13">test</div>
+    </div>
+    `;
 }
 function statistics() {
 }
@@ -276,7 +288,7 @@ function profile() {
             alert("An error occurred please try again later!");
         });
 
-    
+
 }
 
 function rankSystem() {
