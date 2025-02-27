@@ -192,8 +192,10 @@ function ranking() {
     </div>`;
 }
 function statistics() {
+    document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`	
 }
 function points() {
+     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
     <p id="pointIcon">♻️</p><p id="numberOfPoints">x10</p>
     <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>`
@@ -202,8 +204,8 @@ function points() {
 
 function rewards() {
     replaceStylesheet("style/styleRewards.css");
+    document.getElementById("headerGeneral").innerHTML = `<h2 class="milestones-title">Milestones</h2>`
     document.getElementById("content").innerHTML = `
-   <h2 class="milestones-title">Milestones</h2>
   <div class="milestones-container">
     <div class="milestone">
       <div class="milestone-badge">1</div>
