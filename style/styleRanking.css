@@ -34,7 +34,7 @@
     grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     gap: 2vh;
-    height: 45vh;
+    height: 42vh;
     width: 100%;
     position: relative;
     overflow-y: auto;

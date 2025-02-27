@@ -177,6 +177,8 @@ function addStylesheet(href) {
 
 function ranking() {
     replaceStylesheet("style/styleRanking.css");
+    document.getElementById("headerGeneral").innerHTML = `<h2>Leaderboard</h2>`	
+
     document.getElementById("content").innerHTML =
     `<div id="upperRanks">
         <div id="rank2">
