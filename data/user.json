@@ -4,15 +4,13 @@
         "name": "user",
         "password": "pw",
         "department": "dm",
-        "class": "class",
-        "score": 0
+        "class": "class"
     },
     {
         "id": "679b60e48e789",
         "name": "michi",
         "password": "admin",
         "department": "Medientechnik",
-        "class": "3bhitm",
-        "score": 0
+        "class": "3bhitm"
     }
 ]

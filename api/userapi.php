@@ -67,8 +67,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "name" => $input['name'],
             "password" => $input['password'],
             "department" => $input['department'],
-            "class" => $input['class'],
-            "score" => 0
+            "class" => $input['class']
         ];
 
         $users[] = $newUser;
