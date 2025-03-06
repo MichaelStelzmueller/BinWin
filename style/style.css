@@ -1,3 +1,7 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
 /* Header Styles */
 #headerGeneral {
     position: fixed;
