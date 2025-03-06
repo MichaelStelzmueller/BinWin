@@ -213,7 +213,49 @@ function points() {
     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
     <p id="pointIcon">♻️</p><p id="numberOfPoints">x10</p>
-    <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>`
+    <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>
+     
+`
+}
+
+
+function goToPhoto() {
+    replaceStylesheet("style/styleCamera.css")
+    document.getElementById("content").innerHTML = `<video id="video" autoplay></video>
+    <button id="captureBtn">Take Picture</button>
+    <canvas id="canvas"></canvas>
+    <button id="saveBtn" style="display: none;">Download Image</button>`
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const captureBtn = document.getElementById("captureBtn");
+    const saveBtn = document.getElementById("saveBtn");
+
+    // Start Camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            console.error("Error accessing camera:", err);
+        });
+
+    // Capture Image
+    captureBtn.addEventListener("click", () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        saveBtn.style.display = "block";
+    });
+
+    // Save Image
+    saveBtn.addEventListener("click", () => {
+        const image = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "captured_image.png";
+        link.click();
+    });
 }
 
 
