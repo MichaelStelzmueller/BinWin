@@ -126,7 +126,7 @@ function validLogIn() {
     <footer>
         <img onclick="changeSideTo('ranking')" class="icons" src="./icons/ranking.svg">
         <img onclick="changeSideTo('statistic')" class="icons" src="./icons/statistic.svg">
-        <p onclick="changeSideTo('points')" class="icons">♻️</p>
+        <img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg">
         <img onclick="changeSideTo('rewards')" class="icons" src="./icons/trophy.svg">
         <img onclick="changeSideTo('profile')" class="icons" src="./icons/profile.svg">
     </footer>`
@@ -212,7 +212,7 @@ function points() {
     replaceStylesheet("style/stylePoints.css")
     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
-    <p id="pointIcon">♻️</p><p id="numberOfPoints">x10</p>
+    <img class="icons" id="pointIcon" src="./icons/recycle.svg"><p id="numberOfPoints">x10</p>
     <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>
      
 `
@@ -329,7 +329,7 @@ function profile() {
                         <div class="overviewBox"><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg">
                             <div>(#1)</div>
                         </div>
-                        <div class="overviewBox"><p onclick="changeSideTo('points')" class="iconsProfil icon-text">♻️</p>
+                        <div class="overviewBox"><img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg">
                             <div>(x10)</div>
                         </div>
                         <div class="overviewBox"><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg">

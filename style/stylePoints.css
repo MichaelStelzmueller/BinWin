@@ -34,6 +34,7 @@
     box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.2);
 }
 #pointIcon {
-    font-size: 15vh;
-    transform: scale(1.5);
+    width: 150%;
+    height: auto;
+    
 }
