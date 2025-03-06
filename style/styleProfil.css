@@ -76,4 +76,5 @@ hr{
 }
 .overviewBox{
     width: 20vw;
+    gap: 2vw;
 }
