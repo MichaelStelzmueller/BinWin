@@ -212,7 +212,7 @@ function points() {
     replaceStylesheet("style/stylePoints.css")
     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
-    <div><img id="pointIconP" src="./icons/recycle.svg"></div>
+    <div><img id="pointIconP" src="./icons/recycle.png"></div>
     <div><p id="numberOfPoints">x10</p></div>
     <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>
     
