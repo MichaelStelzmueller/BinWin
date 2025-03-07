@@ -35,10 +35,11 @@ hr{
 }
 #overview{
     width: 100vw;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     position: absolute;
-    top: 60vw;
+    top: 70vw;
     left: 0.1vw;
     text-align: center;
     justify-items: center;
@@ -75,6 +76,13 @@ hr{
     font-size: 15vh;
 }
 .overviewBox{
+    display: grid;
+    grid-row: 1fr 1fr 1fr;
+    gap: 5vw;
     width: 20vw;
-    gap: 2vw;
+    height: auto;
+    text-align: center;
+}
+.overviewBox img{
+    text-align: center;
 }

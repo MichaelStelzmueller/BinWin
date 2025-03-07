@@ -126,7 +126,7 @@ function validLogIn() {
     <footer>
         <img onclick="changeSideTo('ranking')" class="icons" src="./icons/ranking.svg">
         <img onclick="changeSideTo('statistic')" class="icons" src="./icons/statistic.svg">
-        <p onclick="changeSideTo('points')" class="icons">♻️</p>
+        <img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg">
         <img onclick="changeSideTo('rewards')" class="icons" src="./icons/trophy.svg">
         <img onclick="changeSideTo('profile')" class="icons" src="./icons/profile.svg">
     </footer>`
@@ -212,8 +212,11 @@ function points() {
     replaceStylesheet("style/stylePoints.css")
     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
-    <p id="pointIcon">♻️</p><p id="numberOfPoints">x10</p>
+    <div><img id="pointIconP" src="./icons/recycle.svg"></div>
+    <div><p id="numberOfPoints">x10</p></div>
     <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>
+    
+    
      
 `
 }
@@ -351,13 +354,16 @@ function profile() {
                 </div>
                 <hr>
                 <div id="overview">
-                        <div class="overviewBox"><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg">
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg"></div>
                             <div>(#1)</div>
                         </div>
-                        <div class="overviewBox"><p onclick="changeSideTo('points')" class="iconsProfil icon-text">♻️</p>
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg"></div>
                             <div>(x10)</div>
                         </div>
-                        <div class="overviewBox"><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg">
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg"></div>
                             <div>(x3)</div>
                         </div>
                     </div>

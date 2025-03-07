@@ -21,7 +21,8 @@
 }
 
 #stylingBoxForPoints {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -32,8 +33,13 @@
     border-radius: 20px;
     margin-top: 10vh;
     box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.2);
+
 }
-#pointIcon {
-    font-size: 15vh;
-    transform: scale(1.5);
+#pointIconP{
+    width: 70%;
+    position: relative;
+    top: -20vw;
+    left: 2vw;
+
+
 }
