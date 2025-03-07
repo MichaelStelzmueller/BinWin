@@ -329,13 +329,16 @@ function profile() {
                 </div>
                 <hr>
                 <div id="overview">
-                        <div class="overviewBox"><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg">
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg"></div>
                             <div>(#1)</div>
                         </div>
-                        <div class="overviewBox"><img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg">
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg"></div>
                             <div>(x10)</div>
                         </div>
-                        <div class="overviewBox"><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg">
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg"></div>
                             <div>(x3)</div>
                         </div>
                     </div>
