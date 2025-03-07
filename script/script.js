@@ -182,26 +182,26 @@ function ranking() {
     document.getElementById("content").innerHTML =
     `<div id="upperRanks">
         <div id="rank2">
-            <div class="class">2BHITM</div>
+            <div class="class">2BHITM<br><br>200</div>
         </div>
         <div id="rank1">
-            <div class="class">1BHITM</div>
+            <div class="class">1BHITM<br><br>300</div>
         </div>
         <div id="rank3">
-            <div class="class">3BHITM</div>
+            <div class="class">3BHITM<br><br>150</div>
         </div>
     </div>
     <div class="lowerRanks">
-        <div class="rank rank4">test</div>
-        <div class="rank rank5">test</div>
-        <div class="rank rank6">test</div>
-        <div class="rank rank7">test</div>
-        <div class="rank rank8">test</div>
-        <div class="rank rank9">test</div>
-        <div class="rank rank10">test</div>
-        <div class="rank rank11">test</div>
-        <div class="rank rank12">test</div>
-        <div class="rank rank13">test</div>
+        <div class="rank rank4">4 · test · 100</div>
+        <div class="rank rank5">5 · test · 100</div>
+        <div class="rank rank6">6 · test · 100</div>
+        <div class="rank rank7">7 · test · 100</div>
+        <div class="rank rank8">8 · test · 100</div>
+        <div class="rank rank9">9 · test · 100</div>
+        <div class="rank rank10">10 · test · 100</div>
+        <div class="rank rank11">11 · test · 100</div>
+        <div class="rank rank12">12 · test · 100</div>
+        <div class="rank rank13">13 · test · 100</div>
     </div>
     `;
 }
@@ -227,7 +227,7 @@ function goToPhoto() {
     document.getElementById("content").innerHTML = `<video id="video" autoplay></video>
     <button id="captureBtn">Take Picture</button>
     <canvas id="canvas"></canvas>
-    <button id="saveBtn" style="display: none;">Download Image</button>`
+    <button id="saveBtn" style="display: none;">Get points</button>`
     const video = document.getElementById("video");
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
@@ -256,9 +256,34 @@ function goToPhoto() {
         const image = canvas.toDataURL("image/png");
         const link = document.createElement("a");
         link.href = image;
-        link.download = "captured_image.png";
+        savePhoto();
+        link.download = "image.png";
         link.click();
     });
+}
+
+
+function savePhoto() {
+    fetch(`./api/getUser.php`)
+        .then((response) => response.json())
+        .then((data) => {
+
+            console.log(data);
+
+            if (data.code == 200) {
+                
+            }
+
+            else {
+                console.log("Etwas ist schief gelaufen");
+
+            }
+
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred please try again later!");
+        });
 }
 
 
@@ -308,7 +333,7 @@ function rewards() {
 }
 function profile() {
     replaceStylesheet("style/styleProfil.css");
-    fetch(`./api/allData.php`)
+    fetch(`./api/getUser.php`)
         .then((response) => response.json())
         .then((data) => {
 
@@ -329,13 +354,16 @@ function profile() {
                 </div>
                 <hr>
                 <div id="overview">
-                        <div class="overviewBox"><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg">
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg"></div>
                             <div>(#1)</div>
                         </div>
-                        <div class="overviewBox"><img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg">
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg"></div>
                             <div>(x10)</div>
                         </div>
-                        <div class="overviewBox"><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg">
+                        <div class="overviewBox">
+                            <div><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg"></div>
                             <div>(x3)</div>
                         </div>
                     </div>
