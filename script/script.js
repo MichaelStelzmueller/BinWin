@@ -176,6 +176,9 @@ function addStylesheet(href) {
 
 
 function ranking() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/styleRanking.css");
     document.getElementById("headerGeneral").innerHTML = `<h2>Leaderboard</h2>`	
 
@@ -206,9 +209,15 @@ function ranking() {
     `;
 }
 function statistics() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`	
 }
 function points() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/stylePoints.css")
     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
@@ -288,6 +297,9 @@ function savePhoto() {
 
 
 function rewards() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/styleRewards.css");
     document.getElementById("headerGeneral").innerHTML = `<h2 class="milestones-title">Milestones</h2>`
     document.getElementById("content").innerHTML = `
@@ -332,6 +344,9 @@ function rewards() {
 `
 }
 function profile() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/styleProfil.css");
     fetch(`./api/getUser.php`)
         .then((response) => response.json())
