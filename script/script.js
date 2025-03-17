@@ -223,11 +223,7 @@ function points() {
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
     <div><img id="pointIconP" src="./icons/recycle.png"></div>
     <div><p id="numberOfPoints">x10</p></div>
-    <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>
-    
-    
-     
-`
+    <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>`
 }
 
 
@@ -236,7 +232,7 @@ function goToPhoto() {
     document.getElementById("content").innerHTML = `<video id="video" autoplay></video>
     <button id="captureBtn">Take Picture</button>
     <canvas id="canvas"></canvas>
-    <button id="saveBtn" style="display: none;">Get points</button>`
+    <button id="saveBtn" onclick="rewardSystem()" style="display: none;">Get points</button>`
     const video = document.getElementById("video");
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
@@ -405,6 +401,37 @@ function statisticSystem() {
 }
 
 function rewardSystem() {
+    fetch(`./api/getUser.php`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                let username = data.array[0].name;
+                let currentPoints = parseInt(data.array[0].points) || 0;
+                let newPoints = currentPoints + 10; // 10 Punkte hinzufügen
+                console.log("Momentane Punkte: " + currentPoints);
+                fetch('./api/userapi.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, points: newPoints })
+                })
+                .then(response => response.json())
+                .then(updateData => {
+                    if (updateData.code === 200) {
+                        alert("Punkte erfolgreich gespeichert!");
+                        document.getElementById("numberOfPoints").innerText = `x${newPoints}`;
+                    } else {
+                        alert("Fehler beim Speichern der Punkte!");
+                    }
+                })
+                .catch(error => console.error("Error updating points:", error));
+            } else {
+                console.log("Fehler beim Abrufen der Benutzerdaten");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching user data:", error);
+            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+        });    
 }
 function profileSystem() {
 }
