@@ -1,4 +1,5 @@
 let counter = 0;
+let currClass = null;
 
 preLog()
 
@@ -256,7 +257,7 @@ function goToPhoto() {
         const image = canvas.toDataURL("image/png");
         const link = document.createElement("a");
         link.href = image;
-        savePhoto();
+        currClass = savePhoto();
         link.download = "image.png";
         link.click();
     });
@@ -271,7 +272,7 @@ function savePhoto() {
             console.log(data);
 
             if (data.code == 200) {
-                
+                return data.array[0].class;
             }
 
             else {
@@ -283,6 +284,7 @@ function savePhoto() {
         .catch((error) => {
             console.error("Error:", error);
             alert("An error occurred please try again later!");
+            return null;
         });
 }
 
