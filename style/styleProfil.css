@@ -34,13 +34,12 @@ hr{
     left: -0.5vw;
 }
 #overview{
-    width: 100vw;
-    height: auto;
+    width: 80vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     position: absolute;
     top: 70vw;
-    left: 0.1vw;
+    left: 10vw;
     text-align: center;
     justify-items: center;
 }

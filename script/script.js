@@ -177,6 +177,9 @@ function addStylesheet(href) {
 
 
 function ranking() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/styleRanking.css");
     document.getElementById("headerGeneral").innerHTML = `<h2>Leaderboard</h2>`	
 
@@ -207,19 +210,21 @@ function ranking() {
     `;
 }
 function statistics() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`	
 }
 function points() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/stylePoints.css")
     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
-    <div><img id="pointIconP" src="./icons/recycle.svg"></div>
+    <div><img id="pointIconP" src="./icons/recycle.png"></div>
     <div><p id="numberOfPoints">x10</p></div>
-    <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>
-    
-    
-     
-`
+    <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>`
 }
 
 
@@ -228,7 +233,7 @@ function goToPhoto() {
     document.getElementById("content").innerHTML = `<video id="video" autoplay></video>
     <button id="captureBtn">Take Picture</button>
     <canvas id="canvas"></canvas>
-    <button id="saveBtn" style="display: none;">Get points</button>`
+    <button id="saveBtn" onclick="rewardSystem()" style="display: none;">Get points</button>`
     const video = document.getElementById("video");
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
@@ -290,6 +295,9 @@ function savePhoto() {
 
 
 function rewards() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/styleRewards.css");
     document.getElementById("headerGeneral").innerHTML = `<h2 class="milestones-title">Milestones</h2>`
     document.getElementById("content").innerHTML = `
@@ -334,6 +342,9 @@ function rewards() {
 `
 }
 function profile() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/styleProfil.css");
     fetch(`./api/getUser.php`)
         .then((response) => response.json())
@@ -392,6 +403,48 @@ function statisticSystem() {
 }
 
 function rewardSystem() {
+    fetch('./api/userClass.php')
+    .then(response => response.json())
+    .then(updateData => {
+        if (updateData.code === 200) {
+            alert("Punkte erfolgreich gespeichert für Klasse " + userClass + "!");
+        } else {
+            alert("Fehler beim Speichern der Punkte!");
+        }
+    })
+
+    fetch(`./api/getUser.php`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                console.log(data)
+                if (!userClass) {
+                    alert("Fehler: Klasse nicht gefunden!");
+                    return;
+                }
+
+                fetch('./api/userapi.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ class: userClass, points: 10 })
+                })
+                .then(response => response.json())
+                .then(updateData => {
+                    if (updateData.code === 200) {
+                        alert("Punkte erfolgreich gespeichert für Klasse " + userClass + "!");
+                    } else {
+                        alert("Fehler beim Speichern der Punkte!");
+                    }
+                })
+                .catch(error => console.error("Error updating class points:", error));
+            } else {
+                console.log("Fehler beim Abrufen der Benutzerdaten");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching user data:", error);
+            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+    });  
 }
 function profileSystem() {
 }
