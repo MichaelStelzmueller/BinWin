@@ -401,29 +401,40 @@ function statisticSystem() {
 }
 
 function rewardSystem() {
+    fetch('./api/userClass.php')
+    .then(response => response.json())
+    .then(updateData => {
+        if (updateData.code === 200) {
+            alert("Punkte erfolgreich gespeichert für Klasse " + userClass + "!");
+        } else {
+            alert("Fehler beim Speichern der Punkte!");
+        }
+    })
+
     fetch(`./api/getUser.php`)
         .then(response => response.json())
         .then(data => {
             if (data.code === 200) {
-                let username = data.array[0].name;
-                let currentPoints = parseInt(data.array[0].points) || 0;
-                let newPoints = currentPoints + 10; // 10 Punkte hinzufügen
-                console.log("Momentane Punkte: " + currentPoints);
+                console.log(data)
+                if (!userClass) {
+                    alert("Fehler: Klasse nicht gefunden!");
+                    return;
+                }
+
                 fetch('./api/userapi.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, points: newPoints })
+                    body: JSON.stringify({ class: userClass, points: 10 })
                 })
                 .then(response => response.json())
                 .then(updateData => {
                     if (updateData.code === 200) {
-                        alert("Punkte erfolgreich gespeichert!");
-                        document.getElementById("numberOfPoints").innerText = `x${newPoints}`;
+                        alert("Punkte erfolgreich gespeichert für Klasse " + userClass + "!");
                     } else {
                         alert("Fehler beim Speichern der Punkte!");
                     }
                 })
-                .catch(error => console.error("Error updating points:", error));
+                .catch(error => console.error("Error updating class points:", error));
             } else {
                 console.log("Fehler beim Abrufen der Benutzerdaten");
             }
@@ -431,7 +442,7 @@ function rewardSystem() {
         .catch(error => {
             console.error("Error fetching user data:", error);
             alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-        });    
+    });  
 }
 function profileSystem() {
 }
