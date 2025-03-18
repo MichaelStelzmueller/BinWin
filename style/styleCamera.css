@@ -1,3 +1,7 @@
+#content{
+    margin-top: 15vh;
+}
+
 video, canvas {
     width: 100%;
     max-width: 500px;
