@@ -223,11 +223,26 @@ function points() {
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
     <div><img id="pointIconP" src="./icons/recycle.png"></div>
     <div><p id="numberOfPoints">x10</p></div>
-    <div id="getPointsButton" onclick="goToPhoto()">Get Points</div></div>`
+    <div id="getPointsButton" onclick="goToButtons()">Get Points</div></div>`
+}
+
+function goToButtons() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
+    replaceStylesheet("style/stylePointButtons.css")
+    document.getElementById("content").innerHTML = `<div id="stylingBoxForButtons">
+    <div id="button1" onclick="goToPhoto()">Take a Photo</div>
+    <div id="button2" onclick="goToQuiz()">Take a Quiz</div>
+    <div id="button3" onclick="goToExplanation()">Rate photos</div>
+    </div>`
 }
 
 
 function goToPhoto() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
     replaceStylesheet("style/styleCamera.css")
     document.getElementById("content").innerHTML = `<video id="video" autoplay></video>
     <button id="captureBtn">Take Picture</button>
