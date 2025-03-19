@@ -333,8 +333,14 @@ function goToPhoto() {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        // Canvas sichtbar machen
+        canvas.style.display = "block";
+        
+        // Save-Button anzeigen
         saveBtn.style.display = "block";
     });
+    
 
     // Save Image
     saveBtn.addEventListener("click", () => {
