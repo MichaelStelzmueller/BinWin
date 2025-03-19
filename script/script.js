@@ -239,6 +239,70 @@ function goToButtons() {
     </div>`
 }
 
+function goToQuiz() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
+    replaceStylesheet("style/styleQuiz.css")
+    document.getElementById("content").innerHTML = `<div id="quizBox"></div>`
+    getQuestions();
+}
+
+function getQuestions() {
+    fetch("./api/quizapi.php")
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            console.log("Quiz Loaded Successfully:", data.array);
+            displayRandomQuestion(data.array);
+        } else {
+            console.error("Error loading quiz:", data.code);
+        }
+    })
+    .catch(error => console.error("Fetch error:", error));
+
+    function displayRandomQuestion(questions) {
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        const q = questions[randomIndex];
+    
+        let questionHTML = `
+                <h3>${q.question}</h3>
+                <div class="options">
+        `;
+    
+        q.options.forEach(option => {
+            questionHTML += `<button class="quiz-option" onclick="checkAnswer(this, '${option}', '${q.answer}')">${option}</button>`;
+        });
+    
+        questionHTML += `
+            </div>
+        `;
+    
+        document.getElementById("quizBox").innerHTML = questionHTML;
+    }
+    
+}
+function checkAnswer(button, selected, correct) {
+    const buttons = document.querySelectorAll(".quiz-option");
+
+    if (selected === correct) {
+        button.classList.add("correct");
+        setTimeout(function(){ getQuestions() }, 2000);
+
+    } else {
+        button.classList.add("wrong");
+        buttons.forEach(btn => {
+            if (btn.innerText === correct) {
+                btn.classList.add("correct");
+            }
+        });
+        setTimeout(function(){ goToButtons() }, 2000);
+    }
+
+    // Deaktiviere alle Buttons nach der Auswahl
+    buttons.forEach(btn => btn.disabled = true);
+}
+
 
 function goToPhoto() {
     document.getElementById('body').style.opacity = "0"

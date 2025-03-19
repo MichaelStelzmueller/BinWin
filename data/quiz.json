@@ -1,0 +1,537 @@
+[
+    {
+        "question": "Which waste belongs in the yellow bin?",
+        "options": ["Paper", "Plastic packaging", "Glass shards", "Food scraps"],
+        "answer": "Plastic packaging"
+    },
+    {
+        "question": "Which material is biodegradable?",
+        "options": ["Aluminum foil", "Glass", "Banana peel", "Plastic bag"],
+        "answer": "Banana peel"
+    },
+    {
+        "question": "What happens to recycled paper?",
+        "options": ["It is turned into new paper", "It is burned", "It ends up in a landfill", "It turns into plastic"],
+        "answer": "It is turned into new paper"
+    },
+    {
+        "question": "What is the best way to reduce waste?",
+        "options": ["Buy more products", "Use more plastic", "Reuse products", "Throw everything away"],
+        "answer": "Reuse products"
+    },
+    {
+        "question": "What color is the container for glass waste?",
+        "options": ["Blue", "Green", "Yellow", "Black"],
+        "answer": "Green"
+    },
+    {
+        "question": "How long does it take for a plastic bottle to decompose in nature?",
+        "options": ["1 year", "10 years", "100 years", "450 years"],
+        "answer": "450 years"
+    },
+    {
+        "question": "Which type of waste should NOT go into organic waste bins?",
+        "options": ["Apple peels", "Eggshells", "Coffee filters", "Aluminum foil"],
+        "answer": "Aluminum foil"
+    },
+    {
+        "question": "Which action saves the most energy?",
+        "options": ["Turning off lights", "Recycling old paper", "Leaving windows open in winter", "Letting warm water run for a long time"],
+        "answer": "Recycling old paper"
+    },
+    {
+        "question": "What is the purpose of the deposit system for bottles?",
+        "options": ["To produce more waste", "To encourage recycling", "To make products more expensive", "To throw trash into rivers"],
+        "answer": "To encourage recycling"
+    },
+    {
+        "question": "What does the recycling symbol with three arrows mean?",
+        "options": ["The product is toxic", "The product can be recycled", "The product must not be thrown away", "The product is brand new"],
+        "answer": "The product can be recycled"
+    },
+    {
+        "question": "Which of the following items cannot be recycled?",
+        "options": ["Glass bottles", "Plastic bags", "Newspapers", "Aluminum cans"],
+        "answer": "Plastic bags"
+    },
+    {
+        "question": "What is the main benefit of composting organic waste?",
+        "options": ["It reduces greenhouse gas emissions", "It creates more landfill waste", "It makes plastic stronger", "It turns waste into metal"],
+        "answer": "It reduces greenhouse gas emissions"
+    },
+    {
+        "question": "Which waste should go into the blue bin in many countries?",
+        "options": ["Organic waste", "Glass bottles", "Paper and cardboard", "Plastic wrappers"],
+        "answer": "Paper and cardboard"
+    },
+    {
+        "question": "What does 'upcycling' mean?",
+        "options": ["Throwing away old products", "Turning waste into a higher-value product", "Burning waste for energy", "Burying waste underground"],
+        "answer": "Turning waste into a higher-value product"
+    },
+    {
+        "question": "Which household item uses the most energy?",
+        "options": ["LED light bulbs", "Refrigerators", "Smartphones", "Microwaves"],
+        "answer": "Refrigerators"
+    },
+    {
+        "question": "What is the most common material found in ocean waste?",
+        "options": ["Glass", "Plastic", "Metal", "Wood"],
+        "answer": "Plastic"
+    },
+    {
+        "question": "Why should you remove bottle caps before recycling plastic bottles?",
+        "options": ["Caps are made of a different type of plastic", "Caps are dangerous to animals", "Caps can explode in recycling machines", "Caps cannot be melted"],
+        "answer": "Caps are made of a different type of plastic"
+    },
+    {
+        "question": "What is the biggest source of plastic waste in the world?",
+        "options": ["Fishing nets", "Plastic bottles and packaging", "Car tires", "Electronics"],
+        "answer": "Plastic bottles and packaging"
+    },
+    {
+        "question": "Which of these materials takes the longest to decompose?",
+        "options": ["Paper", "Glass", "Wood", "Cotton fabric"],
+        "answer": "Glass"
+    },
+    {
+        "question": "How can you reduce electronic waste?",
+        "options": ["Throwing old electronics in the trash", "Repairing and reusing old devices", "Buying new gadgets every year", "Burning broken devices"],
+        "answer": "Repairing and reusing old devices"
+    },
+    {
+        "question": "What is the best way to save water?",
+        "options": ["Taking long showers", "Leaving the tap running", "Using a dishwasher", "Turning off the tap while brushing teeth"],
+        "answer": "Turning off the tap while brushing teeth"
+    },
+    {
+        "question": "What is the main cause of air pollution in cities?",
+        "options": ["Cars and trucks", "Plastic bags", "Wind turbines", "Solar panels"],
+        "answer": "Cars and trucks"
+    },
+    {
+        "question": "What is the main cause of deforestation?",
+        "options": ["Planting more trees", "Building new roads", "Cutting down trees for wood", "Growing more crops"],
+        "answer": "Cutting down trees for wood"
+    },
+    {
+        "question": "What is the main cause of climate change?",
+        "options": ["Burning fossil fuels", "Planting more trees", "Using less energy", "Eating more meat"],
+        "answer": "Burning fossil fuels"
+    },
+    {
+        "question": "What is the main cause of water pollution?",
+        "options": ["Using less plastic", "Throwing trash into rivers", "Recycling old paper", "Planting more trees"],
+        "answer": "Throwing trash into rivers"
+    },
+    {
+        "question": "What is the main cause of soil pollution?",
+        "options": ["Using less plastic", "Throwing trash into rivers", "Recycling old paper", "Chemical fertilizers and pesticides"],
+        "answer": "Chemical fertilizers and pesticides"
+    },
+    {
+        "question": "What is the main cause of ocean pollution?",
+        "options": ["Using less plastic", "Throwing trash into rivers", "Recycling old paper", "Plastic waste"],
+        "answer": "Plastic waste"
+    },
+    {
+        "question": "What is the main cause of noise pollution?",
+        "options": ["Using less plastic", "Throwing trash into rivers", "Recycling old paper", "Traffic and construction"],
+        "answer": "Traffic and construction"
+    },
+    {
+        "question": "What does the term 'zero waste' mean?",
+        "options": ["Producing no trash at all", "Burning waste for energy", "Recycling 50% of waste", "Banning plastic products"],
+        "answer": "Producing no trash at all"
+    },
+    {
+        "question": "Which of these is the best alternative to plastic straws?",
+        "options": ["Glass straws", "Paper straws", "Metal straws", "All of the above"],
+        "answer": "All of the above"
+    },
+    {
+        "question": "How much of the world's plastic waste actually gets recycled?",
+        "options": ["Less than 10%", "Around 30%", "About 50%", "Over 80%"],
+        "answer": "Less than 10%"
+    },
+    {
+        "question": "Which country produces the most plastic waste per person?",
+        "options": ["China", "United States", "Germany", "India"],
+        "answer": "United States"
+    },
+    {
+        "question": "What is an eco-friendly way to get rid of old clothes?",
+        "options": ["Throw them in the trash", "Donate them", "Burn them", "Bury them"],
+        "answer": "Donate them"
+    },
+    {
+        "question": "What is 'fast fashion'?",
+        "options": ["Quickly changing fashion trends", "Sustainable clothing production", "Fashion made from recycled materials", "Clothing that never wears out"],
+        "answer": "Quickly changing fashion trends"
+    },
+    {
+        "question": "What is the most sustainable way to drink water?",
+        "options": ["Plastic bottled water", "Glass bottled water", "Tap water in a reusable bottle", "Canned water"],
+        "answer": "Tap water in a reusable bottle"
+    },
+    {
+        "question": "Why is e-waste dangerous?",
+        "options": ["It contains toxic materials", "It takes too much space", "It cannot be recycled", "It never decomposes"],
+        "answer": "It contains toxic materials"
+    },
+    {
+        "question": "What is a good way to reduce food waste?",
+        "options": ["Buy more food than needed", "Store food properly", "Throw away leftovers", "Ignore expiration dates"],
+        "answer": "Store food properly"
+    },
+    {
+        "question": "Which of these uses the most water?",
+        "options": ["Taking a 5-minute shower", "Washing a car", "Producing a cotton T-shirt", "Filling a swimming pool"],
+        "answer": "Producing a cotton T-shirt"
+    },
+    {
+        "question": "What is the main cause of food waste?",
+        "options": ["Eating too much", "Not enough food", "Throwing away edible food", "Growing too many crops"],
+        "answer": "Throwing away edible food"
+    },
+    {
+        "question": "What is the best way to reduce plastic waste?",
+        "options": ["Use more single-use plastic", "Recycle plastic bottles", "Buy more plastic products", "Use reusable bags and containers"],
+        "answer": "Use reusable bags and containers"
+    },
+    {
+        "question": "What is the main cause of energy waste in homes?",
+        "options": ["Using energy-efficient appliances", "Leaving lights on", "Turning off devices", "Using solar panels"],
+        "answer": "Leaving lights on"
+    },
+    {
+        "question": "What is the main cause of energy waste in transportation?",
+        "options": ["Walking", "Cycling", "Driving cars", "Using public transport"],
+        "answer": "Driving cars"
+    },
+    {
+        "question": "What is the main cause of energy waste in industry?",
+        "options": ["Using energy-efficient machines", "Turning off devices", "Leaving machines running", "Using renewable energy"],
+        "answer": "Leaving machines running"
+    },
+    {
+        "question": "What is the main cause of energy waste in agriculture?",
+        "options": ["Using energy-efficient machines", "Leaving machines running", "Turning off devices", "Using renewable energy"],
+        "answer": "Leaving machines running"
+    },
+    {
+        "question": "What is the main cause of energy waste in offices?",
+        "options": ["Using energy-efficient machines", "Leaving machines running", "Turning off devices", "Using renewable energy"],
+        "answer": "Leaving machines running"
+    },
+    {
+        "question": "What is the main cause of energy waste in schools?",
+        "options": ["Using energy-efficient machines", "Leaving machines running", "Turning off devices", "Using renewable energy"],
+        "answer": "Leaving machines running"
+    },
+    {
+        "question": "What is the main cause of ocean plastic pollution?",
+        "options": ["Fishing gear", "Plastic bottles and packaging", "Car tires", "Medical waste"],
+        "answer": "Plastic bottles and packaging"
+    },
+    {
+        "question": "Which of the following energy sources is renewable?",
+        "options": ["Coal", "Natural gas", "Wind power", "Nuclear energy"],
+        "answer": "Wind power"
+    },
+    {
+        "question": "What does 'biodegradable' mean?",
+        "options": ["Breaks down naturally over time", "Can be burned safely", "Lasts forever", "Made from metal"],
+        "answer": "Breaks down naturally over time"
+    },
+    {
+        "question": "Which of these items takes the longest to decompose?",
+        "options": ["Banana peel", "Plastic bag", "Cotton T-shirt", "Wooden chopsticks"],
+        "answer": "Plastic bag"
+    },
+    {
+        "question": "Why is deforestation harmful to the environment?",
+        "options": ["It reduces oxygen production", "It increases greenhouse gases", "It destroys animal habitats", "All of the above"],
+        "answer": "All of the above"
+    },
+    {
+        "question": "How can you reduce your carbon footprint?",
+        "options": ["Drive less and use public transport", "Eat more meat", "Buy single-use plastic products", "Use more electricity"],
+        "answer": "Drive less and use public transport"
+    },
+    {
+        "question": "What does the term 'carbon footprint' refer to?",
+        "options": ["The amount of CO2 a person produces", "The size of a person's feet", "The amount of carbon in a product", "A type of fossil fuel"],
+        "answer": "The amount of CO2 a person produces"
+    },
+    {
+        "question": "Which of these is a sustainable alternative to plastic bags?",
+        "options": ["Paper bags", "Cloth bags", "Biodegradable plastic bags", "All of the above"],
+        "answer": "All of the above"
+    },
+    {
+        "question": "What is the best way to dispose of electronic waste?",
+        "options": ["Throw it in the trash", "Burn it", "Take it to a recycling center", "Bury it underground"],
+        "answer": "Take it to a recycling center"
+    },
+    {
+        "question": "What is an example of a circular economy?",
+        "options": ["Throwing away used products", "Recycling and reusing materials", "Using more natural resources", "Producing more waste"],
+        "answer": "Recycling and reusing materials"
+    },
+    {
+        "question": "What is the main cause of water scarcity?",
+        "options": ["Using water wisely", "Wasting water", "Rainfall", "Melting ice caps"],
+        "answer": "Wasting water"
+    },
+    {
+        "question": "What is the main cause of air pollution in homes?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Burning wood and coal"
+    },
+    {
+        "question": "What is the main cause of air pollution in rural areas?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Burning wood and coal"
+    },
+    {
+        "question": "What is the main cause of air pollution in industrial areas?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Burning wood and coal"
+    },
+    {
+        "question": "What is the main cause of air pollution in cities?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using public transport"
+    },
+    {
+        "question": "What is the main cause of air pollution in transportation?",
+        "options": ["Walking", "Cycling", "Driving cars", "Using public transport"],
+        "answer": "Driving cars"
+    },
+    {
+        "question": "What is the main cause of air pollution in agriculture?",
+        "options": ["Using energy-efficient machines", "Burning wood and coal", "Using solar panels", "Using chemical fertilizers and pesticides"],
+        "answer": "Using chemical fertilizers and pesticides"
+    },
+    {
+        "question": "What is the main cause of air pollution in offices?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using energy-efficient appliances"
+    },
+    {
+        "question": "What is the main cause of air pollution in schools?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Burning wood and coal"
+    },
+    {
+        "question": "What is the main cause of air pollution in hospitals?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using energy-efficient appliances"
+    },
+    {
+        "question": "What is the main cause of air pollution in shopping malls?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using energy-efficient appliances"
+    },
+    {
+        "question": "What is the main cause of air pollution in restaurants?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using energy-efficient appliances"
+    },
+    {
+        "question": "What is the main cause of air pollution in cinemas?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using energy-efficient appliances"
+    },
+    {
+        "question": "What is the main cause of air pollution in gyms?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using energy-efficient appliances"
+    },
+    {
+        "question": "What is the main cause of air pollution in libraries?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using energy-efficient appliances"
+    },
+    {
+        "question": "What is the main cause of air pollution in museums?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Using public transport"],
+        "answer": "Using energy-efficient appliances"
+    },
+    {
+        "question": "Which type of energy does NOT produce carbon emissions?",
+        "options": ["Solar energy", "Coal power", "Natural gas", "Diesel generators"],
+        "answer": "Solar energy"
+    },
+    {
+        "question": "What is the primary gas responsible for global warming?",
+        "options": ["Oxygen", "Carbon dioxide", "Hydrogen", "Nitrogen"],
+        "answer": "Carbon dioxide"
+    },
+    {
+        "question": "Which action helps conserve water the most?",
+        "options": ["Taking shorter showers", "Leaving the tap running", "Watering plants at noon", "Washing clothes in small loads"],
+        "answer": "Taking shorter showers"
+    },
+    {
+        "question": "What does 'reduce, reuse, recycle' mean?",
+        "options": ["Buy new items", "Throw away trash", "Use less, repurpose items, and recycle materials", "Ignore waste management"],
+        "answer": "Use less, repurpose items, and recycle materials"
+    },
+    {
+        "question": "What is the best way to dispose of batteries?",
+        "options": ["Throw them in the trash", "Bury them", "Take them to a recycling center", "Burn them"],
+        "answer": "Take them to a recycling center"
+    },
+    {
+        "question": "Which of these can be composted?",
+        "options": ["Plastic forks", "Glass bottles", "Banana peels", "Aluminum cans"],
+        "answer": "Banana peels"
+    },
+    {
+        "question": "Which of these is an example of sustainable transportation?",
+        "options": ["Riding a bike", "Driving a gasoline car", "Flying on a private jet", "Using a diesel truck"],
+        "answer": "Riding a bike"
+    },
+    {
+        "question": "What is the biggest contributor to air pollution?",
+        "options": ["Factories and power plants", "Trees and plants", "Recycling centers", "Rainwater"],
+        "answer": "Factories and power plants"
+    },
+    {
+        "question": "How can individuals help fight climate change?",
+        "options": ["Use less plastic", "Reduce energy consumption", "Plant trees", "All of the above"],
+        "answer": "All of the above"
+    },
+    {
+        "question": "What does 'eco-friendly' mean?",
+        "options": ["Harmful to the environment", "Beneficial for nature", "A type of fossil fuel", "Expensive to produce"],
+        "answer": "Beneficial for nature"
+    },
+    {
+        "question": "What is the primary cause of water pollution?",
+        "options": ["Using water wisely", "Wasting water", "Rainfall", "Melting ice caps"],
+        "answer": "Wasting water"
+    },
+    {
+        "question": "What is the main cause of soil erosion?",
+        "options": ["Planting more trees", "Building new roads", "Cutting down trees for wood", "Growing more crops"],
+        "answer": "Cutting down trees for wood"
+    },
+    {
+        "question": "What is the main cause of deforestation?",
+        "options": ["Planting more trees", "Building new roads", "Cutting down trees for wood", "Growing more crops"],
+        "answer": "Cutting down trees for wood"
+    },
+    {
+        "question": "What is the main cause of desertification?",
+        "options": ["Planting more trees", "Building new roads", "Cutting down trees for wood", "Overgrazing and farming"],
+        "answer": "Overgrazing and farming"
+    },
+    {
+        "question": "What is the main cause of overfishing?",
+        "options": ["Eating too much fish", "Not enough fish", "Throwing away fish", "Fishing too much"],
+        "answer": "Fishing too much"
+    },
+    {
+        "question": "What is the main cause of coral reef destruction?",
+        "options": ["Planting more trees", "Building new roads", "Cutting down trees for wood", "Pollution and climate change"],
+        "answer": "Pollution and climate change"
+    },
+    {
+        "question": "What is the main cause of species extinction?",
+        "options": ["Planting more trees", "Building new roads", "Cutting down trees for wood", "Habitat destruction and climate change"],
+        "answer": "Habitat destruction and climate change"
+    },
+    {
+        "question": "What is the main cause of ocean acidification?",
+        "options": ["Planting more trees", "Building new roads", "Cutting down trees for wood", "Carbon dioxide emissions"],
+        "answer": "Carbon dioxide emissions"
+    },
+    {
+        "question": "What is the main cause of plastic pollution in the ocean?",
+        "options": ["Fishing gear", "Plastic bottles and packaging", "Car tires", "Medical waste"],
+        "answer": "Plastic bottles and packaging"
+    },
+    {
+        "question": "What is the main cause of oil spills in the ocean?",
+        "options": ["Fishing gear", "Plastic bottles and packaging", "Car tires", "Oil tankers and drilling rigs"],
+        "answer": "Oil tankers and drilling rigs"
+    },
+    {
+        "question": "What is the main cause of noise pollution in the ocean?",
+        "options": ["Fishing gear", "Plastic bottles and packaging", "Car tires", "Shipping and naval activities"],
+        "answer": "Shipping and naval activities"
+    },
+    {
+        "question": "What is the main cause of light pollution?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Excessive artificial lighting"],
+        "answer": "Excessive artificial lighting"
+    },
+    {
+        "question": "What is the main cause of thermal pollution?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Discharging heated water into rivers and lakes"],
+        "answer": "Discharging heated water into rivers and lakes"
+    },
+    {
+        "question": "What is the main cause of visual pollution?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Billboards, litter, and graffiti"],
+        "answer": "Billboards, litter, and graffiti"
+    },
+    {
+        "question": "What is the main cause of radioactive pollution?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Nuclear accidents and waste"],
+        "answer": "Nuclear accidents and waste"
+    },
+    {
+        "question": "What is the main cause of plastic pollution in rivers?",
+        "options": ["Fishing gear", "Plastic bottles and packaging", "Car tires", "Littering and waste dumping"],
+        "answer": "Littering and waste dumping"
+    },
+    {
+        "question": "What is the main cause of water pollution in rivers?",
+        "options": ["Using water wisely", "Wasting water", "Rainfall", "Industrial and agricultural runoff"],
+        "answer": "Industrial and agricultural runoff"
+    },
+    {
+        "question": "What is the main cause of soil pollution in rivers?",
+        "options": ["Using water wisely", "Wasting water", "Rainfall", "Industrial and agricultural runoff"],
+        "answer": "Industrial and agricultural runoff"
+    },
+    {
+        "question": "What is the main cause of air pollution in rivers?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Industrial and agricultural emissions"],
+        "answer": "Industrial and agricultural emissions"
+    },
+    {
+        "question": "What is the main cause of noise pollution in rivers?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Shipping and industrial activities"],
+        "answer": "Shipping and industrial activities"
+    },
+    {
+        "question": "What is the main cause of light pollution in rivers?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Excessive artificial lighting"],
+        "answer": "Excessive artificial lighting"
+    },
+    {
+        "question": "What is the main cause of thermal pollution in rivers?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Discharging heated water from power plants"],
+        "answer": "Discharging heated water from power plants"
+    },
+    {
+        "question": "What is the main cause of visual pollution in rivers?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Littering and waste dumping"],
+        "answer": "Littering and waste dumping"
+    },
+    {
+        "question": "What is the main cause of radioactive pollution in rivers?",
+        "options": ["Using energy-efficient appliances", "Burning wood and coal", "Using solar panels", "Nuclear accidents and waste"],
+        "answer": "Nuclear accidents and waste"
+    },
+    {
+        "question": "What is the main cause of plastic pollution in lakes?",
+        "options": ["Fishing gear", "Plastic bottles and packaging", "Car tires", "Littering and waste dumping"],
+        "answer": "Littering and waste dumping"
+    }
+]
