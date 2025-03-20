@@ -399,11 +399,11 @@ function rewards() {
       <div class="milestone-badge">10</div>
       <span>x10 R-Points</span>
     </div>
-    <div class="milestone locked">
+    <div class="milestone">
       <div class="milestone-badge">25</div>
       <span>x25 R-Points</span>
     </div>
-    <div class="milestone">
+    <div class="milestone locked">
       <div class="milestone-badge">50</div>
       <span>x50 R-Points</span>
     </div>
