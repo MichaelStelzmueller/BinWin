@@ -1,5 +1,6 @@
 let counter = 0;
 let currClass = null;
+let information = "";
 
 preLog()
 
@@ -235,7 +236,8 @@ function goToButtons() {
     document.getElementById("content").innerHTML = `<div id="stylingBoxForButtons">
     <div id="button1" onclick="goToPhoto()">Take a Photo</div>
     <div id="button2" onclick="goToQuiz()">Take a Quiz</div>
-    <div id="button3" onclick="goToExplanation()">Rate photos</div>
+    <div id="button2" onclick="goToRatePhoto" Rate Photos></div>    
+    <div id="button4" onlick="goToExplanation()"><img src="./icons/info.svg"></div>
     </div>`
 }
 
@@ -378,6 +380,14 @@ function savePhoto() {
         });
 }
 
+function goToExplanation() {
+    information = `
+    <div>
+        <div><h1>Wie bekommst du Punkte?</h1></div>
+    </div>
+    `;
+}
+
 
 function rewards() {
     document.getElementById('body').style.opacity = "0"
@@ -399,11 +409,11 @@ function rewards() {
       <div class="milestone-badge">10</div>
       <span>x10 R-Points</span>
     </div>
-    <div class="milestone locked">
+    <div class="milestone">
       <div class="milestone-badge">25</div>
       <span>x25 R-Points</span>
     </div>
-    <div class="milestone">
+    <div class="milestone locked">
       <div class="milestone-badge">50</div>
       <span>x50 R-Points</span>
     </div>
