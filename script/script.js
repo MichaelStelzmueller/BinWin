@@ -1,15 +1,45 @@
+//***
+// Variablen
+//***
 let counter = 0;
 let currClass = null;
 let information = "";
+gotThePoint = true;
+let allPhotos = []; // Speichert alle Fotos
+let currentPhotoIndex = -1; // Speichert das aktuelle Bild-Index
 
-preLog()
 
+//********************************
+// Stylesheet-Wechsel
+//********************************
+function replaceStylesheet(newHref) {
+    // Alle Stylesheets entfernen
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => link.remove());
+
+    // Neues Stylesheet hinzufügen
+    addStylesheet(newHref);
+    addStylesheet('style/style.css');
+}
+
+function addStylesheet(href) {
+    let timestamp = new Date().getTime(); // Zeitstempel generieren
+    let newLink = document.createElement("link");
+    newLink.rel = "stylesheet";
+    newLink.href = href + `?${timestamp}`; // Cache verhindern durch Query-Parameter
+    document.head.appendChild(newLink);
+}
+
+
+//********************************
+// Login und Registrierung
+//********************************
+
+preLog();
 function preLog() {
     const username = document.getElementById("usernameForLogin").value;
     const pw = document.getElementById("pwForLogin").value;
     LogIn(username, pw);
 }
-
 
 function register() {
     document.getElementById("body").innerHTML = `
@@ -113,9 +143,6 @@ function addUser() {
     }
 }
 
-//variablen 
-gotThePoint = true;
-
 function validLogIn() {
     document.body.style = `background:white;`
     document.body.innerHTML = `
@@ -136,7 +163,10 @@ function validLogIn() {
     changeSideTo('profile');
 }
 
-//Navigation
+
+//********************************
+// Seitenwechsel
+//********************************
 function changeSideTo(side) {
     switch (side) {
         case 'ranking':
@@ -159,24 +189,10 @@ function changeSideTo(side) {
     }
 }
 
-function replaceStylesheet(newHref) {
-    // Alle Stylesheets entfernen
-    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => link.remove());
 
-    // Neues Stylesheet hinzufügen
-    addStylesheet(newHref);
-    addStylesheet('style/style.css');
-}
-
-function addStylesheet(href) {
-    let timestamp = new Date().getTime(); // Zeitstempel generieren
-    let newLink = document.createElement("link");
-    newLink.rel = "stylesheet";
-    newLink.href = href + `?${timestamp}`; // Cache verhindern durch Query-Parameter
-    document.head.appendChild(newLink);
-}
-
-
+//********************************
+// Ranking Method(s) ----------------------------------------------------------------
+//********************************
 function ranking() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
@@ -210,12 +226,24 @@ function ranking() {
     </div>
     `;
 }
+
+
+//********************************
+// Statistic Method(s) ----------------------------------------------------------------
+//********************************
 function statistics() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
 
     document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`	
 }
+
+
+//********************************
+// Points Method(s) ----------------------------------------------------------------
+//********************************
+
+//Punkte Startseite
 function points() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
@@ -228,6 +256,7 @@ function points() {
     <div id="getPointsButton" onclick="goToButtons()">Get Points</div></div>`
 }
 
+//Button anzeige für die Punkte
 function goToButtons() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
@@ -241,6 +270,7 @@ function goToButtons() {
     </div>`
 }
 
+//Quiz
 function goToQuiz() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
@@ -249,7 +279,6 @@ function goToQuiz() {
     document.getElementById("content").innerHTML = `<div id="quizBox"></div>`
     getQuestions();
 }
-
 function getQuestions() {
     fetch("./api/quizapi.php")
     .then(response => response.json())
@@ -305,9 +334,8 @@ function checkAnswer(button, selected, correct) {
     buttons.forEach(btn => btn.disabled = true);
 }
 
-let allPhotos = []; // Speichert alle Fotos
-let currentPhotoIndex = -1; // Speichert das aktuelle Bild-Index
 
+//Bewertung von Fotos
 function goToRatePhoto() {
     document.getElementById('body').style.opacity = "0";
     setTimeout(() => { document.getElementById('body').style.opacity = "1"; }, 100);
@@ -331,8 +359,6 @@ function goToRatePhoto() {
             alert("An error occurred, please try again later!");
         });
 }
-
-// Zeigt ein zufälliges Bild an
 function showRandomPhoto() {
     if (allPhotos.length === 0) return;
 
@@ -359,8 +385,6 @@ function showRandomPhoto() {
 
     setupStarRating(); // Event-Listener für Sterne hinzufügen
 }
-
-// Generiert die Sterne für die Bewertung
 function generateStars(photoId) {
     let starsHTML = "";
     for (let i = 1; i <= 5; i++) {
@@ -368,8 +392,6 @@ function generateStars(photoId) {
     }
     return starsHTML;
 }
-
-// Event-Listener für Sterne hinzufügen
 function setupStarRating() {
     const stars = document.querySelectorAll(".star");
 
@@ -381,8 +403,6 @@ function setupStarRating() {
         });
     });
 }
-
-// Sterne markieren nach Auswahl
 function highlightStars(photoId, rating) {
     const stars = document.querySelectorAll(`.rating[data-photo-id="${photoId}"] .star`);
 
@@ -396,9 +416,7 @@ function highlightStars(photoId, rating) {
     });
 }
 
-
-
-
+//Foto machen
 function goToPhoto() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
@@ -447,8 +465,6 @@ function goToPhoto() {
         link.click();
     });
 }
-
-
 function savePhoto() {    
     fetch(`./api/getUser.php`)
         .then((response) => response.json())
@@ -473,6 +489,8 @@ function savePhoto() {
         });
 }
 
+
+// Erklärung
 function goToExplanation() {
     information = `
     <div>
@@ -482,6 +500,9 @@ function goToExplanation() {
 }
 
 
+//********************************
+// Rewards Method(s) ----------------------------------------------------------------
+//********************************
 function rewards() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
@@ -529,6 +550,11 @@ function rewards() {
   </div>
 `
 }
+
+
+//********************************
+// Profile Method(s) ----------------------------------------------------------------
+//********************************
 function profile() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
@@ -633,9 +659,7 @@ function rewardSystem() {
 function profileSystem() {
 }
 
-
 document.addEventListener('keyup', function (event) {
-    console.log(event.key)
     if (event.key == "Enter") {
         preLog()
     }
