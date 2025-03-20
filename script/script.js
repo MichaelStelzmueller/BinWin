@@ -354,7 +354,7 @@ function goToPhoto() {
 }
 
 
-function savePhoto() {
+function savePhoto() {    
     fetch(`./api/getUser.php`)
         .then((response) => response.json())
         .then((data) => {
@@ -488,15 +488,15 @@ function statisticSystem() {
 }
 
 function rewardSystem() {
-    fetch('./api/userClass.php')
-    .then(response => response.json())
-    .then(updateData => {
-        if (updateData.code === 200) {
-            alert("Punkte erfolgreich gespeichert für Klasse " + userClass + "!");
-        } else {
-            alert("Fehler beim Speichern der Punkte!");
-        }
-    })
+    // fetch('./api/userClass.php')
+    // .then(response => response.json())
+    // .then(updateData => {
+    //     if (updateData.code === 200) {
+    //         alert("Punkte erfolgreich gespeichert für Klasse " + userClass + "!");
+    //     } else {
+    //         alert("Fehler beim Speichern der Punkte!");
+    //     }
+    // })
 
     fetch(`./api/getUser.php`)
         .then(response => response.json())
