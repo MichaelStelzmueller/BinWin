@@ -531,6 +531,7 @@ function rewardSystem() {
             alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
     });  
 }
+
 function profileSystem() {
 }
 
