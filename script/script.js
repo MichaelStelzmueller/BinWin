@@ -305,45 +305,99 @@ function checkAnswer(button, selected, correct) {
     buttons.forEach(btn => btn.disabled = true);
 }
 
+let allPhotos = []; // Speichert alle Fotos
+let currentPhotoIndex = -1; // Speichert das aktuelle Bild-Index
+
 function goToRatePhoto() {
-    document.getElementById('body').style.opacity = "0"
-    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+    document.getElementById('body').style.opacity = "0";
+    setTimeout(() => { document.getElementById('body').style.opacity = "1"; }, 100);
 
     replaceStylesheet("style/styleRatePhotos.css");
-    fetch(`./api/getClass.php`)
-        .then((response) => response.json())
-        .then((data) => {
 
+    fetch(`./api/getClass.php`)
+        .then(response => response.json())
+        .then((data) => {
             console.log(data.array);
 
-            if (data.code == 200) {
-                document.getElementById("content").innerHTML = '<div id="photoBox">'
-                for (let index = 0; index < data.array.length; index++) {
-                    document.getElementById("content").innerHTML += `
-                    <div class="photo">
-                        <img src="${data.array[index].image}" alt="photo">
-                        <div class="rating">
-                            <button onclick="ratePhoto('good', ${data.array[index].id})">Good</button>
-                            <button onclick="ratePhoto('bad', ${data.array[index].id})">Bad</button>
-                        </div>
-                `   
-                }
-
-                
+            if (data.code == 200 && data.array.length > 0) {
+                allPhotos = data.array;
+                showRandomPhoto();
+            } else {
+                document.getElementById("content").innerHTML = `<p>No images available.</p>`;
             }
-
-            else {
-                console.log("Etwas ist schief gelaufen");
-
-            }
-
         })
         .catch((error) => {
             console.error("Error:", error);
-            alert("An error occurred please try again later!");
+            alert("An error occurred, please try again later!");
         });
-
 }
+
+// Zeigt ein zufälliges Bild an
+function showRandomPhoto() {
+    if (allPhotos.length === 0) return;
+
+    // Wähle zufälligen Index, aber stelle sicher, dass es nicht das gleiche Bild wie vorher ist
+    let randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * allPhotos.length);
+    } while (randomIndex === currentPhotoIndex);
+
+    currentPhotoIndex = randomIndex;
+    const photo = allPhotos[currentPhotoIndex];
+
+    document.getElementById("content").innerHTML = `
+        <div id="photoBox">
+            <div class="photo">
+                <img src="${photo.image}" alt="photo">
+                <div class="rating" data-photo-id="${photo.id}">
+                    ${generateStars(photo.id)}
+                </div>
+                <button id="nextPhotoBtn" onclick="showRandomPhoto()">Next Image</button>
+            </div>
+        </div>
+    `;
+
+    setupStarRating(); // Event-Listener für Sterne hinzufügen
+}
+
+// Generiert die Sterne für die Bewertung
+function generateStars(photoId) {
+    let starsHTML = "";
+    for (let i = 1; i <= 5; i++) {
+        starsHTML += `<span class="star" data-rating="${i}" data-photo-id="${photoId}">&#9733;</span>`;
+    }
+    return starsHTML;
+}
+
+// Event-Listener für Sterne hinzufügen
+function setupStarRating() {
+    const stars = document.querySelectorAll(".star");
+
+    stars.forEach(star => {
+        star.addEventListener("click", function() {
+            const rating = this.getAttribute("data-rating");
+            const photoId = this.getAttribute("data-photo-id");
+            highlightStars(photoId, rating);
+        });
+    });
+}
+
+// Sterne markieren nach Auswahl
+function highlightStars(photoId, rating) {
+    const stars = document.querySelectorAll(`.rating[data-photo-id="${photoId}"] .star`);
+
+    stars.forEach(star => {
+        const starRating = parseInt(star.getAttribute("data-rating"));
+        if (starRating <= rating) {
+            star.classList.add("selected");
+        } else {
+            star.classList.remove("selected");
+        }
+    });
+}
+
+
+
 
 function goToPhoto() {
     document.getElementById('body').style.opacity = "0"
