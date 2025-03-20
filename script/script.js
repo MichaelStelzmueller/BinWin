@@ -487,6 +487,7 @@ function rankSystem() {
 function statisticSystem() {
 }
 
+
 function rewardSystem() {
     // fetch('./api/userClass.php')
     // .then(response => response.json())
@@ -497,31 +498,34 @@ function rewardSystem() {
     //         alert("Fehler beim Speichern der Punkte!");
     //     }
     // })
-
-    fetch(`./api/getUser.php`)
+    fetch('./api/getUser.php')
         .then(response => response.json())
         .then(data => {
-            if (data.code === 200) {
-                console.log(data)
-                if (!userClass) {
-                    alert("Fehler: Klasse nicht gefunden!");
-                    return;
-                }
+            if (data.code === 200) {                
+                let classUser = data.array[0].class;
+                console.log(classUser);
 
-                fetch('./api/userapi.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ class: userClass, points: 10 })
-                })
-                .then(response => response.json())
-                .then(updateData => {
-                    if (updateData.code === 200) {
-                        alert("Punkte erfolgreich gespeichert für Klasse " + userClass + "!");
-                    } else {
-                        alert("Fehler beim Speichern der Punkte!");
-                    }
-                })
-                .catch(error => console.error("Error updating class points:", error));
+                fetch('./api/getClass.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.code === 200) {                
+                            console.log(data);
+                            
+                            for (let i = 0; i < data.array.length; i++) {
+                                if (classUser == data.array[i].name) {
+                                    data.array[i].score += 1;
+                                }
+                            }
+
+                        } else {
+                            console.log("Fehler beim Abrufen der Klassendaten");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching user data:", error);
+                        alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+                });
+
             } else {
                 console.log("Fehler beim Abrufen der Benutzerdaten");
             }
@@ -529,7 +533,7 @@ function rewardSystem() {
         .catch(error => {
             console.error("Error fetching user data:", error);
             alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-    });  
+    });
 }
 
 function profileSystem() {
