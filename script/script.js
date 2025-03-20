@@ -236,7 +236,7 @@ function goToButtons() {
     document.getElementById("content").innerHTML = `<div id="stylingBoxForButtons">
     <div id="button1" onclick="goToPhoto()">Take a Photo</div>
     <div id="button2" onclick="goToQuiz()">Take a Quiz</div>
-    <div id="button2" onclick="goToRatePhoto" Rate Photos></div>    
+    <div id="button3" onclick="goToRatePhoto()">Rate Photos</div>    
     <div id="button4" onlick="goToExplanation()"><img src="./icons/info.svg"></div>
     </div>`
 }
@@ -305,6 +305,45 @@ function checkAnswer(button, selected, correct) {
     buttons.forEach(btn => btn.disabled = true);
 }
 
+function goToRatePhoto() {
+    document.getElementById('body').style.opacity = "0"
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+
+    replaceStylesheet("style/styleRatePhotos.css");
+    fetch(`./api/getClass.php`)
+        .then((response) => response.json())
+        .then((data) => {
+
+            console.log(data.array);
+
+            if (data.code == 200) {
+                document.getElementById("content").innerHTML = '<div id="photoBox">'
+                for (let index = 0; index < data.array.length; index++) {
+                    document.getElementById("content").innerHTML += `
+                    <div class="photo">
+                        <img src="${data.array[index].image}" alt="photo">
+                        <div class="rating">
+                            <button onclick="ratePhoto('good', ${data.array[index].id})">Good</button>
+                            <button onclick="ratePhoto('bad', ${data.array[index].id})">Bad</button>
+                        </div>
+                `   
+                }
+
+                
+            }
+
+            else {
+                console.log("Etwas ist schief gelaufen");
+
+            }
+
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred please try again later!");
+        });
+
+}
 
 function goToPhoto() {
     document.getElementById('body').style.opacity = "0"
