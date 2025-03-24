@@ -10,7 +10,7 @@
     margin-top: 20px;
 }
 
-#stylingBoxForButtons div {
+#button1, #button2, #button3 {
     width: 200px;
     padding: 12px 20px;
     text-align: center;
@@ -27,4 +27,16 @@
 #stylingBoxForButtons div:hover {
     transform: scale(1.05);
     background: linear-gradient(135deg, #27ae60, #219150);
+}
+
+#button4 {
+    width: 30px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60); /* Grüner Farbverlauf */
+}
+
+#button4 img {
+    height: auto;
+    width: 25px;
+    padding-top: 4px;
 }
