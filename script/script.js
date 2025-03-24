@@ -163,6 +163,13 @@ function validLogIn() {
     changeSideTo('profile');
 }
 
+document.addEventListener('keyup', function (event) {
+    if (event.key == "Enter") {
+        preLog()
+    }
+
+})
+
 
 //********************************
 // Seitenwechsel
@@ -227,6 +234,9 @@ function ranking() {
     `;
 }
 
+function rankSystem() {
+}
+
 
 //********************************
 // Statistic Method(s) ----------------------------------------------------------------
@@ -236,6 +246,9 @@ function statistics() {
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
 
     document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`	
+}
+
+function statisticSystem() {
 }
 
 
@@ -256,6 +269,46 @@ function points() {
     <div id="getPointsButton" onclick="goToButtons()">Get Points</div></div>`
 }
 
+
+function rewardSystem() {
+    fetch('./api/getUser.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {                
+                let classUser = data.array[0].class;
+                console.log(classUser);
+
+                fetch('./api/getClass.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.code === 200) {                
+                            console.log(data);
+                            for (let i = 0; i < data.array.length; i++) {
+                                if (classUser == data.array[i].name) {
+                                    data.array[i].score += 1;
+                                }
+                            }
+                            profile();
+                            alert("1 point added to class" + classUser);
+                        } else {
+                            console.log("Fehler beim Abrufen der Klassendaten");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching user data:", error);
+                        alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+                });
+
+            } else {
+                console.log("Fehler beim Abrufen der Benutzerdaten");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching user data:", error);
+            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+    });
+}
+
 //Button anzeige für die Punkte
 function goToButtons() {
     document.getElementById('body').style.opacity = "0"
@@ -271,6 +324,8 @@ function goToButtons() {
 }
 
 //Quiz
+let quizCounter = 0;
+
 function goToQuiz() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
@@ -280,11 +335,16 @@ function goToQuiz() {
     getQuestions();
 }
 function getQuestions() {
+
+    if (quizCounter >= 2) {
+        rewardSystem();
+    }
+
     fetch("./api/quizapi.php")
     .then(response => response.json())
     .then(data => {
         if (data.code === 200) {
-            console.log("Quiz Loaded Successfully:", data.array);
+            console.log("Quiz Loaded Successfully:");
             displayRandomQuestion(data.array);
         } else {
             console.error("Error loading quiz:", data.code);
@@ -318,10 +378,12 @@ function checkAnswer(button, selected, correct) {
 
     if (selected === correct) {
         button.classList.add("correct");
+        quizCounter++;
         setTimeout(function(){ getQuestions() }, 2000);
 
     } else {
         button.classList.add("wrong");
+        quizCounter = 0;
         buttons.forEach(btn => {
             if (btn.innerText === correct) {
                 btn.classList.add("correct");
@@ -374,17 +436,27 @@ function showRandomPhoto() {
     document.getElementById("content").innerHTML = `
         <div id="photoBox">
             <div class="photo">
-                <img src="${photo.image}" alt="photo">
-                <div class="rating" data-photo-id="${photo.id}">
+                <img src="${photo.source}" alt="photo">
+                <div onclick="activateRatePhotoGetPointsButton()" class="rating" data-photo-id="${photo.id}">
                     ${generateStars(photo.id)}
                 </div>
-                <button id="nextPhotoBtn" onclick="showRandomPhoto()">Next Image</button>
+                <button class="ratePhotoGetPointsInactive">Get points</button>
             </div>
         </div>
     `;
 
     setupStarRating(); // Event-Listener für Sterne hinzufügen
 }
+
+function activateRatePhotoGetPointsButton() {
+    let button = document.querySelector(".ratePhotoGetPointsInactive");
+    if (button) {
+        button.classList = ""; // Leert die Klassenliste
+        button.classList.add("ratePhotoGetPoints"); // Fügt die gewünschte Klasse hinzu
+        button.onclick = rewardSystem; 
+    }
+}
+
 function generateStars(photoId) {
     let starsHTML = "";
     for (let i = 1; i <= 5; i++) {
@@ -611,57 +683,6 @@ function profile() {
 
 }
 
-function rankSystem() {
-}
-function statisticSystem() {
-}
-
-
-function rewardSystem() {
-    fetch('./api/getUser.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.code === 200) {                
-                let classUser = data.array[0].class;
-                console.log(classUser);
-
-                fetch('./api/getClass.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.code === 200) {                
-                            console.log(data);
-                            
-                            for (let i = 0; i < data.array.length; i++) {
-                                if (classUser == data.array[i].name) {
-                                    data.array[i].score += 1;
-                                }
-                            }
-
-                        } else {
-                            console.log("Fehler beim Abrufen der Klassendaten");
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error fetching user data:", error);
-                        alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-                });
-
-            } else {
-                console.log("Fehler beim Abrufen der Benutzerdaten");
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching user data:", error);
-            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-    });
-}
-
 function profileSystem() {
 }
 
-document.addEventListener('keyup', function (event) {
-    if (event.key == "Enter") {
-        preLog()
-    }
-
-})
