@@ -494,9 +494,17 @@ function savePhoto() {
 function goToExplanation() {
     information = `
     <div>
-        <div><h1>Wie bekommst du Punkte?</h1></div>
+        <div><h1>How to get Points?</h1></div>
+        <div>
+        <h2>First of all you can take a picture of your trash, before you put it into the trash can</h2>
+        <h2>Then you can do a little quizz, when you have 3 correct answers</h2>
+        <h2>>ou can rate pictures from other classes</h2>
+        </div>
+
+
     </div>
     `;
+    document.getElementById("content").innerHTML = information;
 }
 
 
