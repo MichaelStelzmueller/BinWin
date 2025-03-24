@@ -319,7 +319,7 @@ function goToButtons() {
     <div id="button1" onclick="goToPhoto()">Take a Photo</div>
     <div id="button2" onclick="goToQuiz()">Take a Quiz</div>
     <div id="button3" onclick="goToRatePhoto()">Rate Photos</div>    
-    <div id="button4" onlick="goToExplanation()"><img src="./icons/whiteInfo.svg"></div>
+    <div id="button4" onclick="goToExplanation()"><img src="./icons/whiteInfo.svg"></div>
     </div>`
 }
 
@@ -564,7 +564,8 @@ function savePhoto() {
 
 // Erklärung
 function goToExplanation() {
-    information = `
+    console.log("HALLO")
+    document.getElementById("content").innerHTML = `
     <div>
         <div><h1>How to get Points?</h1></div>
         <div>
@@ -576,7 +577,6 @@ function goToExplanation() {
 
     </div>
     `;
-    document.getElementById("content").innerHTML = information;
 }
 
 
