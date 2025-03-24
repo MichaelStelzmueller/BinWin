@@ -567,7 +567,7 @@ function profile() {
             console.log(data);
 
             if (data.code == 200) {
-                document.getElementById("headerGeneral").innerHTML = `<h2>Profil</h2>`	
+                document.getElementById("headerGeneral").innerHTML = `<h2>Profile</h2>`	
                 document.getElementById("content").innerHTML = `
 
                 <div id="profilBox">
@@ -638,21 +638,21 @@ function rewardSystem() {
                             }
 
                         } else {
-                            console.log("Fehler beim Abrufen der Klassendaten");
+                            console.log("Error when retrieving class data");
                         }
                     })
                     .catch(error => {
                         console.error("Error fetching user data:", error);
-                        alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+                        alert("An error has occurred, please try again later!");
                 });
 
             } else {
-                console.log("Fehler beim Abrufen der Benutzerdaten");
+                console.log("Error when retrieving user data");
             }
         })
         .catch(error => {
             console.error("Error fetching user data:", error);
-            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+            alert("An error has occurred, please try again later!");
     });
 }
 
