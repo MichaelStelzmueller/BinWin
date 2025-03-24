@@ -31,8 +31,16 @@
 
 #button4 {
     width: 30px;
-    padding: 12px 20px;
+    height: auto;
+    padding-left: 15px;
+    padding-right: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 60px;
     background: linear-gradient(135deg, #2ecc71, #27ae60); /* Grüner Farbverlauf */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #button4 img {
