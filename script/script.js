@@ -576,7 +576,7 @@ function profile() {
                     </div>
                     <div id="profiltxt">
                         <div id="profil-txt-n" class="profiltxtC"><strong>Name: </strong>${data.array[0].name}</div>
-                        <div id="profil-txt-c" class="profiltxtC"><strong>Klasse: </strong>${data.array[0].class}</div>
+                        <div id="profil-txt-c" class="profiltxtC"><strong>Class: </strong>${data.array[0].class}</div>
                     </div>
                 </div>
                 <hr>
@@ -598,7 +598,7 @@ function profile() {
             }
 
             else {
-                console.log("Etwas ist schief gelaufen");
+                console.log("Something went wrong");
 
             }
 
