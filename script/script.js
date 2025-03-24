@@ -252,7 +252,7 @@ function points() {
     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
     <div><img id="pointIconP" src="./icons/recycle.png"></div>
-    <div><p id="numberOfPoints">x10</p></div>
+    <div><p id="numberOfPoints">x1</p></div>
     <div id="getPointsButton" onclick="goToButtons()">Get Points</div></div>`
 }
 
