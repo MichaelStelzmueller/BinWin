@@ -265,7 +265,7 @@ function points() {
     document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
     document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
     <div><img id="pointIconP" src="./icons/recycle.png"></div>
-    <div><p id="numberOfPoints">x10</p></div>
+    <div><p id="numberOfPoints">x1</p></div>
     <div id="getPointsButton" onclick="goToButtons()">Get Points</div></div>`
 }
 
@@ -319,7 +319,7 @@ function goToButtons() {
     <div id="button1" onclick="goToPhoto()">Take a Photo</div>
     <div id="button2" onclick="goToQuiz()">Take a Quiz</div>
     <div id="button3" onclick="goToRatePhoto()">Rate Photos</div>    
-    <div id="button4" onlick="goToExplanation()"><img src="./icons/info.svg"></div>
+    <div id="button4" onlick="goToExplanation()"><img src="./icons/whiteInfo.svg"></div>
     </div>`
 }
 
@@ -566,9 +566,17 @@ function savePhoto() {
 function goToExplanation() {
     information = `
     <div>
-        <div><h1>Wie bekommst du Punkte?</h1></div>
+        <div><h1>How to get Points?</h1></div>
+        <div>
+        <h2>First of all you can take a picture of your trash, before you put it into the trash can</h2>
+        <h2>Then you can do a little quizz, when you have 3 correct answers</h2>
+        <h2>>ou can rate pictures from other classes</h2>
+        </div>
+
+
     </div>
     `;
+    document.getElementById("content").innerHTML = information;
 }
 
 
@@ -639,7 +647,7 @@ function profile() {
             console.log(data);
 
             if (data.code == 200) {
-                document.getElementById("headerGeneral").innerHTML = `<h2>Profil</h2>`	
+                document.getElementById("headerGeneral").innerHTML = `<h2>Profile</h2>`	
                 document.getElementById("content").innerHTML = `
 
                 <div id="profilBox">
@@ -648,7 +656,7 @@ function profile() {
                     </div>
                     <div id="profiltxt">
                         <div id="profil-txt-n" class="profiltxtC"><strong>Name: </strong>${data.array[0].name}</div>
-                        <div id="profil-txt-c" class="profiltxtC"><strong>Klasse: </strong>${data.array[0].class}</div>
+                        <div id="profil-txt-c" class="profiltxtC"><strong>Class: </strong>${data.array[0].class}</div>
                     </div>
                 </div>
                 <hr>
@@ -670,7 +678,7 @@ function profile() {
             }
 
             else {
-                console.log("Etwas ist schief gelaufen");
+                console.log("Something went wrong");
 
             }
 
@@ -681,6 +689,51 @@ function profile() {
         });
 
 
+}
+
+function rankSystem() {
+}
+function statisticSystem() {
+}
+
+
+function rewardSystem() {
+    fetch('./api/getUser.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {                
+                let classUser = data.array[0].class;
+                console.log(classUser);
+
+                fetch('./api/getClass.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.code === 200) {                
+                            console.log(data);
+                            
+                            for (let i = 0; i < data.array.length; i++) {
+                                if (classUser == data.array[i].name) {
+                                    data.array[i].score += 1;
+                                }
+                            }
+
+                        } else {
+                            console.log("Fehler beim Abrufen der Klassendaten");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching user data:", error);
+                        alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+                });
+
+            } else {
+                console.log("Fehler beim Abrufen der Benutzerdaten");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching user data:", error);
+            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+    });
 }
 
 function profileSystem() {
