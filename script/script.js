@@ -266,7 +266,7 @@ function goToButtons() {
     <div id="button1" onclick="goToPhoto()">Take a Photo</div>
     <div id="button2" onclick="goToQuiz()">Take a Quiz</div>
     <div id="button3" onclick="goToRatePhoto()">Rate Photos</div>    
-    <div id="button4" onlick="goToExplanation()"><img src="./icons/info.svg"></div>
+    <div id="button4" onlick="goToExplanation()"><img src="./icons/whiteInfo.svg"></div>
     </div>`
 }
 
