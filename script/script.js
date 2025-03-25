@@ -571,7 +571,7 @@ function goToExplanation() {
         <div>
         <h2>First of all you can take a picture of your trash, before you put it into the trash can</h2>
         <h2>Then you can do a little quizz, when you have 3 correct answers</h2>
-        <h2>>ou can rate pictures from other classes</h2>
+        <h2>You can rate pictures from other classes</h2>
         </div>
 
 
