@@ -568,13 +568,11 @@ function goToExplanation() {
     document.getElementById("content").innerHTML = `
     <div>
         <div><h1>How to get Points?</h1></div>
-        <div>
-        <h2>First of all you can take a picture of your trash, before you put it into the trash can</h2>
-        <h2>Then you can do a little quizz, when you have 3 correct answers</h2>
-        <h2>You can rate pictures from other classes</h2>
-        </div>
-
-
+        <ul><div>
+        <li><p>First of all you can take a picture of your trash, before you put it into the trash can</p></li>
+        <li><p>Then you can do a little quizz, when you have 3 correct answers</p></li>
+        <li><p>You can rate pictures from other classes</p></li>
+        </li></div>
     </div>
     `;
 }
