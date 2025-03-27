@@ -250,10 +250,7 @@ function statistics() {
     <div>
   <canvas id="myChart"></canvas>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
+`
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
@@ -274,7 +271,7 @@ function statistics() {
       }
     }
   });
-</script>`	
+	
 }
 
 function statisticSystem() {
