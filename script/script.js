@@ -245,7 +245,36 @@ function statistics() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
 
-    document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`	
+    document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`
+    document.getElementById("content").innerHTML = `
+    <div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>`	
 }
 
 function statisticSystem() {
