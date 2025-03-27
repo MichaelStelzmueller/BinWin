@@ -17,6 +17,7 @@ body {
     align-items: center;
     gap: 20px;
     padding: 20px;
+    margin-top: 80%;
 }
 
 /* Styling für das einzelne Foto */
@@ -65,7 +66,19 @@ body {
 }
 
 /* Styling für den 'Next Image' Button */
-#nextPhotoBtn {
+.ratePhotoGetPointsInactive {
+    cursor: not-allowed;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(135deg, #3498db66, #297fb95d);
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+}
+
+.ratePhotoGetPoints {
     padding: 12px 20px;
     font-size: 18px;
     font-weight: bold;
@@ -77,7 +90,7 @@ body {
     color: white;
 }
 
-#nextPhotoBtn:hover {
+.ratePhotoGetPointsInactive:hover {
     background: linear-gradient(135deg, #2980b9, #1e6a9a);
     transform: scale(1.05);
 }
