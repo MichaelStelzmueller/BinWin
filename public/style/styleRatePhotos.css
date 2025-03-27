@@ -1,0 +1,83 @@
+#content{
+    margin-top: 15vh;
+}
+
+/* Allgemeines Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Hauptcontainer für das aktuelle Bild */
+#photoBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Styling für das einzelne Foto */
+.photo {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.photo:hover {
+    transform: scale(1.05);
+}
+
+/* Styling für das Bild */
+.photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Sternebewertung Styling */
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+/* Styling für Sterne */
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover- und aktive Effekte für Sterne */
+.star:hover,
+.star.selected {
+    color: #f1c40f;
+}
+
+/* Styling für den 'Next Image' Button */
+#nextPhotoBtn {
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+}
+
+#nextPhotoBtn:hover {
+    background: linear-gradient(135deg, #2980b9, #1e6a9a);
+    transform: scale(1.05);
+}
