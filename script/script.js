@@ -694,46 +694,6 @@ function rankSystem() {
 function statisticSystem() {
 }
 
-
-function rewardSystem() {
-    fetch('./api/getUser.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.code === 200) {                
-                let classUser = data.array[0].class;
-                console.log(classUser);
-
-                fetch('./api/getClass.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.code === 200) {                
-                            console.log(data);
-                            
-                            for (let i = 0; i < data.array.length; i++) {
-                                if (classUser == data.array[i].name) {
-                                    data.array[i].score += 1;
-                                }
-                            }
-
-                        } else {
-                            console.log("Fehler beim Abrufen der Klassendaten");
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error fetching user data:", error);
-                        alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-                });
-
-            } else {
-                console.log("Fehler beim Abrufen der Benutzerdaten");
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching user data:", error);
-            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-    });
-}
-
 function profileSystem() {
 }
 
