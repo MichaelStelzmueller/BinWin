@@ -83,4 +83,22 @@ body {
   .milestones-container::-webkit-scrollbar-thumb:hover {
     background-color: #555;
   }
-  
+  .milestone {
+    transition: transform 0.3s ease;
+}
+
+.milestone:hover {
+    transform: scale(1.03);
+}
+
+.milestone.locked {
+    opacity: 0.6;
+}
+
+.milestone-badge {
+    transition: transform 0.3s ease;
+}
+
+.milestone:hover .milestone-badge {
+    transform: rotate(10deg);
+}

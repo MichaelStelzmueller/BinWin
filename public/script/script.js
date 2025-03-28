@@ -682,52 +682,60 @@ function goToExplanation() {
 // Rewards Method(s) ----------------------------------------------------------------
 //********************************
 function rewards() {
-    document.getElementById('body').style.opacity = "0"
-    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+    document.getElementById('body').style.opacity = "0";
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1"; }, 100);
 
     replaceStylesheet("style/styleRewards.css");
-    document.getElementById("headerGeneral").innerHTML = `<h2 class="milestones-title">Milestones</h2>`
+
+    document.getElementById("headerGeneral").innerHTML = `<h2 class="milestones-title">Achievements 🌟</h2>`;
     document.getElementById("content").innerHTML = `
-  <div class="milestones-container">
-    <div class="milestone">
-      <div class="milestone-badge">1</div>
-      <span>First R-Point</span>
-    </div>
-    <div class="milestone">
-      <div class="milestone-badge">5</div>
-      <span>x5 R-Points</span>
-    </div>
-    <div class="milestone">
-      <div class="milestone-badge">10</div>
-      <span>x10 R-Points</span>
-    </div>
-    <div class="milestone">
-      <div class="milestone-badge">25</div>
-      <span>x25 R-Points</span>
-    </div>
-    <div class="milestone locked">
-      <div class="milestone-badge">50</div>
-      <span>x50 R-Points</span>
-    </div>
-    <div class="milestone locked">
-      <div class="milestone-badge">75</div>
-      <span>x75 R-Points</span>
-    </div>
-    <div class="milestone locked">
-      <div class="milestone-badge">100</div>
-      <span>x100 R-Points</span>
-    </div>
-    <div class="milestone locked">
-      <div class="milestone-badge">110</div>
-      <span>x120 R-Points</span>
-    </div>
-    <div class="milestone locked">
-      <div class="milestone-badge">120</div>
-      <span>x120 R-Points</span>
-    </div>
-  </div>
-`
+        <div class="milestones-container">
+            <!-- Punkte sammeln -->
+            <div class="milestone unlocked">
+                <div class="milestone-badge" style="background-color:#FFC107;">1</div>
+                <span>🏅 Rookie Recycler</span>
+            </div>
+            <div class="milestone locked">
+                <div class="milestone-badge" style="background-color:#FF5722;">10</div>
+                <span>🦸 Eco Hero</span>
+            </div>
+            <div class="milestone locked">
+                <div class="milestone-badge" style="background-color:#4CAF50;">25</div>
+                <span>🌎 Planet Protector</span>
+            </div>
+
+            <!-- Fotos hochladen -->
+            <div class="milestone unlocked">
+                <div class="milestone-badge" style="background-color:#9C27B0;">📸</div>
+                <span>First Shot</span>
+            </div>
+            <div class="milestone locked">
+                <div class="milestone-badge" style="background-color:#3F51B5;">📷</div>
+                <span>Paparazzi (10 Pictures)</span>
+            </div>
+
+            <!-- Fotos bewerten -->
+            <div class="milestone unlocked">
+                <div class="milestone-badge" style="background-color:#00BCD4;">⭐️</div>
+                <span>First Judge</span>
+            </div>
+            <div class="milestone locked">
+                <div class="milestone-badge" style="background-color:#009688;">🌟</div>
+                <span>Top Reviewer (20 Reviews)</span>
+            </div>
+
+            <!-- Quiz -->
+            <div class="milestone unlocked">
+                <div class="milestone-badge" style="background-color:#FF9800;">🧠</div>
+                <span>First Quiz</span>
+            </div>
+            <div class="milestone locked">
+                <div class="milestone-badge" style="background-color:#8BC34A;">🎓</div>
+                <span>Quizmaster (10 perfect Quizzes)</span>
+            </div>
+        </div>`;
 }
+
 
 
 //********************************
