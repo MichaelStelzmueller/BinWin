@@ -242,37 +242,111 @@ function rankSystem() {
 // Statistic Method(s) ----------------------------------------------------------------
 //********************************
 function statistics() {
-    document.getElementById('body').style.opacity = "0"
-    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+    document.getElementById('body').style.opacity = "0";
+    setTimeout(function(){ document.getElementById('body').style.opacity = "1"; }, 100);
 
-    document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`
+    replaceStylesheet("style/styleStatistics.css");
+    document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`;
     document.getElementById("content").innerHTML = `
-    <div>
-  <canvas id="myChart"></canvas>
-</div>
-`
-  const ctx = document.getElementById('myChart');
+    <div style="width:90%;max-width:600px;margin:auto;">
+        <canvas id="activityDistribution"></canvas>
+        <canvas id="activityTimeline" style="margin-top:10px;"></canvas>
+        <canvas id="userActivity" style="margin-top:30px;"></canvas>
+    </div>`;
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    // 2. Beliebteste Aktivität (Kreisdiagramm)
+    new Chart(document.getElementById('activityDistribution'), {
+        type: 'pie',
+        data: {
+            labels: ['Quiz gelöst', 'Fotos hochgeladen', 'Fotos bewertet'],
+            datasets: [{
+                data: [120, 80, 50],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Beliebteste Aktivitäten'
+                }
+            }
         }
-      }
-    }
-  });
-	
+    });
+
+    // 3. Teilnahmen im Zeitverlauf (Liniendiagramm)
+    new Chart(document.getElementById('activityTimeline'), {
+        type: 'line',
+        data: {
+            labels: ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'],
+            datasets: [
+                {
+                    label: 'Quiz',
+                    data: [12, 15, 13, 17, 20],
+                    borderColor: '#FF6384',
+                    backgroundColor: 'rgba(255,99,132,0.3)',
+                    tension: 0.3,
+                    fill: true
+                },
+                {
+                    label: 'Fotos hochgeladen',
+                    data: [7, 9, 5, 11, 14],
+                    borderColor: '#36A2EB',
+                    backgroundColor: 'rgba(54,162,235,0.3)',
+                    tension: 0.3,
+                    fill: true
+                },
+                {
+                    label: 'Fotos bewertet',
+                    data: [3, 4, 2, 6, 8],
+                    borderColor: '#FFCE56',
+                    backgroundColor: 'rgba(255,206,86,0.3)',
+                    tension: 0.3,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Teilnahmen im Wochenverlauf'
+                }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // 4. Benutzeraktivität (Balkendiagramm)
+    new Chart(document.getElementById('userActivity'), {
+        type: 'bar',
+        data: {
+            labels: ['1BHITM', '2BHITM', '3BHITM', '4BHITM'],
+            datasets: [{
+                label: 'Durchschnittliche Aktionen pro Schüler',
+                data: [15, 9, 12, 7],
+                backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#F44336']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Benutzeraktivität der Klassen'
+                }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
 }
+
 
 function statisticSystem() {
 }
