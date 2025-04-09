@@ -86,7 +86,7 @@ function LogIn(uname, pass) {
         .then((response) => response.json())
         .then((data) => {
 
-            console.log(data);
+            // console.log(data);
 
             if (data.code == 200) {
                 validLogIn();
@@ -261,7 +261,7 @@ function statistics() {
             labels: ['Quiz gelöst', 'Fotos hochgeladen', 'Fotos bewertet'],
             datasets: [{
                 data: [120, 80, 50],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                backgroundColor: ['#10b310', '#e0ffe0', 'rgb(0, 105, 0)']
             }]
         },
         options: {
@@ -284,24 +284,24 @@ function statistics() {
                 {
                     label: 'Quiz',
                     data: [12, 15, 13, 17, 20],
-                    borderColor: '#FF6384',
-                    backgroundColor: 'rgba(255,99,132,0.3)',
+                    borderColor: '#10b310',
+                    backgroundColor: 'rgba(16, 179, 16, 0.3)',
                     tension: 0.3,
                     fill: true
                 },
                 {
                     label: 'Fotos hochgeladen',
                     data: [7, 9, 5, 11, 14],
-                    borderColor: '#36A2EB',
-                    backgroundColor: 'rgba(54,162,235,0.3)',
+                    borderColor: 'rgb(130, 255, 130)',
+                    backgroundColor: 'rgba(130, 255, 130, 0.3)',
                     tension: 0.3,
                     fill: true
                 },
                 {
                     label: 'Fotos bewertet',
                     data: [3, 4, 2, 6, 8],
-                    borderColor: '#FFCE56',
-                    backgroundColor: 'rgba(255,206,86,0.3)',
+                    borderColor: 'rgb(0, 105, 0)',
+                    backgroundColor: 'rgba(0, 105, 0, 0.3)',
                     tension: 0.3,
                     fill: true
                 }
@@ -329,7 +329,7 @@ function statistics() {
             datasets: [{
                 label: 'Durchschnittliche Aktionen pro Schüler',
                 data: [15, 9, 12, 7],
-                backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#F44336']
+                backgroundColor: ['#10b310', '#10b310', '#10b310', '#10b310']
             }]
         },
         options: {
@@ -382,7 +382,6 @@ function rewardSystem() {
                     .then(response => response.json())
                     .then(data => {
                         if (data.code === 200) {                
-                            console.log(data);
                             for (let i = 0; i < data.array.length; i++) {
                                 if (classUser == data.array[i].name) {
                                     data.array[i].score += 1;
@@ -507,7 +506,7 @@ function goToRatePhoto() {
     fetch(`./api/getClass.php`)
         .then(response => response.json())
         .then((data) => {
-            console.log(data.array);
+            // console.log(data.array);
 
             if (data.code == 200 && data.array.length > 0) {
                 allPhotos = data.array;
@@ -633,31 +632,101 @@ function goToPhoto() {
         const link = document.createElement("a");
         link.href = image;
         currClass = savePhoto();
-        link.download = "image.png";
-        link.click();
+        // link.download = "image.png";
+        // link.click();
     });
 }
-function savePhoto() {    
+// function savePhoto() {    
+//     fetch(`./api/getUser.php`)
+//         .then((response) => response.json())
+//         .then((data) => {
+
+//             console.log(data);
+
+//             if (data.code == 200) {
+//                 return data.array[0].class;
+//             }
+
+//             else {
+//                 console.log("Etwas ist schief gelaufen");
+
+//             }
+
+//         })
+//         .catch((error) => {
+//             console.error("Error:", error);
+//             alert("An error occurred please try again later!");
+//             return null;
+//         });
+// }
+function savePhoto() {
+    const image = canvas.toDataURL("image/png");
+
     fetch(`./api/getUser.php`)
         .then((response) => response.json())
         .then((data) => {
-
-            console.log(data);
-
             if (data.code == 200) {
-                return data.array[0].class;
-            }
+                const className = data.array[0].class;
+                
+                // Jetzt class.json laden
+                fetch('./api/getClass.php')
+                    .then((res) => res.json())
+                    .then((classData) => {
+                        let classObj = null;
+                        
+                        for (let i = 0; i < classData.array.length; i++) {                            
+                            if (classData.array[i].name === className) {
+                                console.log(classData.array[i]);
+                                
+                                classObj = classData.array[i];
+                                break;
+                            }
+                        }
 
-            else {
+                        if (classObj == null) {
+                            console.error("Klasse nicht gefunden");
+                            return;
+                        }
+
+                        const imgIndex = classObj.imgArray.length;
+                        const imgName = `${className}_image_${imgIndex}`;
+
+                        const newImage = {
+                            name: imgName,
+                            url: image
+                        };
+
+                        classObj.imgArray.push(newImage);
+
+                        console.log(classObj);
+                        
+                        // Jetzt schicken wir das aktualisierte Objekt an den Server
+                        fetch('../api/updateClass.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(classData)
+                        })
+                        .then((res) => res.json())
+                        .then((result) => {
+                            if (result.success) {
+                                console.log("Bild gespeichert:", newImage);
+                            } else {
+                                console.error("Speichern fehlgeschlagen");
+                            }
+                        })
+                        .catch((err) => {
+                            console.error("Fehler beim Speichern:", err);
+                        });
+                    });
+            } else {
                 console.log("Etwas ist schief gelaufen");
-
             }
-
         })
         .catch((error) => {
             console.error("Error:", error);
-            alert("An error occurred please try again later!");
-            return null;
+            alert("Ein Fehler ist aufgetreten. Bitte später erneut versuchen.");
         });
 }
 
@@ -749,9 +818,6 @@ function profile() {
     fetch(`./api/getUser.php`)
         .then((response) => response.json())
         .then((data) => {
-
-            console.log(data);
-
             if (data.code == 200) {
                 document.getElementById("headerGeneral").innerHTML = `<h2>Profile</h2>`	
                 document.getElementById("content").innerHTML = `
