@@ -733,19 +733,139 @@ function savePhoto() {
 
 // Erklärung
 function goToExplanation() {
-    console.log("HALLO")
+    replaceStylesheet("style/styleFAQ.css")
+
     document.getElementById("content").innerHTML = `
-    <div>
-        <div><h1>How to get Points?</h1></div>
-        <ul><div>
-        <li><p>First of all you can take a picture of your trash, before you put it into the trash can</p></li>
-        <li><p>Then you can do a little quizz, when you have 3 correct answers</p></li>
-        <li><p>You can rate pictures from other classes</p></li>
-        </li></div>
-    </div>
+        <div class="faq-container">
+            <div id="header"><h1>How do I get Points?</h1></div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <p>What is BinWin?</p>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        BinWin is a fun, easy-to-use project designed to encourage students to dispose of waste properly 
+                        and keep our school clean and organized. 
+                        It’s all about making small, everyday actions count – and rewarding you for doing the right thing!
+                        <br><br>
+                        Instead of just throwing your trash in the bin, 
+                        BinWin gives you a way to track your eco-friendly actions. 
+                        Whether it’s taking a picture of your waste, rating other students’ actions, 
+                        or answering short quizzes about recycling, you get points every time you engage with the app.
+                        <br><br>    
+                        But it’s not just about points – 
+                        it’s about creating a cleaner, greener school, 
+                        showing respect for the environment, 
+                        and making the school a better place for everyone.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <p>Why BinWin?</p>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Because your class is in the race.
+                        <br><br>
+                        Because the top scorers will stand out.
+                        <br><br>
+                        Because you’ve got the skills to lead by example.
+                        <br><br>
+                        It’s about mindset. Tech meets responsibility. And yeah – some bragging rights too.
+                        <br><br>
+                        This isn’t just about trash.
+                        <br><br>
+                        It’s about doing smart things, making a difference, and having some fun while you’re at it.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <p>Why BinWin is a Game-Changer</p>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                    It’s Easy, Fun, and Rewarding!
+                    <br><br>
+                    No need for complicated rules. 
+                    Just take a pic, rate others, and answer quizzes. 
+                    Simple, right? And the best part is, you get rewarded for doing your part. 
+                    It’s a win-win situation!
+                    <br><br>
+                    It’s All About Teamwork
+                    <br><br>
+                    By using BinWin, you’re not only helping yourself – 
+                    you’re contributing to a cleaner, more organized school. 
+                    Everyone is in it together, working toward a common goal. 
+                    The more you participate, the more you help your school, the environment, and yourself.
+                    <br><br>
+                    It’s a Step Toward a Greener Future
+                    <br><br>
+                    Every small action you take has a bigger impact. 
+                    By practicing waste separation at school, you’ll be more likely to carry that habit into your daily life. 
+                    Together, we can make the world a cleaner place, starting right here.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <p>Take a Photo</p>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Before you throw anything away, take a quick photo. 
+                        This action alone earns you 1 point! 
+                        It’s a small effort that makes a big difference in keeping track of your waste.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <p>Take a Quiz</p>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Once you’ve uploaded your photo, it’s time to rate others’ photos. 
+                        This encourages everyone to engage with each other and gives you 1 point each time you rate a photo. 
+                        It’s a simple way to help the community and learn more about how others handle waste.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <p>Rate Photos</p>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        You can also earn points by answering a few quick questions in a fun quiz. 
+                        Just 3 correct answers = 1 point. 
+                        It’s an easy way to boost your score while learning more about environmental issues, recycling, and sustainability.
+                    </p>
+                </div>
+            </div>
+        </div>
     `;
 }
 
+function toggleFaq(element) {
+    const answer = element.nextElementSibling;
+    const symbol = element.querySelector("span");
+    answer.classList.toggle("show");
+    symbol.textContent = answer.classList.contains("show") ? "−" : "+";
+}
 
 //********************************
 // Rewards Method(s) ----------------------------------------------------------------
