@@ -667,17 +667,16 @@ function savePhoto() {
         .then((data) => {
             if (data.code == 200) {
                 const className = data.array[0].class;
-                
+
                 // Jetzt class.json laden
                 fetch('./api/getClass.php')
                     .then((res) => res.json())
                     .then((classData) => {
                         let classObj = null;
-                        
-                        for (let i = 0; i < classData.array.length; i++) {                            
+
+                        for (let i = 0; i < classData.array.length; i++) {
                             if (classData.array[i].name === className) {
-                                console.log(classData.array[i]);
-                                
+
                                 classObj = classData.array[i];
                                 break;
                             }
@@ -690,34 +689,55 @@ function savePhoto() {
 
                         const imgIndex = classObj.imgArray.length;
                         const imgName = `${className}_image_${imgIndex}`;
-
                         const newImage = {
                             name: imgName,
-                            url: image
+                            url: `data/img/${imgName}.png`
                         };
 
                         classObj.imgArray.push(newImage);
+console.log(newImage);
 
-                        console.log(classObj);
-                        
-                        // Jetzt schicken wir das aktualisierte Objekt an den Server
-                        fetch('../api/updateClass.php', {
+                        // Speichern des Bildes im Ordner data/img
+                        fetch('./api/saveImage.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify(classData)
+                            body: JSON.stringify({
+                                imageData: image,
+                                imageName: `${imgName}.png`
+                            })
                         })
                         .then((res) => res.json())
-                        .then((result) => {
-                            if (result.success) {
-                                console.log("Bild gespeichert:", newImage);
+                        .then((saveResult) => {
+                            if (saveResult.success) {
+                                console.log("Bild erfolgreich im Ordner gespeichert:", newImage);
+
+                                // Jetzt schicken wir das aktualisierte Objekt an den Server
+                                fetch('../api/updateClass.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(classData)
+                                })
+                                .then((res) => res.json())
+                                .then((result) => {
+                                    if (result.success) {
+                                        console.log("Bildinformationen erfolgreich gespeichert:", newImage);
+                                    } else {
+                                        console.error("Speichern der Bildinformationen fehlgeschlagen");
+                                    }
+                                })
+                                .catch((err) => {
+                                    console.error("Fehler beim Speichern der Bildinformationen:", err);
+                                });
                             } else {
-                                console.error("Speichern fehlgeschlagen");
+                                console.error("Speichern des Bildes im Ordner fehlgeschlagen");
                             }
                         })
                         .catch((err) => {
-                            console.error("Fehler beim Speichern:", err);
+                            console.error("Fehler beim Speichern des Bildes:", err);
                         });
                     });
             } else {
