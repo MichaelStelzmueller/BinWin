@@ -659,6 +659,22 @@ function goToPhoto() {
 //             return null;
 //         });
 // }
+
+function imageToBase64(imgElement) {
+    const canvas = document.createElement('canvas');
+    canvas.width = imgElement.width;
+    canvas.height = imgElement.height;
+    
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(imgElement, 0, 0);
+
+    // Gibt Base64-String zurück
+    return canvas.toDataURL('image/png'); // oder 'image/jpeg'
+}
+// // Beispiel:
+// const img = document.getElementById('myImage'); // <img id="myImage" src="...">
+// const base64 = imageToBase64(img);
+
 function savePhoto() {
     const image = canvas.toDataURL("image/png");
 
@@ -687,15 +703,19 @@ function savePhoto() {
                             return;
                         }
 
+                        let canvas = document.getElementById('canvas');
+                        let base64Image = canvas.toDataURL('image/png');
+
                         const imgIndex = classObj.imgArray.length;
                         const imgName = `${className}_image_${imgIndex}`;
                         const newImage = {
-                            name: imgName,
+                            imageData: base64Image,
                             url: `data/img/${imgName}.png`
                         };
+                        console.log(newImage);
+                        
 
                         classObj.imgArray.push(newImage);
-console.log(newImage);
 
                         // Speichern des Bildes im Ordner data/img
                         fetch('./api/saveImage.php', {

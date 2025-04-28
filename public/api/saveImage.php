@@ -10,16 +10,20 @@ header("Access-Control-Allow-Headers: Content-Type");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the raw POST data
     $data = json_decode(file_get_contents('php://input'), true);
+    // $data = [
+    //     "url" => "data/img/3bhitm_image_0.png"
+    // ];
+    
 
-    if (isset($data['image']) && isset($data['filename'])) {
-        $imageData = $data['image'];
-        $filename = basename($data['filename']);
+    if (isset($data['imageData']) && isset($data['url'])) {
+        $imageData = $data['imageData'];
+        $filename = basename($data['url']);
 
         // Decode the base64 image
         $decodedImage = base64_decode($imageData);
 
         if ($decodedImage !== false) {
-            $filePath = '../data/img/' . $filename;
+            $filePath = '../' . $filename;
 
             // Ensure the uploads directory exists
             if (!is_dir('../data/img/')) {
