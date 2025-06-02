@@ -1,9 +1,9 @@
 <?php
 // database connection
 $host = 'localhost';
-$dbname = 'quizdb';
-$username = 'root';
-$password = ''; // dein Passwort hier
+$dbname = 'binWin';
+$username = 'binWin';
+$password = 'binWin'; // dein Passwort hier
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
