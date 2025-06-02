@@ -8,6 +8,33 @@ gotThePoint = true;
 let allPhotos = []; // Speichert alle Fotos
 let currentPhotoIndex = -1; // Speichert das aktuelle Bild-Index
 
+// Helper function to call API
+async function apiCall(endpoint, method = 'GET', body = null) {
+    const config = { method };
+    if (body) {
+        config.headers = { 'Content-Type': 'application/json' };
+        config.body = JSON.stringify(body);
+    }
+    const res = await fetch(`./api/central.php?endpoint=${endpoint}`, config);
+    return res.json();
+}
+
+// Function for preLog button
+async function preLog() {
+    const username = document.getElementById('usernameForLogin').value;
+    const password = document.getElementById('pwForLogin').value;
+    const res = await apiCall('login', 'POST', { name: username, password });
+
+    if (res.code === 200) {
+        alert('Login successful! Welcome ' + res.user.name);
+        // Hier kannst du redirect oder UI-Wechsel einbauen
+    } else {
+        alert('Login failed: ' + res.message);
+    }
+}
+
+// You can expand this with similar functions for register, getClasses, etc.
+
 
 //********************************
 // Stylesheet-Wechsel
