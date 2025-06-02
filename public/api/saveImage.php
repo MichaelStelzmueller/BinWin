@@ -1,47 +1,39 @@
 <?php
 // saveImage.php
 
-// Allow CORS for local development
+// CORS-Header für lokale Entwicklung
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-// Check if the request method is POST
+// Nur POST-Anfragen akzeptieren
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the raw POST data
-    $data = json_decode(file_get_contents('php://input'), true);
-    // $data = [
-    //     "url" => "data/img/3bhitm_image_0.png"
-    // ];
-    
+    // Prüfen, ob eine Datei hochgeladen wurde
+    if (isset($_FILES['imageFile']) && $_FILES['imageFile']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = '../data/img/';
 
-    if (isset($data['imageData']) && isset($data['url'])) {
-        $imageData = $data['imageData'];
-        $filename = basename($data['url']);
+        // Sicherstellen, dass der Zielordner existiert
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
 
-        // Decode the base64 image
-        $decodedImage = base64_decode($imageData);
+        $fileTmpPath = $_FILES['imageFile']['tmp_name'];
+        $fileName = basename($_FILES['imageFile']['name']);
+        $destination = $uploadDir . $fileName;
 
-        if ($decodedImage !== false) {
-            $filePath = '../' . $filename;
-
-            // Ensure the uploads directory exists
-            if (!is_dir('../data/img/')) {
-                mkdir('../data/img/', 0777, true);
-            }
-
-            // Save the image to the file
-            if (file_put_contents($filePath, $decodedImage)) {
-                echo json_encode(['success' => true, 'message' => 'Image saved successfully.']);
-            } else {
-                echo json_encode(['success' => false, 'message' => 'Failed to save the image.']);
-            }
+        // Datei verschieben
+        if (move_uploaded_file($fileTmpPath, $destination)) {
+            echo json_encode(['success' => true, 'message' => 'Datei erfolgreich gespeichert.']);
         } else {
-            echo json_encode(['success' => false, 'message' => 'Invalid image data.']);
+            echo json_encode(['success' => false, 'message' => 'Fehler beim Speichern der Datei.']);
         }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Invalid input.']);
+        echo json_encode([
+            'success' => false,
+            'message' => 'Keine gültige Datei empfangen.',
+            'error' => $_FILES['imageFile']['error'] ?? 'Unbekannter Fehler'
+        ]);
     }
 } else {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+    echo json_encode(['success' => false, 'message' => 'Ungültige Anfragemethode.']);
 }
