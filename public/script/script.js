@@ -371,14 +371,14 @@ function points() {
 
 
 function rewardSystem() {
-    fetch('./api/getUser.php')
+    fetch('./api/central.php?endpoint=getUser')
         .then(response => response.json())
         .then(data => {
             if (data.code === 200) {                
                 let classUser = data.array[0].class;
                 console.log(classUser);
 
-                fetch('./api/getClass.php')
+                fetch('./api/central.php?endpoint=getClass')
                     .then(response => response.json())
                     .then(data => {
                         if (data.code === 200) {                
@@ -439,7 +439,7 @@ function getQuestions() {
         rewardSystem();
     }
 
-    fetch("./api/quizapi.php")
+    fetch('./api/central.php?endpoint=quiz')
     .then(response => response.json())
     .then(data => {
         if (data.code === 200) {
@@ -503,7 +503,7 @@ function goToRatePhoto() {
 
     replaceStylesheet("style/styleRatePhotos.css");
 
-    fetch(`./api/getClass.php`)
+    fetch('./api/central.php?endpoint=getClass')
         .then(response => response.json())
         .then((data) => {
             // console.log(data.array);
@@ -664,14 +664,14 @@ function goToPhoto() {
 // const img = document.getElementById('myImage'); // <img id="myImage" src="...">
 // const base64 = imageToBase64(img);
 function savePhoto() {
-    fetch(`./api/getUser.php`)
+    fetch('./api/central.php?endpoint=getUser')
         .then((response) => response.json())
         .then((data) => {
             if (data.code == 200) {
                 const className = data.array[0].class;
 
                 // Jetzt class.json laden
-                fetch('./api/getClass.php')
+                fetch('./api/central.php?endpoint=getClass')
                     .then((res) => res.json())
                     .then((classData) => {
                         let classObj = null;
@@ -702,7 +702,7 @@ function savePhoto() {
                             formData.append('imageName', fileName);
 
                             // Speichern des Bildes im Ordner data/img
-                            fetch('./api/saveImage.php', {
+                            fetch('./api/central.php?endpoint=saveImage', {
                                 method: 'POST',
                                 body: formData
                             })
@@ -717,7 +717,7 @@ function savePhoto() {
                                     classObj.imgArray.push(newImage);
 
                                     // Jetzt schicken wir das aktualisierte Objekt an den Server
-                                    fetch('../api/updateClass.php', {
+                                    fetch('./api/central.php?endpoint=updateClass', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json'
@@ -960,7 +960,7 @@ function profile() {
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
 
     replaceStylesheet("style/styleProfil.css");
-    fetch(`./api/getUser.php`)
+    fetch('./api/central.php?endpoint=getUser')
         .then((response) => response.json())
         .then((data) => {
             if (data.code == 200) {
