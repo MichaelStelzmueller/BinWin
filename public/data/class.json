@@ -1,85 +1,404 @@
-[
-  {"name": "1ahitm", "score": 0, "imgArray": []},
-  {"name": "1bhitm", "score": 0, "imgArray": []},
-  {"name": "1chitm", "score": 0, "imgArray": []},
-  {"name": "1dhitm", "score": 0, "imgArray": []},
-  {"name": "2ahitm", "score": 0, "imgArray": []},
-  {"name": "2bhitm", "score": 0, "imgArray": []},
-  {"name": "2chitm", "score": 0, "imgArray": []},
-  {"name": "2dhitm", "score": 0, "imgArray": []},
-  {"name": "3ahitm", "score": 0, "imgArray": []},
-  {"name": "3bhitm", "score": 0, "imgArray": []},
-  {"name": "3chitm", "score": 0, "imgArray": []},
-  {"name": "3dhitm", "score": 0, "imgArray": []},
-  {"name": "4ahitm", "score": 0, "imgArray": []},
-  {"name": "4bhitm", "score": 0, "imgArray": []},
-  {"name": "4chitm", "score": 0, "imgArray": []},
-  {"name": "4dhitm", "score": 0, "imgArray": []},
-  {"name": "5ahitm", "score": 0, "imgArray": []},
-  {"name": "5bhitm", "score": 0, "imgArray": []},
-  {"name": "5chitm", "score": 0, "imgArray": []},
-  {"name": "5dhitm", "score": 0, "imgArray": []},
-  
-  {"name": "1ahif", "score": 0, "imgArray": []},
-  {"name": "1bhif", "score": 0, "imgArray": []},
-  {"name": "1chif", "score": 0, "imgArray": []},
-  {"name": "1dhif", "score": 0, "imgArray": []},
-  {"name": "2ahif", "score": 0, "imgArray": []},
-  {"name": "2bhif", "score": 0, "imgArray": []},
-  {"name": "2chif", "score": 0, "imgArray": []},
-  {"name": "2dhif", "score": 0, "imgArray": []},
-  {"name": "3ahif", "score": 0, "imgArray": []},
-  {"name": "3bhif", "score": 0, "imgArray": []},
-  {"name": "3chif", "score": 0, "imgArray": []},
-  {"name": "3dhif", "score": 0, "imgArray": []},
-  {"name": "4ahif", "score": 0, "imgArray": []},
-  {"name": "4bhif", "score": 0, "imgArray": []},
-  {"name": "4chif", "score": 0, "imgArray": []},
-  {"name": "4dhif", "score": 0, "imgArray": []},
-  {"name": "5ahif", "score": 0, "imgArray": []},
-  {"name": "5bhif", "score": 0, "imgArray": []},
-  {"name": "5chif", "score": 0, "imgArray": []},
-  {"name": "5dhif", "score": 0, "imgArray": []},
-
-  {"name": "1ahbg", "score": 0, "imgArray": []},
-  {"name": "1bhbg", "score": 0, "imgArray": []},
-  {"name": "1chbg", "score": 0, "imgArray": []},
-  {"name": "1dhbg", "score": 0, "imgArray": []},
-  {"name": "2ahbg", "score": 0, "imgArray": []},
-  {"name": "2bhbg", "score": 0, "imgArray": []},
-  {"name": "2chbg", "score": 0, "imgArray": []},
-  {"name": "2dhbg", "score": 0, "imgArray": []},
-  {"name": "3ahbg", "score": 0, "imgArray": []},
-  {"name": "3bhbg", "score": 0, "imgArray": []},
-  {"name": "3chbg", "score": 0, "imgArray": []},
-  {"name": "3dhbg", "score": 0, "imgArray": []},
-  {"name": "4ahbg", "score": 0, "imgArray": []},
-  {"name": "4bhbg", "score": 0, "imgArray": []},
-  {"name": "4chbg", "score": 0, "imgArray": []},
-  {"name": "4dhbg", "score": 0, "imgArray": []},
-  {"name": "5ahbg", "score": 0, "imgArray": []},
-  {"name": "5bhbg", "score": 0, "imgArray": []},
-  {"name": "5chbg", "score": 0, "imgArray": []},
-  {"name": "5dhbg", "score": 0, "imgArray": []},
-
-  {"name": "1ahel", "score": 0, "imgArray": []},
-  {"name": "1bhel", "score": 0, "imgArray": []},
-  {"name": "1chel", "score": 0, "imgArray": []},
-  {"name": "1dhel", "score": 0, "imgArray": []},
-  {"name": "2ahel", "score": 0, "imgArray": []},
-  {"name": "2bhel", "score": 0, "imgArray": []},
-  {"name": "2chel", "score": 0, "imgArray": []},
-  {"name": "2dhel", "score": 0, "imgArray": []},
-  {"name": "3ahel", "score": 0, "imgArray": []},
-  {"name": "3bhel", "score": 0, "imgArray": []},
-  {"name": "3chel", "score": 0, "imgArray": []},
-  {"name": "3dhel", "score": 0, "imgArray": []},
-  {"name": "4ahel", "score": 0, "imgArray": []},
-  {"name": "4bhel", "score": 0, "imgArray": []},
-  {"name": "4chel", "score": 0, "imgArray": []},
-  {"name": "4dhel", "score": 0, "imgArray": []},
-  {"name": "5ahel", "score": 0, "imgArray": []},
-  {"name": "5bhel", "score": 0, "imgArray": []},
-  {"name": "5chel", "score": 0, "imgArray": []},
-  {"name": "5dhel", "score": 0, "imgArray": []}
-]
+{
+    "array": [
+        {
+            "name": "1ahitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1bhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1chitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1dhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2ahitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2bhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2chitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2dhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3ahitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3bhitm",
+            "score": 1,
+            "imgArray": []
+        },
+        {
+            "name": "3chitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3dhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4ahitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4bhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4chitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4dhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5ahitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5bhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5chitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5dhitm",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1ahif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1bhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1chif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1dhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2ahif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2bhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2chif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2dhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3ahif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3bhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3chif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3dhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4ahif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4bhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4chif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4dhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5ahif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5bhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5chif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5dhif",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1ahbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1bhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1chbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1dhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2ahbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2bhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2chbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2dhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3ahbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3bhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3chbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3dhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4ahbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4bhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4chbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4dhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5ahbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5bhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5chbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5dhbg",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1ahel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1bhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1chel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "1dhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2ahel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2bhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2chel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "2dhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3ahel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3bhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3chel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "3dhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4ahel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4bhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4chel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "4dhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5ahel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5bhel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5chel",
+            "score": 0,
+            "imgArray": []
+        },
+        {
+            "name": "5dhel",
+            "score": 0,
+            "imgArray": []
+        }
+    ]
+}
