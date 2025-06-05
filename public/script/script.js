@@ -8,33 +8,6 @@ gotThePoint = true;
 let allPhotos = []; // Speichert alle Fotos
 let currentPhotoIndex = -1; // Speichert das aktuelle Bild-Index
 
-// Helper function to call API
-async function apiCall(endpoint, method = 'GET', body = null) {
-    const config = { method };
-    if (body) {
-        config.headers = { 'Content-Type': 'application/json' };
-        config.body = JSON.stringify(body);
-    }
-    const res = await fetch(`./api/central.php?endpoint=${endpoint}`, config);
-    return res.json();
-}
-
-// Function for preLog button
-async function preLog() {
-    const username = document.getElementById('usernameForLogin').value;
-    const password = document.getElementById('pwForLogin').value;
-    const res = await apiCall('login', 'POST', { name: username, password });
-
-    if (res.code === 200) {
-        alert('Login successful! Welcome ' + res.user.name);
-        // Hier kannst du redirect oder UI-Wechsel einbauen
-    } else {
-        alert('Login failed: ' + res.message);
-    }
-}
-
-// You can expand this with similar functions for register, getClasses, etc.
-
 
 //********************************
 // Stylesheet-Wechsel
@@ -232,10 +205,10 @@ function ranking() {
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
 
     replaceStylesheet("style/styleRanking.css");
-    document.getElementById("headerGeneral").innerHTML = `<h2>Leaderboard</h2>`	
+    document.getElementById("headerGeneral").innerHTML = `<h2>Leaderboard</h2>`
 
     document.getElementById("content").innerHTML =
-    `<div id="upperRanks">
+        `<div id="upperRanks">
         <div id="rank2">
             <div class="class">2BHITM<br><br>200</div>
         </div>
@@ -398,17 +371,17 @@ function points() {
 
 
 function rewardSystem() {
-    fetch('./api/central.php?endpoint=getUser')
+    fetch('./api/getUser.php')
         .then(response => response.json())
         .then(data => {
-            if (data.code === 200) {                
+            if (data.code === 200) {
                 let classUser = data.array[0].class;
                 console.log(classUser);
 
-                fetch('./api/central.php?endpoint=getClass')
+                fetch('./api/getClass.php')
                     .then(response => response.json())
                     .then(data => {
-                        if (data.code === 200) {                
+                        if (data.code === 200) {
                             for (let i = 0; i < data.array.length; i++) {
                                 if (classUser == data.array[i].name) {
                                     data.array[i].score += 1;
@@ -423,7 +396,7 @@ function rewardSystem() {
                     .catch(error => {
                         console.error("Error fetching user data:", error);
                         alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-                });
+                    });
 
             } else {
                 console.log("Fehler beim Abrufen der Benutzerdaten");
@@ -432,7 +405,7 @@ function rewardSystem() {
         .catch(error => {
             console.error("Error fetching user data:", error);
             alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-    });
+        });
 }
 
 //Button anzeige für die Punkte
@@ -466,38 +439,38 @@ function getQuestions() {
         rewardSystem();
     }
 
-    fetch('./api/central.php?endpoint=quiz')
-    .then(response => response.json())
-    .then(data => {
-        if (data.code === 200) {
-            console.log("Quiz Loaded Successfully:");
-            displayRandomQuestion(data.array);
-        } else {
-            console.error("Error loading quiz:", data.code);
-        }
-    })
-    .catch(error => console.error("Fetch error:", error));
+    fetch("./api/quizapi.php")
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                console.log("Quiz Loaded Successfully:");
+                displayRandomQuestion(data.array);
+            } else {
+                console.error("Error loading quiz:", data.code);
+            }
+        })
+        .catch(error => console.error("Fetch error:", error));
 
     function displayRandomQuestion(questions) {
         const randomIndex = Math.floor(Math.random() * questions.length);
         const q = questions[randomIndex];
-    
+
         let questionHTML = `
                 <h3>${q.question}</h3>
                 <div class="options">
         `;
-    
+
         q.options.forEach(option => {
             questionHTML += `<button class="quiz-option" onclick="checkAnswer(this, '${option}', '${q.answer}')">${option}</button>`;
         });
-    
+
         questionHTML += `
             </div>
         `;
-    
+
         document.getElementById("quizBox").innerHTML = questionHTML;
     }
-    
+
 }
 function checkAnswer(button, selected, correct) {
     const buttons = document.querySelectorAll(".quiz-option");
@@ -530,7 +503,7 @@ function goToRatePhoto() {
 
     replaceStylesheet("style/styleRatePhotos.css");
 
-    fetch('./api/central.php?endpoint=getClass')
+    fetch(`./api/getClass.php`)
         .then(response => response.json())
         .then((data) => {
             // console.log(data.array);
@@ -579,7 +552,7 @@ function activateRatePhotoGetPointsButton() {
     if (button) {
         button.classList = ""; // Leert die Klassenliste
         button.classList.add("ratePhotoGetPoints"); // Fügt die gewünschte Klasse hinzu
-        button.onclick = rewardSystem; 
+        button.onclick = rewardSystem;
     }
 }
 
@@ -644,14 +617,14 @@ function goToPhoto() {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        
+
         // Canvas sichtbar machen
         canvas.style.display = "block";
-        
+
         // Save-Button anzeigen
         saveBtn.style.display = "block";
     });
-    
+
 
     // Save Image
     saveBtn.addEventListener("click", () => {
@@ -663,7 +636,7 @@ function goToPhoto() {
         // link.click();
     });
 }
-// function savePhoto() {    
+// function savePhoto() {
 //     fetch(`./api/getUser.php`)
 //         .then((response) => response.json())
 //         .then((data) => {
@@ -686,25 +659,25 @@ function goToPhoto() {
 //             return null;
 //         });
 // }
-
-// // Beispiel:
-// const img = document.getElementById('myImage'); // <img id="myImage" src="...">
-// const base64 = imageToBase64(img);
 function savePhoto() {
-    fetch('./api/central.php?endpoint=getUser')
+    const image = canvas.toDataURL("image/png");
+
+    fetch(`./api/getUser.php`)
         .then((response) => response.json())
         .then((data) => {
             if (data.code == 200) {
                 const className = data.array[0].class;
 
                 // Jetzt class.json laden
-                fetch('./api/central.php?endpoint=getClass')
+                fetch('./api/getClass.php')
                     .then((res) => res.json())
                     .then((classData) => {
                         let classObj = null;
 
                         for (let i = 0; i < classData.array.length; i++) {
                             if (classData.array[i].name === className) {
+                                console.log(classData.array[i]);
+
                                 classObj = classData.array[i];
                                 break;
                             }
@@ -715,61 +688,37 @@ function savePhoto() {
                             return;
                         }
 
-                        let canvas = document.getElementById('canvas');
-                        console.log(canvas);
-                        
-                        
-                        canvas.toBlob(function(blob) {
-                            const imgIndex = classObj.imgArray.length;
-                            const imgName = `${className}_image_${imgIndex}`;
-                            const fileName = `${imgName}.png`;
+                        const imgIndex = classObj.imgArray.length;
+                        const imgName = `${className}_image_${imgIndex}`;
 
-                            const formData = new FormData();
-                            formData.append('imageFile', blob, fileName);
-                            formData.append('imageName', fileName);
+                        const newImage = {
+                            name: imgName,
+                            url: image
+                        };
 
-                            // Speichern des Bildes im Ordner data/img
-                            fetch('./api/central.php?endpoint=saveImage', {
-                                method: 'POST',
-                                body: formData
-                            })
+                        classObj.imgArray.push(newImage);
+
+                        console.log(classObj);
+
+                        // Jetzt schicken wir das aktualisierte Objekt an den Server
+                        fetch('../api/updateClass.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(classData)
+                        })
                             .then((res) => res.json())
-                            .then((saveResult) => {
-                                if (saveResult.success) {
-                                    const newImage = {
-                                        imageData: null, // base64 nicht mehr nötig
-                                        url: `data/img/${fileName}`
-                                    };
-
-                                    classObj.imgArray.push(newImage);
-
-                                    // Jetzt schicken wir das aktualisierte Objekt an den Server
-                                    fetch('./api/central.php?endpoint=updateClass', {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json'
-                                        },
-                                        body: JSON.stringify(classData)
-                                    })
-                                    .then((res) => res.json())
-                                    .then((result) => {
-                                        if (result.success) {
-                                            console.log("Bildinformationen erfolgreich gespeichert:", newImage);
-                                        } else {
-                                            console.error("Speichern der Bildinformationen fehlgeschlagen");
-                                        }
-                                    })
-                                    .catch((err) => {
-                                        console.error("Fehler beim Speichern der Bildinformationen:", err);
-                                    });
+                            .then((result) => {
+                                if (result.success) {
+                                    console.log("Bild gespeichert:", newImage);
                                 } else {
-                                    console.error("Speichern des Bildes im Ordner fehlgeschlagen");
+                                    console.error("Speichern fehlgeschlagen");
                                 }
                             })
                             .catch((err) => {
-                                console.error("Fehler beim Speichern des Bildes:", err);
+                                console.error("Fehler beim Speichern:", err);
                             });
-                        }, 'image/png');
                     });
             } else {
                 console.log("Etwas ist schief gelaufen");
@@ -780,7 +729,6 @@ function savePhoto() {
             alert("Ein Fehler ist aufgetreten. Bitte später erneut versuchen.");
         });
 }
-
 
 
 // Erklärung
@@ -987,11 +935,11 @@ function profile() {
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
 
     replaceStylesheet("style/styleProfil.css");
-    fetch('./api/central.php?endpoint=getUser')
+    fetch(`./api/getUser.php`)
         .then((response) => response.json())
         .then((data) => {
             if (data.code == 200) {
-                document.getElementById("headerGeneral").innerHTML = `<h2>Profile</h2>`	
+                document.getElementById("headerGeneral").innerHTML = `<h2>Profile</h2>`
                 document.getElementById("content").innerHTML = `
 
                 <div id="profilBox">

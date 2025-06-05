@@ -1,18 +1,28 @@
 <?php
 header('Content-Type: application/json');
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 $host = 'localhost';
 $dbname = 'binWin';
 $username = 'binWin';
 $password = 'binWin'; // dein Passwort hier
 
+// try {
+//     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+//     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// } catch (PDOException $e) {
+//     echo json_encode(['success' => false, 'message' => 'DB connection failed: ' . $e->getMessage()]);
+//     exit;
+// }
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO("mysql:host=localhost;dbname=binWin;charset=utf8mb4", "binWin", "binWin");
+    echo "Verbindung erfolgreich!";
 } catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'DB connection failed: ' . $e->getMessage()]);
-    exit;
+    echo "Verbindungsfehler: " . $e->getMessage();
 }
+
 
 $endpoint = $_GET['endpoint'] ?? '';
 
