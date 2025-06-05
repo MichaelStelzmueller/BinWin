@@ -636,29 +636,6 @@ function goToPhoto() {
         // link.click();
     });
 }
-// function savePhoto() {
-//     fetch(`./api/getUser.php`)
-//         .then((response) => response.json())
-//         .then((data) => {
-
-//             console.log(data);
-
-//             if (data.code == 200) {
-//                 return data.array[0].class;
-//             }
-
-//             else {
-//                 console.log("Etwas ist schief gelaufen");
-
-//             }
-
-//         })
-//         .catch((error) => {
-//             console.error("Error:", error);
-//             alert("An error occurred please try again later!");
-//             return null;
-//         });
-// }
 function savePhoto() {
     const canvas = document.getElementById('canvas');
 
@@ -698,6 +675,7 @@ function savePhoto() {
 
 
 // Erklärung
+
 function goToExplanation() {
     replaceStylesheet("style/styleFAQ.css")
 
