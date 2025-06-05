@@ -660,74 +660,40 @@ function goToPhoto() {
 //         });
 // }
 function savePhoto() {
-    const image = canvas.toDataURL("image/png");
+    const canvas = document.getElementById('canvas');
 
-    fetch(`./api/getUser.php`)
-        .then((response) => response.json())
+    // Aus Canvas PNG erzeugen
+    canvas.toBlob(function(blob) {
+        const formData = new FormData();
+        const filename = 'image_' + Date.now() + '.png';
+        formData.append('image', blob, filename);
+
+        fetch('./api/saveImage.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then((res) => res.json())
         .then((data) => {
-            if (data.code == 200) {
-                const className = data.array[0].class;
+            if (data.success) {
+                console.log("Bild erfolgreich gespeichert!");
+                console.log("Bildpfad:", data.url);
 
-                // Jetzt class.json laden
-                fetch('./api/getClass.php')
-                    .then((res) => res.json())
-                    .then((classData) => {
-                        let classObj = null;
-
-                        for (let i = 0; i < classData.array.length; i++) {
-                            if (classData.array[i].name === className) {
-                                console.log(classData.array[i]);
-
-                                classObj = classData.array[i];
-                                break;
-                            }
-                        }
-
-                        if (classObj == null) {
-                            console.error("Klasse nicht gefunden");
-                            return;
-                        }
-
-                        const imgIndex = classObj.imgArray.length;
-                        const imgName = `${className}_image_${imgIndex}`;
-
-                        const newImage = {
-                            name: imgName,
-                            url: image
-                        };
-
-                        classObj.imgArray.push(newImage);
-
-                        console.log(classObj);
-
-                        // Jetzt schicken wir das aktualisierte Objekt an den Server
-                        fetch('../api/updateClass.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(classData)
-                        })
-                            .then((res) => res.json())
-                            .then((result) => {
-                                if (result.success) {
-                                    console.log("Bild gespeichert:", newImage);
-                                } else {
-                                    console.error("Speichern fehlgeschlagen");
-                                }
-                            })
-                            .catch((err) => {
-                                console.error("Fehler beim Speichern:", err);
-                            });
-                    });
+                // Optional: Bild anzeigen
+                const resultBox = document.getElementById('uploadResult');
+                if (resultBox) {
+                    resultBox.innerHTML = `<p>Bild erfolgreich gespeichert:</p>
+                        <img src="${data.url}" width="200">`;
+                }
             } else {
-                console.log("Etwas ist schief gelaufen");
+                console.error("Fehler beim Hochladen:", data.error);
+                alert("Fehler beim Speichern: " + data.error);
             }
         })
-        .catch((error) => {
-            console.error("Error:", error);
-            alert("Ein Fehler ist aufgetreten. Bitte später erneut versuchen.");
+        .catch((err) => {
+            console.error("Fehler bei der Anfrage:", err);
+            alert("Upload fehlgeschlagen.");
         });
+    }, 'image/png');
 }
 
 

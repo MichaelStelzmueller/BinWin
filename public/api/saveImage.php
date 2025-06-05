@@ -1,39 +1,49 @@
 <?php
-// saveImage.php
+// Fehler anzeigen (für Entwicklung, später deaktivieren)
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-// CORS-Header für lokale Entwicklung
+// CORS (optional, für lokale Entwicklung mit JS)
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-// Nur POST-Anfragen akzeptieren
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Prüfen, ob eine Datei hochgeladen wurde
-    if (isset($_FILES['imageFile']) && $_FILES['imageFile']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = '../data/img/';
+// Zielordner für Uploads (relativ zu diesem Skript)
+$targetDir = realpath(__DIR__ . '/../data/img') . '/';
 
-        // Sicherstellen, dass der Zielordner existiert
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
+// Ordner erstellen, falls er nicht existiert
+if (!file_exists($targetDir)) {
+    mkdir($targetDir, 0777, true);
+}
 
-        $fileTmpPath = $_FILES['imageFile']['tmp_name'];
-        $fileName = basename($_FILES['imageFile']['name']);
-        $destination = $uploadDir . $fileName;
+// Nur POST mit Datei akzeptieren
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
+    $file = $_FILES['image'];
+    $filename = basename($file['name']);
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
-        // Datei verschieben
-        if (move_uploaded_file($fileTmpPath, $destination)) {
-            echo json_encode(['success' => true, 'message' => 'Datei erfolgreich gespeichert.']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Fehler beim Speichern der Datei.']);
-        }
-    } else {
+    // (Optional) Nur bestimmte Bildtypen erlauben
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!in_array($file['type'], $allowedTypes)) {
+        echo json_encode(['success' => false, 'error' => 'Nur JPG, PNG, GIF, WEBP erlaubt']);
+        exit;
+    }
+
+    // Zielpfad mit einzigartigem Namen
+    $uniqueName = uniqid('img_', true) . '.' . $extension;
+    $targetFile = $targetDir . $uniqueName;
+
+    // Datei speichern
+    if (move_uploaded_file($file['tmp_name'], $targetFile)) {
+        // Rückgabe: Pfad relativ zum Projekt
         echo json_encode([
-            'success' => false,
-            'message' => 'Keine gültige Datei empfangen.',
-            'error' => $_FILES['imageFile']['error'] ?? 'Unbekannter Fehler'
+            'success' => true,
+            'filename' => $uniqueName,
+            'url' => 'data/img/' . $uniqueName
         ]);
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Fehler beim Speichern der Datei.']);
     }
 } else {
-    echo json_encode(['success' => false, 'message' => 'Ungültige Anfragemethode.']);
+    echo json_encode(['success' => false, 'error' => 'Keine gültige Bilddatei empfangen.']);
 }
