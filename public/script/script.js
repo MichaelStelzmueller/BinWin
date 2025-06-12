@@ -951,8 +951,11 @@ function profile() {
         .then(response => response.json())
         .then(userData => {
             if (userData.code === 200) {
-                const userClass = userData.array[0].class;
-                const userName = userData.array[0].name;
+                const user = userData.array[0];
+                const userClass = user.class;
+                const userName = user.name;
+                const profileIcon = user.profileIcon || "default.svg";
+                const background = user.background || "default.png";
 
                 fetch('./api/getClass.php')
                     .then(response => response.json())
@@ -979,10 +982,9 @@ function profile() {
                             if (quizzes >= 1) achievements++;
                             if (quizzes >= 10) achievements++;
 
-                            // XP & Levelsystem
+                            // Levelsystem
                             const xp = score + (photos * 3) + (ratings * 2) + (quizzes * 2);
                             const levelThresholds = [0, 20, 50, 100, 200, 400, 700, 1000, 1500, 2100, 3000];
-
                             function calculateLevel(xp) {
                                 for (let i = levelThresholds.length - 1; i >= 0; i--) {
                                     if (xp >= levelThresholds[i]) {
@@ -993,7 +995,6 @@ function profile() {
                                 }
                                 return { level: 1, xp: xp, nextXp: levelThresholds[1], progress: 0 };
                             }
-
                             const levelData = calculateLevel(xp);
 
                             // HTML Rendering
@@ -1001,8 +1002,12 @@ function profile() {
                             document.getElementById("content").innerHTML = `
                                 <div id="profilBox">
                                     <div id="profilIcon">
-                                        <img src="./icons/profile.svg">
+                                        <img src="./icons/${profileIcon}">
+                                        <div class="editIcon" onclick="openCustomization(${levelData.level})">
+                                            ✏️
+                                        </div>
                                     </div>
+
                                     <div id="profiltxt">
                                         <div class="profiltxtC"><strong>Name: </strong>${userName}</div>
                                         <div class="profiltxtC"><strong>Class: </strong>${userClass}</div>
@@ -1045,6 +1050,7 @@ function profile() {
 }
 
 
+
 function rankSystem() {
 }
 function statisticSystem() {
@@ -1053,3 +1059,87 @@ function statisticSystem() {
 function profileSystem() {
 }
 
+function openCustomization(currentLevel) {
+    let popup = document.createElement('div');
+    popup.id = 'popupMenu';
+popup.innerHTML = `
+    <h3>Customize Profile</h3>
+    <div class="icons-row">
+        ${availableIcons(currentLevel)}
+    </div>
+    <div class="popupFooter">
+        <button onclick="closePopup()">Close</button>
+    </div>
+`;
+
+    document.body.appendChild(popup);
+}
+
+
+function availableIcons(level) {
+    let icons = [
+        { requiredLevel: 1, icon: "profile.svg" },
+        { requiredLevel: 2, icon: "profile.svg" },
+        { requiredLevel: 4, icon: "profile.svg" },
+        { requiredLevel: 8, icon: "profile.svg" },
+        { requiredLevel: 12, icon: "profile.svg" },
+        { requiredLevel: 20, icon: "profile.svg" }
+    ];
+
+    let html = "";
+    icons.forEach(item => {
+        if (level >= item.requiredLevel) {
+            html += `
+                <div class="icon-wrapper">
+                    <img src="./icons/${item.icon}" onclick="selectIcon('${item.icon}')">
+                </div>`;
+        } else {
+            html += `
+                <div class="icon-wrapper locked-wrapper">
+                    <img src="./icons/${item.icon}">
+                    <div class="lock-overlay">🔒</div>
+                </div>`;
+        }
+    });
+
+    return html;
+}
+
+
+
+
+function selectIcon(iconName) {
+    console.log("Icon selected:", iconName);
+
+    // Schritt 1: User holen
+    fetch('./api/getUser.php')
+        .then(response => response.json())
+        .then(userData => {
+            if (userData.code === 200) {
+                const user = userData.array[0];
+                user.profileIcon = iconName; // Neues Icon setzen
+
+                // Schritt 2: API zum Aktualisieren rufen
+                fetch('./api/userapi.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(user)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.code === 200) {
+                        console.log("Icon updated successfully");
+                        closePopup();
+                        profile();  // Profil neu laden um neue Grafik zu sehen
+                    } else {
+                        alert("Fehler beim Speichern des Icons");
+                    }
+                });
+            }
+        });
+}
+
+
+function closePopup() {
+    document.getElementById('popupMenu').remove();
+}

@@ -4,7 +4,9 @@
         "name": "michi",
         "password": "admin",
         "department": "Medientechnik",
-        "class": "3bhitm"
+        "class": "3bhitm",
+        "profileIcon": "profile.svg",
+        "background": "default.jpg"
     },
     {
         "id": "67d3f3382621c",
