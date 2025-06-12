@@ -1,11 +1,12 @@
 #profilBox {
-    left: 0;
     margin-top: 10vh;
     border: solid 3.5px black;
     border-radius: 1vh;
     padding: 2%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #profilIcon {

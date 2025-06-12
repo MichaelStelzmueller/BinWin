@@ -369,61 +369,32 @@ function points() {
     <div id="getPointsButton" onclick="goToButtons()">Get Points</div></div>`
 }
 
+
 function rewardSystem() {
     fetch('./api/getUser.php')
         .then(response => response.json())
-        .then(userData => {
-            if (userData.code === 200) {
-                let classUser = userData.array[0].class;
+        .then(data => {
+            if (data.code === 200) {
+                let classUser = data.array[0].class;
+                console.log(classUser);
 
                 fetch('./api/getClass.php')
                     .then(response => response.json())
-                    .then(classData => {
-                        if (classData.code === 200) {
-                            let classArray = classData.array;
-                            let updated = false;
-
-                            // Score erhöhen
-                            for (let i = 0; i < classArray.length; i++) {
-                                if (classUser === classArray[i].name) {
-                                    classArray[i].score += 1;
-                                    updated = true;
-                                    break;
+                    .then(data => {
+                        if (data.code === 200) {
+                            for (let i = 0; i < data.array.length; i++) {
+                                if (classUser == data.array[i].name) {
+                                    data.array[i].score += 1;
                                 }
                             }
-
-                            if (updated) {
-                                // Änderungen speichern
-                                fetch('./api/updateClass.php', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({ array: classArray })
-                                })
-                                .then(response => response.json())
-                                .then(saveResult => {
-                                    if (saveResult.code === 200) {
-                                        profile();
-                                        alert("1 point added to class " + classUser);
-                                    } else {
-                                        alert("Fehler beim Speichern der Punktzahl.");
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error("Fehler beim Speichern:", error);
-                                    alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-                                });
-                            } else {
-                                alert("Klasse nicht gefunden.");
-                            }
-
+                            profile();
+                            alert("1 point added to class" + classUser);
                         } else {
                             console.log("Fehler beim Abrufen der Klassendaten");
                         }
                     })
                     .catch(error => {
-                        console.error("Fehler beim Abrufen der Klassendaten:", error);
+                        console.error("Error fetching user data:", error);
                         alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
                     });
 
@@ -432,11 +403,10 @@ function rewardSystem() {
             }
         })
         .catch(error => {
-            console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+            console.error("Error fetching user data:", error);
             alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
         });
 }
-
 
 //Button anzeige für die Punkte
 function goToButtons() {
@@ -533,10 +503,12 @@ function goToRatePhoto() {
 
     replaceStylesheet("style/styleRatePhotos.css");
 
-    fetch(`./api/getImages.php`)  // neue API für Bilderliste
+    fetch(`./api/getClass.php`)
         .then(response => response.json())
         .then((data) => {
-            if (data.array.length > 0) {
+            // console.log(data.array);
+
+            if (data.code == 200 && data.array.length > 0) {
                 allPhotos = data.array;
                 showRandomPhoto();
             } else {
@@ -548,24 +520,24 @@ function goToRatePhoto() {
             alert("An error occurred, please try again later!");
         });
 }
-
 function showRandomPhoto() {
     if (allPhotos.length === 0) return;
 
+    // Wähle zufälligen Index, aber stelle sicher, dass es nicht das gleiche Bild wie vorher ist
     let randomIndex;
     do {
         randomIndex = Math.floor(Math.random() * allPhotos.length);
-    } while (randomIndex === currentPhotoIndex && allPhotos.length > 1);
+    } while (randomIndex === currentPhotoIndex);
 
     currentPhotoIndex = randomIndex;
-    const photoPath = allPhotos[currentPhotoIndex]; // ist jetzt ein String
+    const photo = allPhotos[currentPhotoIndex];
 
     document.getElementById("content").innerHTML = `
         <div id="photoBox">
             <div class="photo">
-                <img src="${photoPath}" alt="photo">
-                <div onclick="activateRatePhotoGetPointsButton()" class="rating" data-photo-path="${photoPath}">
-                    ${generateStars(photoPath)}
+                <img src="${photo.source}" alt="photo">
+                <div onclick="activateRatePhotoGetPointsButton()" class="rating" data-photo-id="${photo.id}">
+                    ${generateStars(photo.id)}
                 </div>
                 <button class="ratePhotoGetPointsInactive">Get points</button>
             </div>
@@ -574,7 +546,6 @@ function showRandomPhoto() {
 
     setupStarRating(); // Event-Listener für Sterne hinzufügen
 }
-
 
 function activateRatePhotoGetPointsButton() {
     let button = document.querySelector(".ratePhotoGetPointsInactive");
@@ -665,6 +636,29 @@ function goToPhoto() {
         // link.click();
     });
 }
+// function savePhoto() {
+//     fetch(`./api/getUser.php`)
+//         .then((response) => response.json())
+//         .then((data) => {
+
+//             console.log(data);
+
+//             if (data.code == 200) {
+//                 return data.array[0].class;
+//             }
+
+//             else {
+//                 console.log("Etwas ist schief gelaufen");
+
+//             }
+
+//         })
+//         .catch((error) => {
+//             console.error("Error:", error);
+//             alert("An error occurred please try again later!");
+//             return null;
+//         });
+// }
 function savePhoto() {
     const canvas = document.getElementById('canvas');
 
@@ -704,7 +698,6 @@ function savePhoto() {
 
 
 // Erklärung
-
 function goToExplanation() {
     replaceStylesheet("style/styleFAQ.css")
 
