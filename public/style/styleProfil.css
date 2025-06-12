@@ -1,88 +1,81 @@
+#content{
+    position: absolute;
+    top: 90px;
+    left: 20px;
+}
+
 #profilBox {
-    margin-top: 10vh;
-    border: solid 3.5px black;
-    border-radius: 1vh;
-    padding: 2%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    width: 90%;
+    margin: 10px auto;
+    gap: 16px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-#profilIcon {
-    text-align: center;
-}
-
 #profilIcon img {
-    width: 20vw;
+    width: 64px;
+    height: 64px;
 }
-
-#profiltxt{
+#profiltxt {
     display: flex;
-    flex-direction:column;
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
+    gap: 6px;
 }
-.profiltxtC{
-    padding: 2%;
-    text-align: center;
+
+.profiltxtC {
+    font-size: 16px;
+    color: #222;
 }
-hr{
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px auto;
+    width: 85%;
+}
+
+#overview {
+    display: flex;
+    justify-content: space-around;
     width: 100%;
-    color: black;
-    position: absolute;
-    top: 50vw;
-    left: -0.5vw;
-}
-#overview{
-    width: 80vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    position: absolute;
-    top: 70vw;
-    left: 10vw;
-    text-align: center;
-    justify-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 40px;
 }
 
-#overview div{
-    scale: 1.4;
-}
-.icons {
-    flex: 1;
-    text-align: center;
-    max-width: 5vw;
-    max-height: 5vh;
-    object-fit: contain;
-    font-size: 3.5vh;
-    transform: scale(1.5);
-}
-.iconsProfil{
-    flex: 1;
-    text-align: center;
-    max-width: 5vw;
-    max-height: 5vh;
-    object-fit: contain;
-    font-size: 3.5vh;
-    scale: 2;
+.overviewBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
-.icon-text{
-    font-size: 1.3rem;
-    text-align: center;
+.overviewBox:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
-#pointIcon {
-    font-size: 15vh;
+.overviewBox img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 6px;
 }
-.overviewBox{
-    display: grid;
-    grid-row: 1fr 1fr 1fr;
-    gap: 5vw;
-    width: 20vw;
-    height: auto;
-    text-align: center;
-}
-.overviewBox img{
-    text-align: center;
+
+.overviewBox div:last-child {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
 }

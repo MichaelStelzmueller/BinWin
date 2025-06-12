@@ -924,7 +924,7 @@ function profile() {
                             <div>(#1)</div>
                         </div>
                         <div class="overviewBox">
-                            <div><img onclick="changeSideTo('points')" class="icons" src="./icons/recycle.svg"></div>
+                            <div><img onclick="changeSideTo('points')" id="pointIconP" class="icons" src="./icons/recycle.svg"></div>
                             <div>(x10)</div>
                         </div>
                         <div class="overviewBox">
