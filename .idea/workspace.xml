@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a0648b1-9f78-4041-89de-8d62a83b0521" name="Changes" comment="newScript.js">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/script/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/style/styleProfil.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style/styleProfil.css" afterDir="false" />
-    </list>
+    <list default="true" id="6a0648b1-9f78-4041-89de-8d62a83b0521" name="Changes" comment="newScript.js" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="carla" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +57,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "carla",
+    "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/carladimmler/Library/CloudStorage/OneDrive-HTBLALeonding/_HTL Leonding/_2425_3BHITM/MEDTWT/docker_php_templatee/htdocs/BinWin",
     "node.js.detected.package.eslint": "true",
@@ -76,8 +72,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PS-251.25410.148" />
-        <option value="bundled-php-predefined-a98d8de5180a-c5828cf854d9-com.jetbrains.php.sharedIndexes-PS-251.25410.148" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-PS-251.26094.133" />
+        <option value="bundled-php-predefined-a98d8de5180a-c5828cf854d9-com.jetbrains.php.sharedIndexes-PS-251.26094.133" />
       </set>
     </attachedChunks>
   </component>
@@ -91,6 +87,7 @@
       <workItem from="1745578921015" duration="1376000" />
       <workItem from="1745860805508" duration="43000" />
       <workItem from="1749104368450" duration="872000" />
+      <workItem from="1749709247714" duration="445000" />
     </task>
     <task id="LOCAL-00001" summary="pushen">
       <option name="closed" value="true" />
@@ -100,7 +97,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745579287457</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="newScript.js">
+      <option name="closed" value="true" />
+      <created>1749709298544</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749709298544</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

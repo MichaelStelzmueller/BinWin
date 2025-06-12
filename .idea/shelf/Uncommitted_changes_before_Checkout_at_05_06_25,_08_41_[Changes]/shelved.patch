@@ -1,0 +1,83 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"6a0648b1-9f78-4041-89de-8d62a83b0521\" name=\"Changes\" comment=\"newScript.js\">\n      <change afterPath=\"$PROJECT_DIR$/public/script/newScript.js\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\">\n    <execution />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;it220214&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/MichaelStelzmueller/BinWin.git&quot;,\n    &quot;accountId&quot;: &quot;52d901b3-1623-49af-aca3-8367d7e5f64c&quot;\n  }\n}</component>\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"/opt/homebrew/Cellar/php/8.4.2/bin/php\" />\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2wDb6xqqi7WW6pRBbSxRCt0uBXa\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"git-widget-placeholder\": \"main\",\n    \"junie.onboarding.icon.badge.shown\": \"true\",\n    \"last_opened_file_path\": \"/Users/carladimmler/Library/CloudStorage/OneDrive-HTBLALeonding/_HTL Leonding/_2425_3BHITM/MEDTWT/docker_php_templatee/htdocs/BinWin\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"settings.editor.selected.configurable\": \"reference.settingsdialog.project.grazie\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PS-251.25410.148\" />\n        <option value=\"bundled-php-predefined-a98d8de5180a-c5828cf854d9-com.jetbrains.php.sharedIndexes-PS-251.25410.148\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"6a0648b1-9f78-4041-89de-8d62a83b0521\" name=\"Changes\" comment=\"\" />\n      <created>1745578919905</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1745578919905</updated>\n      <workItem from=\"1745578921015\" duration=\"1376000\" />\n      <workItem from=\"1745860805508\" duration=\"43000\" />\n      <workItem from=\"1749104368450\" duration=\"872000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"pushen\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745579287457</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745579287457</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"RECENT_FILTERS\">\n      <map>\n        <entry key=\"User\">\n          <value>\n            <list>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"*\" />\n                </option>\n              </RecentGroup>\n            </list>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"pushen\" />\n    <MESSAGE value=\"newScript.js\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"newScript.js\" />\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 08d640ddff3490b0f69b4366ad7b008267376a01)
++++ b/.idea/workspace.xml	(date 1749105630177)
+@@ -4,9 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="6a0648b1-9f78-4041-89de-8d62a83b0521" name="Changes" comment="newScript.js">
+-      <change afterPath="$PROJECT_DIR$/public/script/newScript.js" afterDir="false" />
+-    </list>
++    <list default="true" id="6a0648b1-9f78-4041-89de-8d62a83b0521" name="Changes" comment="php dateien wieder herstellen" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -23,6 +21,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+@@ -52,7 +55,7 @@
+     "ModuleVcsDetector.initialDetectionPerformed": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "main",
++    "git-widget-placeholder": "carla",
+     "junie.onboarding.icon.badge.shown": "true",
+     "last_opened_file_path": "/Users/carladimmler/Library/CloudStorage/OneDrive-HTBLALeonding/_HTL Leonding/_2425_3BHITM/MEDTWT/docker_php_templatee/htdocs/BinWin",
+     "node.js.detected.package.eslint": "true",
+@@ -82,6 +85,7 @@
+       <workItem from="1745578921015" duration="1376000" />
+       <workItem from="1745860805508" duration="43000" />
+       <workItem from="1749104368450" duration="872000" />
++      <workItem from="1749105244622" duration="385000" />
+     </task>
+     <task id="LOCAL-00001" summary="pushen">
+       <option name="closed" value="true" />
+@@ -91,7 +95,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1745579287457</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="newScript.js">
++      <option name="closed" value="true" />
++      <created>1749105297562</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1749105297562</updated>
++    </task>
++    <task id="LOCAL-00003" summary="php dateien wieder herstellen">
++      <option name="closed" value="true" />
++      <created>1749105621018</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1749105621018</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -132,6 +152,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="pushen" />
+     <MESSAGE value="newScript.js" />
+-    <option name="LAST_COMMIT_MESSAGE" value="newScript.js" />
++    <MESSAGE value="php dateien wieder herstellen" />
++    <option name="LAST_COMMIT_MESSAGE" value="php dateien wieder herstellen" />
+   </component>
+ </project>
+\ No newline at end of file
