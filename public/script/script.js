@@ -34,7 +34,7 @@ function addStylesheet(href) {
 // Login und Registrierung
 //********************************
 
-preLog();
+//preLog();
 function preLog() {
     const username = document.getElementById("usernameForLogin").value;
     const pw = document.getElementById("pwForLogin").value;
@@ -77,35 +77,28 @@ function LogIn(uname, pass) {
     let fetch_config = {
         method: "POST",
         body: formData,
-        headers: {
-            "Accept": "aplication/json"
-        }
+        headers: { "Accept": "application/json" }
     }
 
     fetch(fetch_url, fetch_config)
         .then((response) => response.json())
         .then((data) => {
-
-            // console.log(data);
-
             if (data.code == 200) {
+                localStorage.setItem("username", uname); // <-- HIER username speichern!
                 validLogIn();
-            }
-
-            else {
+            } else {
                 if (counter > 0) {
                     alert(data.msg);
                 }
                 counter++
-
             }
-
         })
         .catch((error) => {
             console.error("Error:", error);
             alert("An error occurred please try again later!");
         });
 }
+
 
 function addUser() {
     const name = document.getElementById("name").value;
@@ -117,7 +110,14 @@ function addUser() {
         fetch('./api/userapi.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, password, department, class: classValue }),
+            body: JSON.stringify({ 
+                name, 
+                password, 
+                department, 
+                class: classValue,
+                profileIcon: "default.svg",
+                background: "default.jpg"
+            }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -135,13 +135,11 @@ function addUser() {
                 }
             })
             .catch(error => console.error("Fetch error:", error));
-
-
-
     } else {
         alert("Please fill in all fields!");
     }
 }
+
 
 function validLogIn() {
     document.body.style = `background:white;`
@@ -162,6 +160,7 @@ function validLogIn() {
 
     changeSideTo('profile');
 }
+
 
 document.addEventListener('keyup', function (event) {
     if (event.key == "Enter") {
@@ -1079,11 +1078,11 @@ popup.innerHTML = `
 function availableIcons(level) {
     let icons = [
         { requiredLevel: 1, icon: "profile.svg" },
-        { requiredLevel: 2, icon: "profile.svg" },
-        { requiredLevel: 4, icon: "profile.svg" },
-        { requiredLevel: 8, icon: "profile.svg" },
-        { requiredLevel: 12, icon: "profile.svg" },
-        { requiredLevel: 20, icon: "profile.svg" }
+        { requiredLevel: 2, icon: "profile2.svg" },
+        { requiredLevel: 4, icon: "profile3.svg" },
+        { requiredLevel: 8, icon: "profile4.svg" },
+        { requiredLevel: 12, icon: "profile5.svg" },
+        { requiredLevel: 20, icon: "profile6.svg" }
     ];
 
     let html = "";
@@ -1109,28 +1108,40 @@ function availableIcons(level) {
 
 
 function selectIcon(iconName) {
-    console.log("Icon selected:", iconName);
+    const username = localStorage.getItem("username");
+    if (!username) {
+        alert("Kein Benutzer eingeloggt!");
+        return;
+    }
 
-    // Schritt 1: User holen
     fetch('./api/getUser.php')
         .then(response => response.json())
         .then(userData => {
             if (userData.code === 200) {
-                const user = userData.array[0];
-                user.profileIcon = iconName; // Neues Icon setzen
+                let allUsers = userData.array;
 
-                // Schritt 2: API zum Aktualisieren rufen
+                // Den richtigen User im Array finden
+                const userIndex = allUsers.findIndex(u => u.name === username);
+                if (userIndex === -1) {
+                    alert("User nicht gefunden!");
+                    return;
+                }
+
+                // Update des ProfileIcons
+                allUsers[userIndex].profileIcon = iconName;
+
+                // Jetzt NUR den geänderten User an den Server schicken
                 fetch('./api/userapi.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(user)
+                    body: JSON.stringify(allUsers[userIndex])
                 })
                 .then(response => response.json())
                 .then(result => {
                     if (result.code === 200) {
                         console.log("Icon updated successfully");
                         closePopup();
-                        profile();  // Profil neu laden um neue Grafik zu sehen
+                        profile();
                     } else {
                         alert("Fehler beim Speichern des Icons");
                     }
@@ -1138,6 +1149,8 @@ function selectIcon(iconName) {
             }
         });
 }
+
+
 
 
 function closePopup() {

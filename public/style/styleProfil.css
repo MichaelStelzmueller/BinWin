@@ -171,19 +171,21 @@ hr {
     transition: width 1s ease;
 }
 #popupMenu {
-    position: fixed;
+    position: fixed; /* fixed, nicht absolute! */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 100;
-    width: 80vw;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    width: 90vw;
     max-width: 400px;
-    overflow-y: auto; /* NEU: kein Überlauf mehr */
+    max-height: 90vh;
+    overflow-y: auto;
 }
+
 
 #popupMenu .icons {
     display: flex;
