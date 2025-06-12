@@ -254,103 +254,99 @@ function statistics() {
     replaceStylesheet("style/styleStatistics.css");
     document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`;
     document.getElementById("content").innerHTML = `
-    <div style="width:90%;max-width:600px;margin:auto;">
-        <canvas id="activityDistribution"></canvas>
-        <canvas id="activityTimeline" style="margin-top:10px;"></canvas>
-        <canvas id="userActivity" style="margin-top:30px;"></canvas>
-    </div>`;
+        <div style="width:90%;max-width:600px;margin:auto;">
+            <canvas id="activityDistribution"></canvas>
+            <canvas id="activityPerClass" style="margin-top:20px;"></canvas>
+            <canvas id="topScores" style="margin-top:20px;"></canvas>
+        </div>
+    `;
 
-    // 2. Beliebteste Aktivität (Kreisdiagramm)
-    new Chart(document.getElementById('activityDistribution'), {
-        type: 'pie',
-        data: {
-            labels: ['Quiz gelöst', 'Fotos hochgeladen', 'Fotos bewertet'],
-            datasets: [{
-                data: [120, 80, 50],
-                backgroundColor: ['#10b310', '#e0ffe0', 'rgb(0, 105, 0)']
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Beliebteste Aktivitäten'
-                }
-            }
-        }
-    });
+    fetch('./api/getClass.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                let classes = data.array;
 
-    // 3. Teilnahmen im Zeitverlauf (Liniendiagramm)
-    new Chart(document.getElementById('activityTimeline'), {
-        type: 'line',
-        data: {
-            labels: ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'],
-            datasets: [
-                {
-                    label: 'Quiz',
-                    data: [12, 15, 13, 17, 20],
-                    borderColor: '#10b310',
-                    backgroundColor: 'rgba(16, 179, 16, 0.3)',
-                    tension: 0.3,
-                    fill: true
-                },
-                {
-                    label: 'Fotos hochgeladen',
-                    data: [7, 9, 5, 11, 14],
-                    borderColor: 'rgb(130, 255, 130)',
-                    backgroundColor: 'rgba(130, 255, 130, 0.3)',
-                    tension: 0.3,
-                    fill: true
-                },
-                {
-                    label: 'Fotos bewertet',
-                    data: [3, 4, 2, 6, 8],
-                    borderColor: 'rgb(0, 105, 0)',
-                    backgroundColor: 'rgba(0, 105, 0, 0.3)',
-                    tension: 0.3,
-                    fill: true
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Teilnahmen im Wochenverlauf'
-                }
-            },
-            scales: {
-                y: { beginAtZero: true }
-            }
-        }
-    });
+                let totalPhotos = classes.reduce((sum, c) => sum + (c.photos || 0), 0);
+                let totalRatings = classes.reduce((sum, c) => sum + (c.ratings || 0), 0);
+                let totalQuizzes = classes.reduce((sum, c) => sum + (c.quizzes || 0), 0);
 
-    // 4. Benutzeraktivität (Balkendiagramm)
-    new Chart(document.getElementById('userActivity'), {
-        type: 'bar',
-        data: {
-            labels: ['1BHITM', '2BHITM', '3BHITM', '4BHITM'],
-            datasets: [{
-                label: 'Durchschnittliche Aktionen pro Schüler',
-                data: [15, 9, 12, 7],
-                backgroundColor: ['#10b310', '#10b310', '#10b310', '#10b310']
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Benutzeraktivität der Klassen'
-                }
-            },
-            scales: {
-                y: { beginAtZero: true }
+                // 1️⃣ Pie Chart - Aktivitäten insgesamt
+                new Chart(document.getElementById('activityDistribution'), {
+                    type: 'pie',
+                    data: {
+                        labels: ['Fotos hochgeladen', 'Fotos bewertet', 'Quiz gelöst'],
+                        datasets: [{
+                            data: [totalPhotos, totalRatings, totalQuizzes],
+                            backgroundColor: ['#10b310', '#e0ffe0', 'rgb(0, 105, 0)']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: { display: true, text: 'Aktivitäten insgesamt' }
+                        }
+                    }
+                });
+
+                // 2️⃣ Aktivitäten pro Klasse
+                let classLabels = classes.map(c => c.name.toUpperCase());
+                let classPhotos = classes.map(c => c.photos || 0);
+                let classRatings = classes.map(c => c.ratings || 0);
+                let classQuizzes = classes.map(c => c.quizzes || 0);
+
+                new Chart(document.getElementById('activityPerClass'), {
+                    type: 'bar',
+                    data: {
+                        labels: classLabels,
+                        datasets: [
+                            { label: 'Fotos', data: classPhotos, backgroundColor: '#10b310' },
+                            { label: 'Bewertungen', data: classRatings, backgroundColor: '#e0ffe0' },
+                            { label: 'Quiz', data: classQuizzes, backgroundColor: 'rgb(0, 105, 0)' }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: { display: true, text: 'Aktivitäten pro Klasse' }
+                        },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+
+                // 3️⃣ Top 5 Klassen nach Punkten (score)
+                let topClasses = classes
+                    .map(c => ({ name: c.name.toUpperCase(), score: c.score || 0 }))
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 5);
+
+                new Chart(document.getElementById('topScores'), {
+                    type: 'bar',
+                    data: {
+                        labels: topClasses.map(c => c.name),
+                        datasets: [{
+                            label: 'Punkte (Score)',
+                            data: topClasses.map(c => c.score),
+                            backgroundColor: '#ffcc00'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: { display: true, text: 'Top 5 Klassen nach Punkten' }
+                        },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+
+            } else {
+                alert("Fehler beim Laden der Statistikdaten");
             }
-        }
-    });
+        })
+        .catch(error => {
+            console.error("Error loading statistics:", error);
+            alert("Ein Fehler ist aufgetreten.");
+        });
 }
 
 
@@ -376,41 +372,49 @@ function points() {
 }
 
 
-function rewardSystem() {
+function rewardSystem(activityType) {
     fetch('./api/getUser.php')
         .then(response => response.json())
-        .then(data => {
-            if (data.code === 200) {
-                let classUser = data.array[0].class;
-                console.log(classUser);
+        .then(userData => {
+            if (userData.code === 200) {
+                let classUser = userData.array[0].class;
 
                 fetch('./api/getClass.php')
                     .then(response => response.json())
-                    .then(data => {
-                        if (data.code === 200) {
-                            for (let i = 0; i < data.array.length; i++) {
-                                if (classUser == data.array[i].name) {
-                                    data.array[i].score += 1;
+                    .then(classData => {
+                        if (classData.code === 200) {
+                            for (let i = 0; i < classData.array.length; i++) {
+                                if (classUser === classData.array[i].name) {
+                                    classData.array[i].score += 1;
+
+                                    if (activityType === "photo") classData.array[i].photos += 1;
+                                    if (activityType === "rating") classData.array[i].ratings += 1;
+                                    if (activityType === "quiz") classData.array[i].quizzes += 1;
                                 }
                             }
-                            profile();
-                            alert("1 point added to class" + classUser);
-                        } else {
-                            console.log("Fehler beim Abrufen der Klassendaten");
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error fetching user data:", error);
-                        alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
-                    });
 
-            } else {
-                console.log("Fehler beim Abrufen der Benutzerdaten");
+                            // Update an Server schicken
+                            fetch('./api/updateClass.php', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(classData)
+                            })
+                            .then(response => response.json())
+                            .then(result => {
+                                if (result.success) {
+                                    profile();
+                                    alert("1 point added to class " + classUser);
+                                } else {
+                                    alert("Fehler beim Speichern: " + result.error);
+                                }
+                            });
+                        }
+                    });
             }
         })
         .catch(error => {
-            console.error("Error fetching user data:", error);
-            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen!");
+            console.error("Error:", error);
+            alert("Fehler beim Punkte-System");
         });
 }
 
@@ -442,8 +446,9 @@ function goToQuiz() {
 function getQuestions() {
 
     if (quizCounter >= 2) {
-        rewardSystem();
-    }
+    rewardSystem('quiz');
+    }   
+
 
     fetch("./api/quizapi.php")
         .then(response => response.json())
@@ -558,7 +563,8 @@ function activateRatePhotoGetPointsButton() {
     if (button) {
         button.classList = ""; // Leert die Klassenliste
         button.classList.add("ratePhotoGetPoints"); // Fügt die gewünschte Klasse hinzu
-        button.onclick = rewardSystem;
+        button.onclick = function() { rewardSystem('rating') };
+
     }
 }
 
@@ -602,7 +608,7 @@ function goToPhoto() {
     document.getElementById("content").innerHTML = `<video id="video" autoplay></video>
     <button id="captureBtn">Take Picture</button>
     <canvas id="canvas"></canvas>
-    <button id="saveBtn" onclick="rewardSystem()" style="display: none;">Get points</button>`
+    <button id="saveBtn" onclick="rewardSystem('photo')" style="display: none;">Get points</button>`
     const video = document.getElementById("video");
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");

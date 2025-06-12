@@ -8,12 +8,13 @@ if (!isset($input['array'])) {
 }
 
 // Pfad zur JSON-Datei
-$filePath = '../data/class.json';
 
-// Schreibe das Array zurück in die Datei
-if (file_put_contents($filePath, json_encode($input, JSON_PRETTY_PRINT))) {
-    echo json_encode(['code' => 200, 'message' => 'Data saved successfully']);
+$filePath = "../data/class.json";
+$data = json_decode(file_get_contents('php://input'), true);
+if ($data) {
+    file_put_contents($filePath, json_encode($data, JSON_PRETTY_PRINT));
+    echo json_encode(["success" => true]);
 } else {
-    http_response_code(500);
-    echo json_encode(['code' => 500, 'message' => 'Failed to save data']);
+    echo json_encode(["success" => false, "error" => "Invalid data"]);
 }
+?>

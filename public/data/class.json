@@ -2,402 +2,642 @@
     "array": [
         {
             "name": "1ahitm",
-            "score": 45,
+            "score": 12,
+            "photos": 5,
+            "ratings": 4,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "1bhitm",
-            "score": 78,
+            "score": 20,
+            "photos": 8,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "1chitm",
-            "score": 12,
+            "score": 8,
+            "photos": 3,
+            "ratings": 3,
+            "quizzes": 2,
             "imgArray": []
         },
         {
             "name": "1dhitm",
-            "score": 34,
+            "score": 15,
+            "photos": 6,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "2ahitm",
-            "score": 67,
+            "score": 18,
+            "photos": 7,
+            "ratings": 6,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "2bhitm",
-            "score": 89,
+            "score": 25,
+            "photos": 10,
+            "ratings": 8,
+            "quizzes": 7,
             "imgArray": []
         },
         {
             "name": "2chitm",
-            "score": 23,
+            "score": 10,
+            "photos": 4,
+            "ratings": 3,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "2dhitm",
-            "score": 56,
+            "score": 16,
+            "photos": 6,
+            "ratings": 5,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "3ahitm",
-            "score": 91,
+            "score": 22,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "3bhitm",
-            "score": 100,
+            "score": 30,
+            "photos": 10,
+            "ratings": 10,
+            "quizzes": 10,
             "imgArray": []
         },
         {
             "name": "3chitm",
-            "score": 44,
+            "score": 14,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "3dhitm",
-            "score": 77,
+            "score": 19,
+            "photos": 8,
+            "ratings": 6,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "4ahitm",
-            "score": 88,
+            "score": 24,
+            "photos": 10,
+            "ratings": 8,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "4bhitm",
-            "score": 19,
+            "score": 9,
+            "photos": 4,
+            "ratings": 3,
+            "quizzes": 2,
             "imgArray": []
         },
         {
             "name": "4chitm",
-            "score": 53,
+            "score": 17,
+            "photos": 7,
+            "ratings": 6,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "4dhitm",
-            "score": 62,
+            "score": 20,
+            "photos": 8,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "5ahitm",
-            "score": 74,
+            "score": 21,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "5bhitm",
-            "score": 38,
+            "score": 13,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "5chitm",
-            "score": 29,
+            "score": 11,
+            "photos": 4,
+            "ratings": 4,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "5dhitm",
-            "score": 95,
+            "score": 27,
+            "photos": 12,
+            "ratings": 9,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "1ahif",
-            "score": 41,
+            "score": 15,
+            "photos": 6,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "1bhif",
-            "score": 66,
+            "score": 20,
+            "photos": 8,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "1chif",
-            "score": 32,
+            "score": 12,
+            "photos": 5,
+            "ratings": 4,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "1dhif",
-            "score": 58,
+            "score": 18,
+            "photos": 7,
+            "ratings": 6,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "2ahif",
-            "score": 80,
+            "score": 22,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "2bhif",
-            "score": 49,
+            "score": 14,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "2chif",
-            "score": 27,
+            "score": 10,
+            "photos": 4,
+            "ratings": 3,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "2dhif",
-            "score": 92,
+            "score": 25,
+            "photos": 10,
+            "ratings": 8,
+            "quizzes": 7,
             "imgArray": []
         },
         {
             "name": "3ahif",
-            "score": 61,
+            "score": 19,
+            "photos": 8,
+            "ratings": 6,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "3bhif",
-            "score": 14,
+            "score": 6,
+            "photos": 3,
+            "ratings": 2,
+            "quizzes": 1,
             "imgArray": []
         },
         {
             "name": "3chif",
-            "score": 85,
+            "score": 22,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "3dhif",
-            "score": 37,
+            "score": 14,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "4ahif",
-            "score": 70,
+            "score": 24,
+            "photos": 10,
+            "ratings": 8,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "4bhif",
-            "score": 48,
+            "score": 9,
+            "photos": 4,
+            "ratings": 3,
+            "quizzes": 2,
             "imgArray": []
         },
         {
             "name": "4chif",
-            "score": 22,
+            "score": 17,
+            "photos": 7,
+            "ratings": 6,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "4dhif",
-            "score": 96,
+            "score": 20,
+            "photos": 8,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "5ahif",
-            "score": 39,
+            "score": 21,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "5bhif",
-            "score": 81,
+            "score": 13,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "5chif",
-            "score": 54,
+            "score": 11,
+            "photos": 4,
+            "ratings": 4,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "5dhif",
-            "score": 11,
+            "score": 27,
+            "photos": 12,
+            "ratings": 9,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "1ahbg",
-            "score": 72,
+            "score": 15,
+            "photos": 6,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "1bhbg",
-            "score": 65,
+            "score": 20,
+            "photos": 8,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "1chbg",
-            "score": 33,
+            "score": 12,
+            "photos": 5,
+            "ratings": 4,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "1dhbg",
-            "score": 47,
+            "score": 18,
+            "photos": 7,
+            "ratings": 6,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "2ahbg",
-            "score": 90,
+            "score": 22,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "2bhbg",
-            "score": 28,
+            "score": 14,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "2chbg",
-            "score": 76,
+            "score": 10,
+            "photos": 4,
+            "ratings": 3,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "2dhbg",
-            "score": 52,
+            "score": 25,
+            "photos": 10,
+            "ratings": 8,
+            "quizzes": 7,
             "imgArray": []
         },
         {
             "name": "3ahbg",
             "score": 19,
+            "photos": 8,
+            "ratings": 6,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "3bhbg",
-            "score": 84,
+            "score": 6,
+            "photos": 3,
+            "ratings": 2,
+            "quizzes": 1,
             "imgArray": []
         },
         {
             "name": "3chbg",
-            "score": 31,
+            "score": 22,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "3dhbg",
-            "score": 63,
+            "score": 14,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "4ahbg",
-            "score": 46,
+            "score": 24,
+            "photos": 10,
+            "ratings": 8,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "4bhbg",
-            "score": 88,
+            "score": 9,
+            "photos": 4,
+            "ratings": 3,
+            "quizzes": 2,
             "imgArray": []
         },
         {
             "name": "4chbg",
-            "score": 24,
+            "score": 17,
+            "photos": 7,
+            "ratings": 6,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "4dhbg",
-            "score": 79,
+            "score": 20,
+            "photos": 8,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "5ahbg",
-            "score": 53,
+            "score": 21,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "5bhbg",
-            "score": 40,
+            "score": 13,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "5chbg",
-            "score": 17,
+            "score": 11,
+            "photos": 4,
+            "ratings": 4,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "5dhbg",
-            "score": 93,
+            "score": 27,
+            "photos": 12,
+            "ratings": 9,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "1ahel",
-            "score": 36,
+            "score": 15,
+            "photos": 6,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "1bhel",
-            "score": 82,
+            "score": 20,
+            "photos": 8,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "1chel",
-            "score": 50,
+            "score": 12,
+            "photos": 5,
+            "ratings": 4,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "1dhel",
-            "score": 29,
+            "score": 18,
+            "photos": 7,
+            "ratings": 6,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "2ahel",
-            "score": 64,
+            "score": 22,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "2bhel",
-            "score": 91,
+            "score": 14,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "2chel",
-            "score": 42,
+            "score": 10,
+            "photos": 4,
+            "ratings": 3,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "2dhel",
-            "score": 77,
+            "score": 25,
+            "photos": 10,
+            "ratings": 8,
+            "quizzes": 7,
             "imgArray": []
         },
         {
             "name": "3ahel",
-            "score": 55,
+            "score": 19,
+            "photos": 8,
+            "ratings": 6,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "3bhel",
-            "score": 38,
+            "score": 6,
+            "photos": 3,
+            "ratings": 2,
+            "quizzes": 1,
             "imgArray": []
         },
         {
             "name": "3chel",
-            "score": 20,
+            "score": 22,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "3dhel",
-            "score": 87,
+            "score": 14,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "4ahel",
-            "score": 49,
+            "score": 24,
+            "photos": 10,
+            "ratings": 8,
+            "quizzes": 6,
             "imgArray": []
         },
         {
             "name": "4bhel",
-            "score": 73,
+            "score": 9,
+            "photos": 4,
+            "ratings": 3,
+            "quizzes": 2,
             "imgArray": []
         },
         {
             "name": "4chel",
-            "score": 26,
+            "score": 17,
+            "photos": 7,
+            "ratings": 6,
+            "quizzes": 4,
             "imgArray": []
         },
         {
             "name": "4dhel",
-            "score": 94,
+            "score": 20,
+            "photos": 8,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "5ahel",
-            "score": 39,
+            "score": 21,
+            "photos": 9,
+            "ratings": 7,
+            "quizzes": 5,
             "imgArray": []
         },
         {
             "name": "5bhel",
-            "score": 81,
+            "score": 13,
+            "photos": 5,
+            "ratings": 5,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "5chel",
-            "score": 54,
+            "score": 11,
+            "photos": 4,
+            "ratings": 4,
+            "quizzes": 3,
             "imgArray": []
         },
         {
             "name": "5dhel",
-            "score": 11,
+            "score": 27,
+            "photos": 12,
+            "ratings": 9,
+            "quizzes": 6,
             "imgArray": []
         }
     ]
