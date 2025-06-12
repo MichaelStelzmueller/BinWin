@@ -1,4 +1,5 @@
 {
+    "code": 200,
     "array": [
         {
             "name": "1ahitm",
@@ -74,8 +75,8 @@
         },
         {
             "name": "3bhitm",
-            "score": 30,
-            "photos": 10,
+            "score": 31,
+            "photos": 11,
             "ratings": 10,
             "quizzes": 10,
             "imgArray": []
