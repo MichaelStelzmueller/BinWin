@@ -1,51 +1,148 @@
-#upperRanks {
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #e0ffe0, #b3f0b3);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+#content {
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 1vh;
-    height: 45vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: calc(100vh - 100px); /* Etwas weniger, weil dein Header kleiner ist */
+    overflow: hidden;
+    box-sizing: border-box;
     width: 100%;
-    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 5vh; /* WICHTIG: zusätzlicher Abstand zum Header */
+}
+
+#upperRanks {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5vw;
+    margin-bottom: 4vh;
+    margin-top: 5vh;
 }
 
 #rank1, #rank2, #rank3 {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
-    background-color: #E0FFE0;
-    color: black;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 60px;
+    text-align: center;
+    padding: 8px;
+    position: relative;
+}
+
+#rank1 {
+    height: 20vh;
+    background: linear-gradient(145deg, #ffe57f, #ffd740);
+    border: 3px solid #ffca28;
+}
+#rank2 {
+    height: 18vh;
+    background: linear-gradient(145deg, #e0e0e0, #bdbdbd);
+    border: 3px solid #9e9e9e;
+}
+#rank3 {
+    height: 16vh;
+    background: linear-gradient(145deg, #ffb3b3, #ff8a80);
+    border: 3px solid #e57373;
+}
+
+#rank1:hover, #rank2:hover, #rank3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
 .class {
-    font-size: 1.1rem;
+    position: absolute;
+    top: 18%;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.points {
+    font-size: 1rem;
     font-weight: bold;
-    padding: 3vh;
+    color: #222;
+    margin-top: auto;
+    margin-bottom: 3px;
+}
+
+.lowerRanks {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 0 5vw 4vh 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lowerHeader {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0 auto 2vh auto;
+    background-color: #c8efc8;
+    padding: 8px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    max-width: 330px;
     text-align: center;
 }
 
-#rank1 { height: 25vh;}
-#rank2 { height: 20vh;}
-#rank3 { height: 15vh;}
 
-.lowerRanks {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    justify-content: center;
-    gap: 2vh;
-    height: 42vh;
+.rank {
+    background: linear-gradient(90deg, #b3f0b3, #a0e0a0);
+    padding: 12px 20px;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
     width: 100%;
-    position: relative;
-    overflow-y: auto;
-    font-size: 1.4rem;
-    margin-top: 8%;
+    max-width: 330px;
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin: 10px auto;
+}
+
+.rank:hover {
+    transform: scale(1.04);
 }
 
 
-.rank{
-    background-color: #E0FFE0;
-    padding: 4%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+@media (max-width: 600px) {
+    #upperRanks {
+        gap: 3vw;
+    }
+    #rank1, #rank2, #rank3 {
+        width: 50px;
+        padding: 6px;
+    }
+    .class {
+        font-size: 0.8rem;
+        top: 15%;
+    }
+    .points {
+        font-size: 0.9rem;
+    }
+    .rank {
+        font-size: 1rem;
+        max-width: 280px;
+    }
+    .lowerHeader {
+        font-size: 0.9rem;
+        max-width: 280px;
+    }
 }

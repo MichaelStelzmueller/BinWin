@@ -224,13 +224,14 @@ function ranking() {
                     </div>`;
 
                 // Restliche Ränge
+                let lowerRanksHHTML = `<div class="lowerHeader">Place &nbsp;&nbsp; Class &nbsp;&nbsp; Points</div>`;
                 let lowerRanksHTML = `<div class="lowerRanks">`;
                 for (let i = 3; i < classes.length; i++) {
                     lowerRanksHTML += `<div class="rank rank${i+1}">${i+1} · ${classes[i].name.toUpperCase()} · ${classes[i].score}</div>`;
                 }
                 lowerRanksHTML += `</div>`;
 
-                document.getElementById("content").innerHTML = upperRanksHTML + lowerRanksHTML;
+                document.getElementById("content").innerHTML = upperRanksHTML + lowerRanksHHTML + lowerRanksHTML;
             }
         })
         .catch(err => {
@@ -360,15 +361,39 @@ function statisticSystem() {
 
 //Punkte Startseite
 function points() {
-    document.getElementById('body').style.opacity = "0"
-    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+    document.getElementById('body').style.opacity = "0";
+    setTimeout(function () { document.getElementById('body').style.opacity = "1"; }, 100);
 
-    replaceStylesheet("style/stylePoints.css")
-    document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`
-    document.getElementById("content").innerHTML = `<div id="stylingBoxForPoints">
-    <div><img id="pointIconP" src="./icons/recycle.png"></div>
-    <div><p id="numberOfPoints">x1</p></div>
-    <div id="getPointsButton" onclick="goToButtons()">Get Points</div></div>`
+    replaceStylesheet("style/stylePoints.css");
+    document.getElementById("headerGeneral").innerHTML = `<img id="logo" src="./Logo_BinWin.png">`;
+
+    // Erst mal statisches Layout einbauen, Score später dynamisch setzen
+    document.getElementById("content").innerHTML = `
+        <div id="stylingBoxForPoints">
+            <div><img id="pointIconP" src="./icons/recycle.png"></div>
+            <div><p id="numberOfPoints">x...</p></div> <!-- Platzhalter -->
+            <div id="getPointsButton" onclick="goToButtons()">Get Points</div>
+        </div>`;
+
+    // Jetzt Punkte laden
+    fetch('./api/getUser.php')
+        .then(response => response.json())
+        .then(userData => {
+            if (userData.code === 200) {
+                const userClass = userData.array[0].class;
+
+                fetch('./api/getClass.php')
+                    .then(response => response.json())
+                    .then(classData => {
+                        if (classData.code === 200) {
+                            const classInfo = classData.array.find(c => c.name === userClass);
+                            const score = classInfo ? classInfo.score : 0;
+
+                            document.getElementById("numberOfPoints").innerText = "x" + score;
+                        }
+                    });
+            }
+        });
 }
 
 
@@ -848,58 +873,68 @@ function toggleFaq(element) {
 //********************************
 function rewards() {
     document.getElementById('body').style.opacity = "0";
-    setTimeout(function(){ document.getElementById('body').style.opacity = "1"; }, 100);
-
+    setTimeout(function () { document.getElementById('body').style.opacity = "1"; }, 100);
     replaceStylesheet("style/styleRewards.css");
 
     document.getElementById("headerGeneral").innerHTML = `<h2 class="milestones-title">Achievements 🌟</h2>`;
-    document.getElementById("content").innerHTML = `
-        <div class="milestones-container">
-            <!-- Punkte sammeln -->
-            <div class="milestone unlocked">
-                <div class="milestone-badge" style="background-color:#FFC107;">1</div>
-                <span>🏅 Rookie Recycler</span>
-            </div>
-            <div class="milestone locked">
-                <div class="milestone-badge" style="background-color:#FF5722;">10</div>
-                <span>🦸 Eco Hero</span>
-            </div>
-            <div class="milestone locked">
-                <div class="milestone-badge" style="background-color:#4CAF50;">25</div>
-                <span>🌎 Planet Protector</span>
-            </div>
+    document.getElementById("content").innerHTML = `<div class="milestones-container" id="milestoneContainer"></div>`;
 
-            <!-- Fotos hochladen -->
-            <div class="milestone unlocked">
-                <div class="milestone-badge" style="background-color:#9C27B0;">📸</div>
-                <span>First Shot</span>
-            </div>
-            <div class="milestone locked">
-                <div class="milestone-badge" style="background-color:#3F51B5;">📷</div>
-                <span>Paparazzi (10 Pictures)</span>
-            </div>
+    // Hole User Klasse
+    fetch('./api/getUser.php')
+        .then(response => response.json())
+        .then(userData => {
+            if (userData.code === 200) {
+                const userClass = userData.array[0].class;
 
-            <!-- Fotos bewerten -->
-            <div class="milestone unlocked">
-                <div class="milestone-badge" style="background-color:#00BCD4;">⭐️</div>
-                <span>First Judge</span>
-            </div>
-            <div class="milestone locked">
-                <div class="milestone-badge" style="background-color:#009688;">🌟</div>
-                <span>Top Reviewer (20 Reviews)</span>
-            </div>
+                // Hole Klassendaten
+                fetch('./api/getClass.php')
+                    .then(response => response.json())
+                    .then(classData => {
+                        if (classData.code === 200) {
+                            const classInfo = classData.array.find(c => c.name === userClass);
 
-            <!-- Quiz -->
-            <div class="milestone unlocked">
-                <div class="milestone-badge" style="background-color:#FF9800;">🧠</div>
-                <span>First Quiz</span>
+                            // Alle Werte holen
+                            const score = classInfo.score || 0;
+                            const photos = classInfo.photos || 0;
+                            const ratings = classInfo.ratings || 0;
+                            const quizzes = classInfo.quizzes || 0;
+
+                            let html = "";
+
+                            // Punkte Achievements
+                            html += renderMilestone(score >= 1, "#FFC107", "1", "🏅 Rookie Recycler");
+                            html += renderMilestone(score >= 10, "#FF5722", "10", "🦸 Eco Hero");
+                            html += renderMilestone(score >= 25, "#4CAF50", "25", "🌎 Planet Protector");
+
+                            // Foto Achievements
+                            html += renderMilestone(photos >= 1, "#9C27B0", "📸", "First Shot");
+                            html += renderMilestone(photos >= 10, "#3F51B5", "📷", "Paparazzi (10 Pictures)");
+
+                            // Bewertung Achievements
+                            html += renderMilestone(ratings >= 1, "#00BCD4", "⭐️", "First Judge");
+                            html += renderMilestone(ratings >= 20, "#009688", "🌟", "Top Reviewer (20 Reviews)");
+
+                            // Quiz Achievements
+                            html += renderMilestone(quizzes >= 1, "#FF9800", "🧠", "First Quiz");
+                            html += renderMilestone(quizzes >= 10, "#8BC34A", "🎓", "Quizmaster (10 perfect Quizzes)");
+
+                            document.getElementById("milestoneContainer").innerHTML = html;
+                        }
+                    });
+            }
+        });
+
+    function renderMilestone(unlocked, color, badge, title) {
+        const stateClass = unlocked ? "unlocked" : "locked";
+        return `
+            <div class="milestone ${stateClass}">
+                <div class="milestone-badge" style="background-color:${color};">${badge}</div>
+                <span>${title}</span>
             </div>
-            <div class="milestone locked">
-                <div class="milestone-badge" style="background-color:#8BC34A;">🎓</div>
-                <span>Quizmaster (10 perfect Quizzes)</span>
-            </div>
-        </div>`;
+        `;
+    }
 }
+
 
 
 
@@ -907,57 +942,82 @@ function rewards() {
 // Profile Method(s) ----------------------------------------------------------------
 //********************************
 function profile() {
-    document.getElementById('body').style.opacity = "0"
-    setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
+    document.getElementById('body').style.opacity = "0";
+    setTimeout(function () { document.getElementById('body').style.opacity = "1"; }, 100);
 
     replaceStylesheet("style/styleProfil.css");
-    fetch(`./api/getUser.php`)
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.code == 200) {
-                document.getElementById("headerGeneral").innerHTML = `<h2>Profile</h2>`
-                document.getElementById("content").innerHTML = `
 
-                <div id="profilBox">
-                    <div id="profilIcon">
-                    <img src="./icons/profile.svg">
-                    </div>
-                    <div id="profiltxt">
-                        <div id="profil-txt-n" class="profiltxtC"><strong>Name: </strong>${data.array[0].name}</div>
-                        <div id="profil-txt-c" class="profiltxtC"><strong>Class: </strong>${data.array[0].class}</div>
-                    </div>
-                </div>
-                <hr>
-                <div id="overview">
-                        <div class="overviewBox">
-                            <div><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg"></div>
-                            <div>(#1)</div>
-                        </div>
-                        <div class="overviewBox">
-                            <div><img onclick="changeSideTo('points')" id="pointIconP" class="icons" src="./icons/recycle.svg"></div>
-                            <div>(x10)</div>
-                        </div>
-                        <div class="overviewBox">
-                            <div><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg"></div>
-                            <div>(x3)</div>
-                        </div>
-                    </div>
-                `
+    fetch('./api/getUser.php')
+        .then(response => response.json())
+        .then(userData => {
+            if (userData.code === 200) {
+                const userClass = userData.array[0].class;
+                const userName = userData.array[0].name;
+
+                fetch('./api/getClass.php')
+                    .then(response => response.json())
+                    .then(classData => {
+                        if (classData.code === 200) {
+                            const classes = classData.array;
+                            const classInfo = classes.find(c => c.name === userClass);
+                            const score = classInfo.score || 0;
+                            const photos = classInfo.photos || 0;
+                            const ratings = classInfo.ratings || 0;
+                            const quizzes = classInfo.quizzes || 0;
+
+                            const sorted = [...classes].sort((a, b) => b.score - a.score);
+                            const rank = sorted.findIndex(c => c.name === userClass) + 1;
+
+                            let achievements = 0;
+                            if (score >= 1) achievements++;
+                            if (score >= 10) achievements++;
+                            if (score >= 25) achievements++;
+                            if (photos >= 1) achievements++;
+                            if (photos >= 10) achievements++;
+                            if (ratings >= 1) achievements++;
+                            if (ratings >= 20) achievements++;
+                            if (quizzes >= 1) achievements++;
+                            if (quizzes >= 10) achievements++;
+
+                            document.getElementById("headerGeneral").innerHTML = `<h2>Profile</h2>`;
+                            document.getElementById("content").innerHTML = `
+                                <div id="profilBox">
+                                    <div id="profilIcon">
+                                        <img src="./icons/profile.svg">
+                                    </div>
+                                    <div id="profiltxt">
+                                        <div class="profiltxtC"><strong>Name: </strong>${userName}</div>
+                                        <div class="profiltxtC"><strong>Class: </strong>${userClass}</div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div id="overview">
+                                    <div class="overviewBox">
+                                        <div><img onclick="changeSideTo('ranking')" class="iconsProfil" src="./icons/ranking.svg"></div>
+                                        <div>(#${rank})</div>
+                                    </div>
+                                    <div class="overviewBox">
+                                        <div><img onclick="changeSideTo('points')" id="pointIconP" class="icons" src="./icons/recycle.svg"></div>
+                                        <div>(x${score})</div>
+                                    </div>
+                                    <div class="overviewBox">
+                                        <div><img onclick="changeSideTo('rewards')" class="iconsProfil" src="./icons/trophy.svg"></div>
+                                        <div>(${achievements})</div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div id="activityBox">
+                                    <div class="activityStat">📸 Photos: <strong>${photos}</strong></div>
+                                    <div class="activityStat">⭐ Ratings: <strong>${ratings}</strong></div>
+                                    <div class="activityStat">🧠 Quizzes: <strong>${quizzes}</strong></div>
+                                </div>
+                            `;
+                        }
+                    });
             }
-
-            else {
-                console.log("Something went wrong");
-
-            }
-
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-            alert("An error occurred please try again later!");
         });
-
-
 }
+
 
 function rankSystem() {
 }
