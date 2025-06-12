@@ -1,0 +1,71 @@
+Index: public/style/styleProfil.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#profilBox {\n    left: 0;\n    margin-top: 10vh;\n    border: solid 3.5px black;\n    border-radius: 1vh;\n    padding: 2%;\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n\n#profilIcon {\n    text-align: center;\n}\n\n#profilIcon img {\n    width: 20vw;\n}\n\n#profiltxt{\n    display: flex;\n    flex-direction:column;\n    justify-content: center;\n    text-align: center;\n}\n.profiltxtC{\n    padding: 2%;\n    text-align: center;\n}\nhr{\n    width: 100%;\n    color: black;\n    position: absolute;\n    top: 50vw;\n    left: -0.5vw;\n}\n#overview{\n    width: 80vw;\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    position: absolute;\n    top: 70vw;\n    left: 10vw;\n    text-align: center;\n    justify-items: center;\n}\n\n#overview div{\n    scale: 1.4;\n}\n.icons {\n    flex: 1;\n    text-align: center;\n    max-width: 5vw;\n    max-height: 5vh;\n    object-fit: contain;\n    font-size: 3.5vh;\n    transform: scale(1.5);\n}\n.iconsProfil{\n    flex: 1;\n    text-align: center;\n    max-width: 5vw;\n    max-height: 5vh;\n    object-fit: contain;\n    font-size: 3.5vh;\n    scale: 2;\n}\n\n.icon-text{\n    font-size: 1.3rem;\n    text-align: center;\n}\n\n#pointIcon {\n    font-size: 15vh;\n}\n.overviewBox{\n    display: grid;\n    grid-row: 1fr 1fr 1fr;\n    gap: 5vw;\n    width: 20vw;\n    height: auto;\n    text-align: center;\n}\n.overviewBox img{\n    text-align: center;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/style/styleProfil.css b/public/style/styleProfil.css
+--- a/public/style/styleProfil.css	(revision 08d640ddff3490b0f69b4366ad7b008267376a01)
++++ b/public/style/styleProfil.css	(date 1749106114301)
+@@ -1,11 +1,12 @@
+ #profilBox {
+-    left: 0;
+     margin-top: 10vh;
+     border: solid 3.5px black;
+     border-radius: 1vh;
+     padding: 2%;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
++    background-color: #f5f5f5;
++    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ }
+ 
+ #profilIcon {
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"6a0648b1-9f78-4041-89de-8d62a83b0521\" name=\"Changes\" comment=\"newScript.js\">\n      <change afterPath=\"$PROJECT_DIR$/public/script/newScript.js\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\">\n    <execution />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;it220214&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/MichaelStelzmueller/BinWin.git&quot;,\n    &quot;accountId&quot;: &quot;52d901b3-1623-49af-aca3-8367d7e5f64c&quot;\n  }\n}</component>\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"/opt/homebrew/Cellar/php/8.4.2/bin/php\" />\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2wDb6xqqi7WW6pRBbSxRCt0uBXa\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"git-widget-placeholder\": \"main\",\n    \"junie.onboarding.icon.badge.shown\": \"true\",\n    \"last_opened_file_path\": \"/Users/carladimmler/Library/CloudStorage/OneDrive-HTBLALeonding/_HTL Leonding/_2425_3BHITM/MEDTWT/docker_php_templatee/htdocs/BinWin\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"settings.editor.selected.configurable\": \"reference.settingsdialog.project.grazie\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PS-251.25410.148\" />\n        <option value=\"bundled-php-predefined-a98d8de5180a-c5828cf854d9-com.jetbrains.php.sharedIndexes-PS-251.25410.148\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"6a0648b1-9f78-4041-89de-8d62a83b0521\" name=\"Changes\" comment=\"\" />\n      <created>1745578919905</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1745578919905</updated>\n      <workItem from=\"1745578921015\" duration=\"1376000\" />\n      <workItem from=\"1745860805508\" duration=\"43000\" />\n      <workItem from=\"1749104368450\" duration=\"872000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"pushen\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745579287457</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745579287457</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"RECENT_FILTERS\">\n      <map>\n        <entry key=\"User\">\n          <value>\n            <list>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"*\" />\n                </option>\n              </RecentGroup>\n            </list>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"pushen\" />\n    <MESSAGE value=\"newScript.js\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"newScript.js\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 08d640ddff3490b0f69b4366ad7b008267376a01)
++++ b/.idea/workspace.xml	(date 1749106855449)
+@@ -5,7 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="6a0648b1-9f78-4041-89de-8d62a83b0521" name="Changes" comment="newScript.js">
+-      <change afterPath="$PROJECT_DIR$/public/script/newScript.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/public/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/script/script.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/public/style/styleProfil.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style/styleProfil.css" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -23,6 +25,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+@@ -49,10 +56,12 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "ModuleVcsDetector.initialDetectionPerformed": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "main",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "git-widget-placeholder": "carla",
+     "junie.onboarding.icon.badge.shown": "true",
+     "last_opened_file_path": "/Users/carladimmler/Library/CloudStorage/OneDrive-HTBLALeonding/_HTL Leonding/_2425_3BHITM/MEDTWT/docker_php_templatee/htdocs/BinWin",
+     "node.js.detected.package.eslint": "true",
