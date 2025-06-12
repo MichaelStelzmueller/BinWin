@@ -203,36 +203,42 @@ function changeSideTo(side) {
 function ranking() {
     document.getElementById('body').style.opacity = "0"
     setTimeout(function(){ document.getElementById('body').style.opacity = "1" }, 100);
-
     replaceStylesheet("style/styleRanking.css");
-    document.getElementById("headerGeneral").innerHTML = `<h2>Leaderboard</h2>`
+    document.getElementById("headerGeneral").innerHTML = `<h2>Leaderboard</h2>`;
 
-    document.getElementById("content").innerHTML =
-        `<div id="upperRanks">
-        <div id="rank2">
-            <div class="class">2BHITM<br><br>200</div>
-        </div>
-        <div id="rank1">
-            <div class="class">1BHITM<br><br>300</div>
-        </div>
-        <div id="rank3">
-            <div class="class">3BHITM<br><br>150</div>
-        </div>
-    </div>
-    <div class="lowerRanks">
-        <div class="rank rank4">4 · test · 100</div>
-        <div class="rank rank5">5 · test · 100</div>
-        <div class="rank rank6">6 · test · 100</div>
-        <div class="rank rank7">7 · test · 100</div>
-        <div class="rank rank8">8 · test · 100</div>
-        <div class="rank rank9">9 · test · 100</div>
-        <div class="rank rank10">10 · test · 100</div>
-        <div class="rank rank11">11 · test · 100</div>
-        <div class="rank rank12">12 · test · 100</div>
-        <div class="rank rank13">13 · test · 100</div>
-    </div>
-    `;
+    fetch('./api/getClass.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                let classes = data.array;
+
+                // Sortiere Klassen nach Score absteigend
+                classes.sort((a, b) => b.score - a.score);
+
+                // Top 3
+                let upperRanksHTML = `
+                    <div id="upperRanks">
+                        <div id="rank2"><div class="class">${classes[1].name.toUpperCase()}<br><br>${classes[1].score}</div></div>
+                        <div id="rank1"><div class="class">${classes[0].name.toUpperCase()}<br><br>${classes[0].score}</div></div>
+                        <div id="rank3"><div class="class">${classes[2].name.toUpperCase()}<br><br>${classes[2].score}</div></div>
+                    </div>`;
+
+                // Restliche Ränge
+                let lowerRanksHTML = `<div class="lowerRanks">`;
+                for (let i = 3; i < classes.length; i++) {
+                    lowerRanksHTML += `<div class="rank rank${i+1}">${i+1} · ${classes[i].name.toUpperCase()} · ${classes[i].score}</div>`;
+                }
+                lowerRanksHTML += `</div>`;
+
+                document.getElementById("content").innerHTML = upperRanksHTML + lowerRanksHTML;
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Fehler beim Laden der Rangliste");
+        });
 }
+
 
 function rankSystem() {
 }

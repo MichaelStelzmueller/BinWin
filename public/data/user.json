@@ -1,12 +1,5 @@
 [
     {
-        "id": "id",
-        "name": "user",
-        "password": "pw",
-        "department": "dm",
-        "class": "class"
-    },
-    {
         "id": "679b60e48e789",
         "name": "michi",
         "password": "admin",
