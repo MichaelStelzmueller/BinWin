@@ -667,7 +667,7 @@ function savePhoto() {
 
                     formData.append('image', blob, filename);
                     formData.append('className', className); // ← wie in saveImage.php erwartet
-
+                
                     // Schritt 3: Upload starten
                     fetch('./api/saveImage.php', {
                         method: 'POST',
