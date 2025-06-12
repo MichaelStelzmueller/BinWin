@@ -34,12 +34,26 @@ function addStylesheet(href) {
 // Login und Registrierung
 //********************************
 
-//preLog();
-function preLog() {
-    const username = document.getElementById("usernameForLogin").value;
-    const pw = document.getElementById("pwForLogin").value;
-    LogIn(username, pw);
+window.onload = function() {
+    checkSession(); 
 }
+
+function checkSession() {
+    fetch('./api/userapi.php')
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200 && data.logged) {
+            console.log("User noch eingeloggt:", data.user);
+            localStorage.setItem("username", data.user); 
+            validLogIn();
+        } else {
+            console.log("Kein aktiver Login, zeige Login-Form.");
+            // Hier wieder normale Loginseite anzeigen
+        }
+    });
+}
+
+
 
 function register() {
     document.getElementById("body").innerHTML = `

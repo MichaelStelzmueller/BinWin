@@ -1,106 +1,74 @@
 <?php
 session_start();
+header("Content-Type: application/json");
 
-if (!isset($_SESSION['loggedin'])) {
-    $_SESSION['loggedin'] = false;
-}
-
-if (!isset($_SESSION['user'])) {
-    $_SESSION['user'] = "";
-}
-
-header('Content-Type: application/json');
-
-$answer = array(
-    "code" => 404,
-    "logged" => false,
-    "msg" => ""
-);
-
-// LOGIN-BLOCK
-if ($_SESSION['loggedin']) {
-    $answer["code"] = 200;
-    $answer["logged"] = true;
-    echo json_encode($answer);
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    echo json_encode([
+        "code" => 200,
+        "logged" => true,
+        "user" => $_SESSION['user']
+    ]);
     exit;
 }
 
+$file = '../data/user.json';
+$users = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
+
+
+// LOGIN
 if (isset($_POST['user']) && isset($_POST['password'])) {
     $user = $_POST['user'];
     $pw = $_POST['password'];
-    $file = '../data/user.json';
 
-    if (file_exists($file)) {
-        $users = json_decode(file_get_contents($file), true);
-        for ($i = 0; $i < count($users); $i++) {
-            if ($users[$i]['name'] == $user && $users[$i]['password'] == $pw) {
-                $answer["code"] = 200;
-                $answer["msg"] = $users;
-                $answer["logged"] = true;
-                $_SESSION['loggedin'] = true;
-                $_SESSION['user'] = $user;
-                break;
-            } else {
-                $answer['msg'] = "Username or password is wrong!";
-            }
+    foreach ($users as $u) {
+        if ($u['name'] === $user && $u['password'] === $pw) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['user'] = $user;
+            echo json_encode(["code" => 200, "msg" => $users, "logged" => true]);
+            exit;
         }
-        echo json_encode($answer);
-        exit;
-    } else {
-        $answer['msg'] = "No users found!";
-        echo json_encode($answer);
-        exit;
     }
+    echo json_encode(["code" => 401, "msg" => "Username or password is wrong!"]);
+    exit;
 }
 
-// UPDATE & ADD USER:
+// UPDATE / REGISTRATION
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
 
-    $file = '../data/user.json';
-    $users = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
+    if (!$input) {
+        echo json_encode(["code" => 400, "msg" => "Invalid JSON"]);
+        exit;
+    }
 
-    // UPDATE EXISTING USER
     $updated = false;
-    foreach ($users as &$user) {
-        if ($user['name'] === $input['name']) {
-            // Update nur das ProfileIcon und Background wenn vorhanden
-            if (isset($input['profileIcon'])) {
-                $user['profileIcon'] = $input['profileIcon'];
-            }
-            if (isset($input['background'])) {
-                $user['background'] = $input['background'];
-            }
+    for ($i = 0; $i < count($users); $i++) {
+        if ($users[$i]['name'] === $input['name']) {
+            // UPDATE EXISTING USER
+            $users[$i] = array_merge($users[$i], $input);
             $updated = true;
             break;
         }
     }
 
-    // NEUER USER FALL:
     if (!$updated) {
+        // Neuen User anlegen, falls Felder da sind
         if (isset($input['name'], $input['password'], $input['department'], $input['class'])) {
-            $newUser = [
-                "id" => uniqid(),
-                "name" => $input['name'],
-                "password" => $input['password'],
-                "department" => $input['department'],
-                "class" => $input['class'],
-                "profileIcon" => $input['profileIcon'] ?? "profile.svg",
-                "background" => $input['background'] ?? ""
-            ];
-            $users[] = $newUser;
+            $input['id'] = uniqid();
+            $input['profileIcon'] = $input['profileIcon'] ?? "default.svg";
+            $input['background'] = $input['background'] ?? "default.jpg";
+            $users[] = $input;
+            $updated = true;
         } else {
-            echo json_encode(["code" => 400, "answer" => "Invalid Input"]);
+            echo json_encode(["code" => 400, "msg" => "Incomplete user data"]);
             exit;
         }
     }
 
     file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
-    echo json_encode(["code" => 200, "answer" => "User updated"]);
+    echo json_encode(["code" => 200, "msg" => "User updated"]);
     exit;
 }
 
 http_response_code(405);
-echo json_encode(["code" => 405, "answer" => "Method not allowed"]);
-exit;
-?>
+echo json_encode(["code" => 405, "msg" => "Method not allowed"]);
