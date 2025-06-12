@@ -96,3 +96,44 @@ hr {
     color: #333;
     text-align: center;
 }
+
+#levelBox {
+    width: 90%;
+    margin: 20px auto;
+    background: #eaffea;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.levelHeader {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.xpText {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.progressBarOuter {
+    background: #ddd;
+    border-radius: 50px;
+    overflow: hidden;
+    height: 20px;
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.progressBarInner {
+    background: linear-gradient(to right, #5cd65c, #00b300);
+    height: 100%;
+    width: 0%;
+    transition: width 1s ease;
+}
+

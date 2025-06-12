@@ -979,6 +979,24 @@ function profile() {
                             if (quizzes >= 1) achievements++;
                             if (quizzes >= 10) achievements++;
 
+                            // XP & Levelsystem
+                            const xp = score + (photos * 3) + (ratings * 2) + (quizzes * 2);
+                            const levelThresholds = [0, 20, 50, 100, 200, 400, 700, 1000, 1500, 2100, 3000];
+
+                            function calculateLevel(xp) {
+                                for (let i = levelThresholds.length - 1; i >= 0; i--) {
+                                    if (xp >= levelThresholds[i]) {
+                                        let nextXp = (i+1 < levelThresholds.length) ? levelThresholds[i+1] : levelThresholds[i];
+                                        let progress = Math.min(100, ((xp - levelThresholds[i]) / (nextXp - levelThresholds[i])) * 100);
+                                        return { level: i+1, xp: xp, nextXp: nextXp, progress: progress.toFixed(1) };
+                                    }
+                                }
+                                return { level: 1, xp: xp, nextXp: levelThresholds[1], progress: 0 };
+                            }
+
+                            const levelData = calculateLevel(xp);
+
+                            // HTML Rendering
                             document.getElementById("headerGeneral").innerHTML = `<h2>Profile</h2>`;
                             document.getElementById("content").innerHTML = `
                                 <div id="profilBox">
@@ -1010,6 +1028,14 @@ function profile() {
                                     <div class="activityStat">📸 Photos: <strong>${photos}</strong></div>
                                     <div class="activityStat">⭐ Ratings: <strong>${ratings}</strong></div>
                                     <div class="activityStat">🧠 Quizzes: <strong>${quizzes}</strong></div>
+                                </div>
+                                <hr>
+                                <div id="levelBox">
+                                    <div class="levelHeader">Level ${levelData.level}</div>
+                                    <div class="xpText">${levelData.xp} / ${levelData.nextXp} XP</div>
+                                    <div class="progressBarOuter">
+                                        <div class="progressBarInner" style="width:${levelData.progress}%"></div>
+                                    </div>
                                 </div>
                             `;
                         }
