@@ -665,41 +665,62 @@ function goToPhoto() {
         // link.click();
     });
 }
+
 function savePhoto() {
     const canvas = document.getElementById('canvas');
 
-    // Aus Canvas PNG erzeugen
-    canvas.toBlob(function(blob) {
-        const formData = new FormData();
-        const filename = 'image_' + Date.now() + '.png';
-        formData.append('image', blob, filename);
+    // Schritt 1: Klasse des aktuellen Users holen
+    fetch('./api/getUser.php')
+        .then(response => response.json())
+        .then(userData => {
+            if (userData.code === 200) {
+                const className = userData.array[0].class;
+                
 
-        fetch('./api/saveImage.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            if (data.success) {
-                console.log("Bild erfolgreich gespeichert!");
-                console.log("Bildpfad:", data.url);
+                // Schritt 2: Canvas zu PNG-Blob konvertieren
+                canvas.toBlob(function(blob) {
+                    const formData = new FormData();
+                    const filename = 'image_' + Date.now() + '.png';
 
-                // Optional: Bild anzeigen
-                const resultBox = document.getElementById('uploadResult');
-                if (resultBox) {
-                    resultBox.innerHTML = `<p>Bild erfolgreich gespeichert:</p>
-                        <img src="${data.url}" width="200">`;
-                }
+                    formData.append('image', blob, filename);
+                    formData.append('className', className); // ← wie in saveImage.php erwartet
+
+                    // Schritt 3: Upload starten
+                    fetch('./api/saveImage.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log("Bild erfolgreich gespeichert für Klasse:", className);
+
+                            const resultBox = document.getElementById('uploadResult');
+                            if (resultBox) {
+                                resultBox.innerHTML = `
+                                    <p>Bild erfolgreich gespeichert:</p>
+                                    <img src="${data.url}" width="200">
+                                `;
+                            }
+                        } else {
+                            alert("Fehler beim Speichern: " + data.error);
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Fehler beim Upload:", err);
+                        alert("Upload fehlgeschlagen.");
+                    });
+
+                }, 'image/png');
+
             } else {
-                console.error("Fehler beim Hochladen:", data.error);
-                alert("Fehler beim Speichern: " + data.error);
+                alert("Benutzerdaten konnten nicht geladen werden.");
             }
         })
-        .catch((err) => {
-            console.error("Fehler bei der Anfrage:", err);
-            alert("Upload fehlgeschlagen.");
+        .catch(err => {
+            console.error("Fehler beim Laden der Benutzerdaten:", err);
+            alert("Ein Fehler ist aufgetreten, bitte später erneut versuchen.");
         });
-    }, 'image/png');
 }
 
 

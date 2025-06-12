@@ -19,5 +19,12 @@
         "password": "zuop",
         "department": "Medientechnik",
         "class": "3bhitm"
+    },
+    {
+        "id": "684a78889d49b",
+        "name": "user",
+        "password": "123",
+        "department": "Elektronik",
+        "class": "3ahel"
     }
 ]

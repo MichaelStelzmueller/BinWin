@@ -16,9 +16,9 @@ if (!file_exists($targetDir)) {
     mkdir($targetDir, 0777, true);
 }
 
-// Nur POST mit Datei akzeptieren
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image']) && isset($_POST['className'])) {
     $file = $_FILES['image'];
+    $className = $_POST['className'];
     $filename = basename($file['name']);
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -31,19 +31,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
 
     // Zielpfad mit einzigartigem Namen
     $uniqueName = uniqid('img_', true) . '.' . $extension;
+    $relativePath = 'data/img/' . $uniqueName;
     $targetFile = $targetDir . $uniqueName;
 
     // Datei speichern
     if (move_uploaded_file($file['tmp_name'], $targetFile)) {
-        // Rückgabe: Pfad relativ zum Projekt
+        // class.json laden und aktualisieren
+        $jsonPath = realpath(__DIR__ . '/../data/class.json');
+        $jsonData = file_get_contents($jsonPath);
+        $classData = json_decode($jsonData, true);
+
+        if (!isset($classData['array']) || !is_array($classData['array'])) {
+            echo json_encode(['success' => false, 'error' => 'Ungültige Klassenstruktur']);
+            exit;
+        }
+
+        $found = false;
+        foreach ($classData['array'] as &$klasse) {
+            if ($klasse['name'] === $className) {
+                $klasse['imgArray'][] = $relativePath;
+                $found = true;
+                break;
+            }
+        }
+
+        if (!$found) {
+            echo json_encode(['success' => false, 'error' => 'Klasse nicht gefunden']);
+            exit;
+        }
+
+        // class.json aktualisieren
+        file_put_contents($jsonPath, json_encode($classData, JSON_PRETTY_PRINT));
+
+        // Erfolgsmeldung zurückgeben
         echo json_encode([
             'success' => true,
             'filename' => $uniqueName,
-            'url' => 'data/img/' . $uniqueName
+            'url' => $relativePath
         ]);
     } else {
         echo json_encode(['success' => false, 'error' => 'Fehler beim Speichern der Datei.']);
     }
 } else {
-    echo json_encode(['success' => false, 'error' => 'Keine gültige Bilddatei empfangen.']);
+    echo json_encode(['success' => false, 'error' => 'Bild oder Klassenname fehlt.']);
 }
