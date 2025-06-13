@@ -34,9 +34,7 @@ function addStylesheet(href) {
 // Login und Registrierung
 //********************************
 
-window.onload = function() {
-    checkSession(); 
-}
+checkSession();
 
 function checkSession() {
     fetch('./api/userapi.php')
@@ -44,14 +42,18 @@ function checkSession() {
     .then(data => {
         if (data.code === 200 && data.logged) {
             console.log("User noch eingeloggt:", data.user);
-            localStorage.setItem("username", data.user); 
+            
+            // <-- HIER ganz wichtig:
+            localStorage.setItem("username", data.user);
+
             validLogIn();
         } else {
             console.log("Kein aktiver Login, zeige Login-Form.");
-            // Hier wieder normale Loginseite anzeigen
+            // Hier Login-Form anzeigen, wenn keine Session vorhanden
         }
     });
 }
+
 
 
 
@@ -1128,40 +1130,24 @@ function selectIcon(iconName) {
         return;
     }
 
-    fetch('./api/getUser.php')
-        .then(response => response.json())
-        .then(userData => {
-            if (userData.code === 200) {
-                let allUsers = userData.array;
-
-                // Den richtigen User im Array finden
-                const userIndex = allUsers.findIndex(u => u.name === username);
-                if (userIndex === -1) {
-                    alert("User nicht gefunden!");
-                    return;
-                }
-
-                // Update des ProfileIcons
-                allUsers[userIndex].profileIcon = iconName;
-
-                // Jetzt NUR den geänderten User an den Server schicken
-                fetch('./api/userapi.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(allUsers[userIndex])
-                })
-                .then(response => response.json())
-                .then(result => {
-                    if (result.code === 200) {
-                        console.log("Icon updated successfully");
-                        closePopup();
-                        profile();
-                    } else {
-                        alert("Fehler beim Speichern des Icons");
-                    }
-                });
-            }
-        });
+    fetch('./api/updateUser.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            name: username,
+            profileIcon: iconName
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.code === 200) {
+            console.log("Icon updated successfully");
+            closePopup();
+            profile();
+        } else {
+            alert("Fehler beim Speichern des Icons");
+        }
+    });
 }
 
 
