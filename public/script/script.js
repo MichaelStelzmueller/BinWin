@@ -190,6 +190,8 @@ document.addEventListener('keyup', function (event) {
 // Seitenwechsel
 //********************************
 function changeSideTo(side) {
+    document.getElementById('body').style = "display:none;"
+    setTimeout(function(){ document.getElementById('body').style = "display:inner-block;" }, 100);
     switch (side) {
         case 'ranking':
             ranking();
@@ -264,8 +266,7 @@ function rankSystem() {
 // Statistic Method(s) ----------------------------------------------------------------
 //********************************
 function statistics() {
-    document.getElementById('body').style.opacity = "0";
-    setTimeout(function(){ document.getElementById('body').style.opacity = "1"; }, 100);
+    
 
     replaceStylesheet("style/styleStatistics.css");
     document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`;
@@ -750,7 +751,8 @@ function savePhoto() {
 // Erklärung
 function goToExplanation() {
     replaceStylesheet("style/styleFAQ.css")
-
+    document.getElementById('body').style = "display:none;"
+    setTimeout(function(){ document.getElementById('body').style = "display:inner-block;" }, 100);
     document.getElementById("content").innerHTML = `
         <div class="faq-container">
             <div id="header"><h1>How do I get Points?</h1></div>
