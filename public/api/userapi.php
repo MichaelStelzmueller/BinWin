@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
     echo json_encode(["code" => 200, "msg" => "User updated"]);
     exit;
+} else {
+    http_response_code(405);
+    echo json_encode(["code" => 405, "msg" => "Method not allowed"]);
 }
-
-http_response_code(405);
-echo json_encode(["code" => 405, "msg" => "Method not allowed"]);

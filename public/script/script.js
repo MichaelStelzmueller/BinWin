@@ -37,7 +37,7 @@ function addStylesheet(href) {
 checkSession();
 
 function checkSession() {
-    fetch('./api/userapi.php')
+    fetch('./api/userapi.php', { method: 'POST' })
     .then(response => response.json())
     .then(data => {
         if (data.code === 200 && data.logged) {
@@ -54,6 +54,12 @@ function checkSession() {
     });
 }
 
+function Login() {
+    const username = document.getElementById("usernameForLogin").value;
+    const pw = document.getElementById("pwForLogin").value;
+
+    LogIn(username, pw);
+}
 
 
 
