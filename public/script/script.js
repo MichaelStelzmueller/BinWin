@@ -22,6 +22,8 @@ function replaceStylesheet(newHref) {
 }
 
 function addStylesheet(href) {
+    document.getElementById('body').style.opacity = "0";
+    setTimeout(function () { document.getElementById('body').style.opacity = "1"; }, 200);
     let timestamp = new Date().getTime(); // Zeitstempel generieren
     let newLink = document.createElement("link");
     newLink.rel = "stylesheet";
@@ -272,8 +274,6 @@ function rankSystem() {
 // Statistic Method(s) ----------------------------------------------------------------
 //********************************
 function statistics() {
-    
-
     replaceStylesheet("style/styleStatistics.css");
     document.getElementById("headerGeneral").innerHTML = `<h2>Statistics</h2>`;
     document.getElementById("content").innerHTML = `
@@ -294,11 +294,11 @@ function statistics() {
                 let totalRatings = classes.reduce((sum, c) => sum + (c.ratings || 0), 0);
                 let totalQuizzes = classes.reduce((sum, c) => sum + (c.quizzes || 0), 0);
 
-                // 1️⃣ Pie Chart - Aktivitäten insgesamt
+                // 1️⃣ Pie Chart - Total Activities
                 new Chart(document.getElementById('activityDistribution'), {
                     type: 'pie',
                     data: {
-                        labels: ['Fotos hochgeladen', 'Fotos bewertet', 'Quiz gelöst'],
+                        labels: ['Photos uploaded', 'Photos rated', 'Quizzes solved'],
                         datasets: [{
                             data: [totalPhotos, totalRatings, totalQuizzes],
                             backgroundColor: ['#10b310', '#e0ffe0', 'rgb(0, 105, 0)']
@@ -307,12 +307,12 @@ function statistics() {
                     options: {
                         responsive: true,
                         plugins: {
-                            title: { display: true, text: 'Aktivitäten insgesamt' }
+                            title: { display: true, text: 'Total Activities' }
                         }
                     }
                 });
 
-                // 2️⃣ Aktivitäten pro Klasse
+                // 2️⃣ Activities per Class
                 let classLabels = classes.map(c => c.name.toUpperCase());
                 let classPhotos = classes.map(c => c.photos || 0);
                 let classRatings = classes.map(c => c.ratings || 0);
@@ -323,21 +323,21 @@ function statistics() {
                     data: {
                         labels: classLabels,
                         datasets: [
-                            { label: 'Fotos', data: classPhotos, backgroundColor: '#10b310' },
-                            { label: 'Bewertungen', data: classRatings, backgroundColor: '#e0ffe0' },
-                            { label: 'Quiz', data: classQuizzes, backgroundColor: 'rgb(0, 105, 0)' }
+                            { label: 'Photos', data: classPhotos, backgroundColor: '#10b310' },
+                            { label: 'Ratings', data: classRatings, backgroundColor: '#e0ffe0' },
+                            { label: 'Quizzes', data: classQuizzes, backgroundColor: 'rgb(0, 105, 0)' }
                         ]
                     },
                     options: {
                         responsive: true,
                         plugins: {
-                            title: { display: true, text: 'Aktivitäten pro Klasse' }
+                            title: { display: true, text: 'Activities per Class' }
                         },
                         scales: { y: { beginAtZero: true } }
                     }
                 });
 
-                // 3️⃣ Top 5 Klassen nach Punkten (score)
+                // 3️⃣ Top 5 Classes by Score
                 let topClasses = classes
                     .map(c => ({ name: c.name.toUpperCase(), score: c.score || 0 }))
                     .sort((a, b) => b.score - a.score)
@@ -348,7 +348,7 @@ function statistics() {
                     data: {
                         labels: topClasses.map(c => c.name),
                         datasets: [{
-                            label: 'Punkte (Score)',
+                            label: 'Points (Score)',
                             data: topClasses.map(c => c.score),
                             backgroundColor: '#ffcc00'
                         }]
@@ -356,21 +356,22 @@ function statistics() {
                     options: {
                         responsive: true,
                         plugins: {
-                            title: { display: true, text: 'Top 5 Klassen nach Punkten' }
+                            title: { display: true, text: 'Top 5 Classes by Points' }
                         },
                         scales: { y: { beginAtZero: true } }
                     }
                 });
 
             } else {
-                alert("Fehler beim Laden der Statistikdaten");
+                alert("Error loading statistics data.");
             }
         })
         .catch(error => {
             console.error("Error loading statistics:", error);
-            alert("Ein Fehler ist aufgetreten.");
+            alert("An error occurred.");
         });
 }
+
 
 
 function statisticSystem() {
@@ -564,11 +565,26 @@ function goToRatePhoto() {
     fetch(`./api/getClass.php`)
         .then(response => response.json())
         .then((data) => {
-            // console.log(data.array);
-
             if (data.code == 200 && data.array.length > 0) {
-                allPhotos = data.array;
-                showRandomPhoto();
+                // Bilder extrahieren:
+                allPhotos = [];
+
+                data.array.forEach(cls => {
+                    if (cls.imgArray && cls.imgArray.length > 0) {
+                        cls.imgArray.forEach(imgPath => {
+                            allPhotos.push({
+                                class: cls.name,
+                                source: imgPath  // Hier wird das Bild korrekt gespeichert
+                            });
+                        });
+                    }
+                });
+
+                if (allPhotos.length > 0) {
+                    showRandomPhoto();
+                } else {
+                    document.getElementById("content").innerHTML = `<p>No images available.</p>`;
+                }
             } else {
                 document.getElementById("content").innerHTML = `<p>No images available.</p>`;
             }
@@ -578,10 +594,10 @@ function goToRatePhoto() {
             alert("An error occurred, please try again later!");
         });
 }
+
 function showRandomPhoto() {
     if (allPhotos.length === 0) return;
 
-    // Wähle zufälligen Index, aber stelle sicher, dass es nicht das gleiche Bild wie vorher ist
     let randomIndex;
     do {
         randomIndex = Math.floor(Math.random() * allPhotos.length);
@@ -594,16 +610,17 @@ function showRandomPhoto() {
         <div id="photoBox">
             <div class="photo">
                 <img src="${photo.source}" alt="photo">
-                <div onclick="activateRatePhotoGetPointsButton()" class="rating" data-photo-id="${photo.id}">
-                    ${generateStars(photo.id)}
+                <div onclick="activateRatePhotoGetPointsButton()" class="rating" data-photo-id="${randomIndex}">
+                    ${generateStars(randomIndex)}
                 </div>
                 <button class="ratePhotoGetPointsInactive">Get points</button>
             </div>
         </div>
     `;
 
-    setupStarRating(); // Event-Listener für Sterne hinzufügen
+    setupStarRating();
 }
+
 
 function activateRatePhotoGetPointsButton() {
     let button = document.querySelector(".ratePhotoGetPointsInactive");
@@ -965,10 +982,10 @@ function rewards() {
 // Profile Method(s) ----------------------------------------------------------------
 //********************************
 function profile() {
-    document.getElementById('body').style.opacity = "0";
-    setTimeout(function () { document.getElementById('body').style.opacity = "1"; }, 100);
-
     replaceStylesheet("style/styleProfil.css");
+    document.getElementById('body').style.opacity = "0";
+    setTimeout(function () { document.getElementById('body').style.opacity = "1"; }, 200);
+
 
     fetch('./api/getUser.php')
         .then(response => response.json())
